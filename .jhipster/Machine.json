@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170339",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "machine",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Machine",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "machine",
+      "relationshipName": "category",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "offer",
+      "otherEntityRelationshipName": "machine",
+      "relationshipName": "offer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

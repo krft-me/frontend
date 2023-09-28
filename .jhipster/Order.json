@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170345",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "WAITING,UNSIGNED,SIGNED,INPROGRESS,CANCELLED,DONE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Order",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationUserOffer",
+      "relationshipName": "provider",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

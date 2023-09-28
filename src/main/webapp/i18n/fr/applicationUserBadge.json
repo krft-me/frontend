@@ -1,0 +1,26 @@
+{
+  "krftmeApp": {
+    "applicationUserBadge": {
+      "home": {
+        "title": "ApplicationUserBadges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Application User Badge",
+        "createOrEditLabel": "Créer ou éditer un Application User Badge",
+        "notFound": "Aucun Application User Badge trouvé"
+      },
+      "created": "Un nouveau Application User Badge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Application User Badge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Application User Badge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Application User Badge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Application User Badge"
+      },
+      "id": "ID",
+      "obtentionDate": "Obtention Date",
+      "applicationUser": "Application User",
+      "badge": "Badge"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170344",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "application_user_badge",
+  "fields": [
+    {
+      "fieldName": "obtentionDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ApplicationUserBadge",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "applicationUser",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "badge",
+      "relationshipName": "badge",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

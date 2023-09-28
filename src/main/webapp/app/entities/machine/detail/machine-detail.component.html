@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="machine">
+      <h2 data-cy="machineDetailsHeading"><span jhiTranslate="krftmeApp.machine.detail.title">Machine</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ machine.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.machine.name">Name</span></dt>
+        <dd>
+          <span>{{ machine.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.machine.offer">Offer</span></dt>
+        <dd>
+          <div *ngIf="machine.offer">
+            <a [routerLink]="['/offer', machine.offer.id, 'view']">{{ machine.offer.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/machine', machine.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

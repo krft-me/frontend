@@ -1,0 +1,26 @@
+{
+  "krftmeApp": {
+    "rating": {
+      "home": {
+        "title": "Ratings",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Rating",
+        "createOrEditLabel": "Créer ou éditer un Rating",
+        "notFound": "Aucun Rating trouvé"
+      },
+      "created": "Un nouveau Rating a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rating avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rating avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Rating {{ id }} ?"
+      },
+      "detail": {
+        "title": "Rating"
+      },
+      "id": "ID",
+      "rate": "Rate",
+      "comment": "Comment",
+      "applicationUserOffer": "Application User Offer"
+    }
+  }
+}

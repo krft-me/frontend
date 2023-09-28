@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170346",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tag",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tag",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationUserOffer",
+      "otherEntityRelationshipName": "tag",
+      "relationshipName": "applicationUserOffer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,13 @@
+export enum State {
+  WAITING = 'WAITING',
+
+  UNSIGNED = 'UNSIGNED',
+
+  SIGNED = 'SIGNED',
+
+  INPROGRESS = 'INPROGRESS',
+
+  CANCELLED = 'CANCELLED',
+
+  DONE = 'DONE',
+}

@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170340",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "offer",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Offer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "machine",
+      "otherEntityRelationshipName": "offer",
+      "relationshipName": "machine",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

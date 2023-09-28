@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="krftmeApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.order.date">Date</span></dt>
+        <dd>
+          <span>{{ order.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.order.state">State</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'krftmeApp.State.' + order.state }}">{{ order.state }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.order.provider">Provider</span></dt>
+        <dd>
+          <div *ngIf="order.provider">
+            <a [routerLink]="['/application-user-offer', order.provider.id, 'view']">{{ order.provider.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.order.client">Client</span></dt>
+        <dd>
+          <div *ngIf="order.client">
+            <a [routerLink]="['/application-user', order.client.id, 'view']">{{ order.client.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

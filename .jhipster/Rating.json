@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170338",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "rating",
+  "fields": [
+    {
+      "fieldName": "rate",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rating",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationUserOffer",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "applicationUserOffer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

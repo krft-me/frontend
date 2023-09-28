@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20230928170341",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "application_user_offer",
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ApplicationUserOffer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "applicationUserOffer",
+      "relationshipName": "rating",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "showcase",
+      "otherEntityRelationshipName": "applicationUserOffer",
+      "relationshipName": "showcase",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "tag",
+      "otherEntityRelationshipName": "applicationUserOffer",
+      "relationshipName": "tag",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "offer",
+      "relationshipName": "offer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "relationshipName": "applicationUser",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
