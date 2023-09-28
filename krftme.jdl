@@ -1,0 +1,90 @@
+entity City {
+    name String required
+}
+
+entity Region {
+    name String required
+}
+
+entity Country {
+    name String required
+}
+
+entity ApplicationUser {
+    firstName String required
+    lastName String required
+    pseudo String required
+    averageRating Double required
+}
+
+entity Rating {
+    rate Double required
+    comment String
+}
+
+entity Machine {
+    name String required
+}
+
+entity Offer {
+    name String required
+}
+
+entity ApplicationUserOffer {
+    description String required
+}
+
+entity Showcase {
+    imageId UUID required
+}
+
+entity Badge {
+    label String required
+    picture ImageBlob required
+}
+
+entity ApplicationUserBadge {
+    obtentionDate Instant required
+}
+
+entity Order {
+    date Instant required
+    state State required
+}
+
+entity Tag {
+    label String required
+}
+
+entity Category {
+    label String required
+}
+
+enum State {
+    WAITING,
+    UNSIGNED,
+    SIGNED,
+    INPROGRESS,
+    CANCELLED,
+    DONE
+}
+
+relationship OneToMany {
+    ApplicationUserOffer{showcase} to Rating
+    ApplicationUserOffer{showcase} to Showcase
+    Offer{machine} to Machine
+    Machine{category} to Category
+    ApplicationUserOffer{tag} to Tag
+}
+
+relationship ManyToOne {
+    ApplicationUserOffer{offer} to Offer
+    ApplicationUserOffer{applicationUser} to ApplicationUser
+    ApplicationUserBadge{applicationUser} to ApplicationUser
+    ApplicationUserBadge{badge} to Badge
+    Order{provider} to ApplicationUserOffer
+    Order{client} to ApplicationUser
+    ApplicationUser{city} to City
+    City{region} to Region
+    Region{country} to Country
+}
