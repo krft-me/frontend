@@ -53,7 +53,7 @@
     "searchEngine": false,
     "serverPort": "8080",
     "serverSideOptions": [],
-    "serviceDiscoveryType": "eureka",
+    "serviceDiscoveryType": "consul",
     "skipCheckLengthOfIdentifier": false,
     "skipClient": false,
     "skipFakeData": false,
