@@ -7,6 +7,20 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "city": "City",
+        "region": "Region",
+        "country": "Country",
+        "applicationUser": "Application User",
+        "rating": "Rating",
+        "machine": "Machine",
+        "offer": "Offer",
+        "applicationUserOffer": "Application User Offer",
+        "showcase": "Showcase",
+        "badge": "Badge",
+        "applicationUserBadge": "Application User Badge",
+        "order": "Order",
+        "tag": "Tag",
+        "category": "Category",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

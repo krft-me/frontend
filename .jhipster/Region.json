@@ -1,6 +1,6 @@
 {
   "applications": "*",
-  "changelogDate": "20230928170335",
+  "changelogDate": "20231002124848",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,

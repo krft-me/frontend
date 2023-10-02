@@ -4,21 +4,21 @@ import { IApplicationUserBadge, NewApplicationUserBadge } from './application-us
 
 export const sampleWithRequiredData: IApplicationUserBadge = {
   id: 52766,
-  obtentionDate: dayjs('2023-09-27T18:34'),
+  obtentionDate: dayjs('2023-10-01T14:20'),
 };
 
 export const sampleWithPartialData: IApplicationUserBadge = {
   id: 490,
-  obtentionDate: dayjs('2023-09-28T02:36'),
+  obtentionDate: dayjs('2023-10-01T22:21'),
 };
 
 export const sampleWithFullData: IApplicationUserBadge = {
   id: 6776,
-  obtentionDate: dayjs('2023-09-28T09:05'),
+  obtentionDate: dayjs('2023-10-02T04:50'),
 };
 
 export const sampleWithNewData: NewApplicationUserBadge = {
-  obtentionDate: dayjs('2023-09-28T11:19'),
+  obtentionDate: dayjs('2023-10-02T07:04'),
   id: null,
 };
 

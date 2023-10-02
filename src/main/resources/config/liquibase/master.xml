@@ -17,7 +17,32 @@
     <property name="datetimeType" value="datetime" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124847_added_entity_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124848_added_entity_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124849_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124850_added_entity_ApplicationUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124851_added_entity_Rating.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124852_added_entity_Machine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124853_added_entity_Offer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124854_added_entity_ApplicationUserOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124855_added_entity_Showcase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124856_added_entity_Badge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124857_added_entity_ApplicationUserBadge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124858_added_entity_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124859_added_entity_Tag.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124900_added_entity_Category.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20231002124847_added_entity_constraints_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124848_added_entity_constraints_Region.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124850_added_entity_constraints_ApplicationUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124851_added_entity_constraints_Rating.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124852_added_entity_constraints_Machine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124854_added_entity_constraints_ApplicationUserOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124855_added_entity_constraints_Showcase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124857_added_entity_constraints_ApplicationUserBadge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124858_added_entity_constraints_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124859_added_entity_constraints_Tag.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231002124900_added_entity_constraints_Category.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
