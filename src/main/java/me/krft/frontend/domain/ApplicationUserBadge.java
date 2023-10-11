@@ -27,7 +27,10 @@ public class ApplicationUserBadge implements Serializable {
     private Instant obtentionDate;
 
     @Transient
-    @JsonIgnoreProperties(value = { "city" }, allowSetters = true)
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
     private ApplicationUser applicationUser;
 
     @Transient

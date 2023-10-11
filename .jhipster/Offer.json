@@ -23,6 +23,13 @@
       "otherEntityRelationshipName": "offer",
       "relationshipName": "machine",
       "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "otherEntityRelationshipName": "favoriteOffer",
+      "ownerSide": false,
+      "relationshipName": "followers",
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "no"

@@ -26,11 +26,39 @@
             <column name="average_rating" type="double">
                 <constraints nullable="false" />
             </column>
+            <column name="internal_user_id" type="varchar(100)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_application_user__internal_user_id" />
+            </column>
             <column name="city_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+    </changeSet>
+
+    <changeSet id="20231002124850-1-relations" author="jhipster">
+
+        <createTable tableName="rel_application_user__favorite_application_user">
+            <column name="favorite_application_user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="application_user_id, favorite_application_user_id" tableName="rel_application_user__favorite_application_user"/>
+
+        <createTable tableName="rel_application_user__favorite_offer">
+            <column name="favorite_offer_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="application_user_id, favorite_offer_id" tableName="rel_application_user__favorite_offer"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

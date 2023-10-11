@@ -62,9 +62,27 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="internalUser.id">
+            <div class="d-flex">
+              <span jhiTranslate="krftmeApp.applicationUser.internalUser">Internal User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="city.id">
             <div class="d-flex">
               <span jhiTranslate="krftmeApp.applicationUser.city">City</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="favoriteApplicationUser.id">
+            <div class="d-flex">
+              <span jhiTranslate="krftmeApp.applicationUser.favoriteApplicationUser">Favorite Application User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="favoriteOffer.id">
+            <div class="d-flex">
+              <span jhiTranslate="krftmeApp.applicationUser.favoriteOffer">Favorite Offer</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -81,9 +99,26 @@
           <td>{{ applicationUser.pseudo }}</td>
           <td>{{ applicationUser.averageRating }}</td>
           <td>
+            {{ applicationUser.internalUser?.id }}
+          </td>
+          <td>
             <div *ngIf="applicationUser.city">
               <a [routerLink]="['/city', applicationUser.city.id, 'view']">{{ applicationUser.city.id }}</a>
             </div>
+          </td>
+          <td>
+            <span *ngFor="let favoriteApplicationUser of applicationUser.favoriteApplicationUsers; let last = last">
+              <a class="form-control-static" [routerLink]="['/application-user', favoriteApplicationUser.id, 'view']">{{
+                favoriteApplicationUser.id
+              }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let favoriteOffer of applicationUser.favoriteOffers; let last = last">
+              <a class="form-control-static" [routerLink]="['/offer', favoriteOffer.id, 'view']">{{ favoriteOffer.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
           </td>
           <td class="text-end">
             <div class="btn-group">

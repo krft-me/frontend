@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "name": "Name",
-      "machine": "Machine"
+      "machine": "Machine",
+      "followers": "Followers"
     }
   }
 }

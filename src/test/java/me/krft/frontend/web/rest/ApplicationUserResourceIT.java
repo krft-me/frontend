@@ -3,6 +3,8 @@ package me.krft.frontend.web.rest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
 
 import java.time.Duration;
 import java.util.List;
@@ -15,16 +17,25 @@ import me.krft.frontend.repository.EntityManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Integration tests for the {@link ApplicationUserResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureWebTestClient(timeout = IntegrationTest.DEFAULT_ENTITY_TIMEOUT)
 @WithMockUser
 class ApplicationUserResourceIT {
@@ -49,6 +60,9 @@ class ApplicationUserResourceIT {
 
     @Autowired
     private ApplicationUserRepository applicationUserRepository;
+
+    @Mock
+    private ApplicationUserRepository applicationUserRepositoryMock;
 
     @Autowired
     private EntityManager em;
@@ -90,6 +104,8 @@ class ApplicationUserResourceIT {
 
     public static void deleteEntities(EntityManager em) {
         try {
+            em.deleteAll("rel_application_user__favorite_application_user").block();
+            em.deleteAll("rel_application_user__favorite_offer").block();
             em.deleteAll(ApplicationUser.class).block();
         } catch (Exception e) {
             // It can fail, if other entities are still referring this - it will be removed later.
@@ -99,6 +115,11 @@ class ApplicationUserResourceIT {
     @AfterEach
     public void cleanup() {
         deleteEntities(em);
+    }
+
+    @BeforeEach
+    public void setupCsrf() {
+        webTestClient = webTestClient.mutateWith(csrf());
     }
 
     @BeforeEach
@@ -291,6 +312,23 @@ class ApplicationUserResourceIT {
             .value(hasItem(DEFAULT_PSEUDO))
             .jsonPath("$.[*].averageRating")
             .value(hasItem(DEFAULT_AVERAGE_RATING.doubleValue()));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllApplicationUsersWithEagerRelationshipsIsEnabled() {
+        when(applicationUserRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=true").exchange().expectStatus().isOk();
+
+        verify(applicationUserRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllApplicationUsersWithEagerRelationshipsIsNotEnabled() {
+        when(applicationUserRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=false").exchange().expectStatus().isOk();
+        verify(applicationUserRepositoryMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test

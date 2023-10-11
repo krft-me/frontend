@@ -29,6 +29,7 @@ public class ApplicationUserRowMapper implements BiFunction<Row, String, Applica
         entity.setLastName(converter.fromRow(row, prefix + "_last_name", String.class));
         entity.setPseudo(converter.fromRow(row, prefix + "_pseudo", String.class));
         entity.setAverageRating(converter.fromRow(row, prefix + "_average_rating", Double.class));
+        entity.setInternalUserId(converter.fromRow(row, prefix + "_internal_user_id", String.class));
         entity.setCityId(converter.fromRow(row, prefix + "_city_id", Long.class));
         return entity;
     }

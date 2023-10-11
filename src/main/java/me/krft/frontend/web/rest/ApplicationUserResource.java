@@ -180,12 +180,17 @@ public class ApplicationUserResource {
     /**
      * {@code GET  /application-users} : get all the applicationUsers.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of applicationUsers in body.
      */
     @GetMapping("/application-users")
-    public Mono<List<ApplicationUser>> getAllApplicationUsers() {
+    public Mono<List<ApplicationUser>> getAllApplicationUsers(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all ApplicationUsers");
-        return applicationUserRepository.findAll().collectList();
+        if (eagerload) {
+            return applicationUserRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return applicationUserRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -207,7 +212,7 @@ public class ApplicationUserResource {
     @GetMapping("/application-users/{id}")
     public Mono<ResponseEntity<ApplicationUser>> getApplicationUser(@PathVariable Long id) {
         log.debug("REST request to get ApplicationUser : {}", id);
-        Mono<ApplicationUser> applicationUser = applicationUserRepository.findById(id);
+        Mono<ApplicationUser> applicationUser = applicationUserRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(applicationUser);
     }
 

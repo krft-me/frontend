@@ -24,7 +24,11 @@ describe('ApplicationUser Form Service', () => {
             lastName: expect.any(Object),
             pseudo: expect.any(Object),
             averageRating: expect.any(Object),
+            internalUser: expect.any(Object),
             city: expect.any(Object),
+            favoriteApplicationUsers: expect.any(Object),
+            favoriteOffers: expect.any(Object),
+            followers: expect.any(Object),
           })
         );
       });
@@ -39,7 +43,11 @@ describe('ApplicationUser Form Service', () => {
             lastName: expect.any(Object),
             pseudo: expect.any(Object),
             averageRating: expect.any(Object),
+            internalUser: expect.any(Object),
             city: expect.any(Object),
+            favoriteApplicationUsers: expect.any(Object),
+            favoriteOffers: expect.any(Object),
+            followers: expect.any(Object),
           })
         );
       });

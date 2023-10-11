@@ -32,7 +32,7 @@ public class Machine implements Serializable {
     private Set<Category> categories = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "machines" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "machines", "followers" }, allowSetters = true)
     private Offer offer;
 
     @Column("offer_id")

@@ -34,9 +34,36 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityName": "user",
+      "ownerSide": true,
+      "relationshipName": "internalUser",
+      "relationshipType": "one-to-one"
+    },
+    {
       "otherEntityName": "city",
       "relationshipName": "city",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "otherEntityRelationshipName": "followers",
+      "ownerSide": true,
+      "relationshipName": "favoriteApplicationUser",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "offer",
+      "otherEntityRelationshipName": "followers",
+      "ownerSide": true,
+      "relationshipName": "favoriteOffer",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "applicationUser",
+      "otherEntityRelationshipName": "favoriteApplicationUser",
+      "ownerSide": false,
+      "relationshipName": "followers",
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "no"

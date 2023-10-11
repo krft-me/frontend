@@ -14,11 +14,12 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type OfferFormGroupInput = IOffer | PartialWithRequiredKeyOf<NewOffer>;
 
-type OfferFormDefaults = Pick<NewOffer, 'id'>;
+type OfferFormDefaults = Pick<NewOffer, 'id' | 'followers'>;
 
 type OfferFormGroupContent = {
   id: FormControl<IOffer['id'] | NewOffer['id']>;
   name: FormControl<IOffer['name']>;
+  followers: FormControl<IOffer['followers']>;
 };
 
 export type OfferFormGroup = FormGroup<OfferFormGroupContent>;
@@ -41,6 +42,7 @@ export class OfferFormService {
       name: new FormControl(offerRawValue.name, {
         validators: [Validators.required],
       }),
+      followers: new FormControl(offerRawValue.followers ?? []),
     });
   }
 
@@ -61,6 +63,7 @@ export class OfferFormService {
   private getFormDefaults(): OfferFormDefaults {
     return {
       id: null,
+      followers: [],
     };
   }
 }

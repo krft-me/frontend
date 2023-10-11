@@ -36,7 +36,10 @@ public class Order implements Serializable {
     private ApplicationUserOffer provider;
 
     @Transient
-    @JsonIgnoreProperties(value = { "city" }, allowSetters = true)
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
     private ApplicationUser client;
 
     @Column("provider_id")

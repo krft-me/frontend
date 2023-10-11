@@ -88,10 +88,59 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="krftmeApp.applicationUser.internalUser" for="field_internalUser">Internal User</label>
+          <select
+            class="form-control"
+            id="field_internalUser"
+            data-cy="internalUser"
+            name="internalUser"
+            formControlName="internalUser"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="krftmeApp.applicationUser.city" for="field_city">City</label>
           <select class="form-control" id="field_city" data-cy="city" name="city" formControlName="city" [compareWith]="compareCity">
             <option [ngValue]="null"></option>
             <option [ngValue]="cityOption" *ngFor="let cityOption of citiesSharedCollection">{{ cityOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="krftmeApp.applicationUser.favoriteApplicationUser" for="field_favoriteApplicationUsers"
+            >Favorite Application User</label
+          >
+          <select
+            class="form-control"
+            id="field_favoriteApplicationUsers"
+            data-cy="favoriteApplicationUser"
+            multiple
+            name="favoriteApplicationUsers"
+            formControlName="favoriteApplicationUsers"
+            [compareWith]="compareApplicationUser"
+          >
+            <option [ngValue]="applicationUserOption" *ngFor="let applicationUserOption of applicationUsersSharedCollection">
+              {{ applicationUserOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="krftmeApp.applicationUser.favoriteOffer" for="field_favoriteOffers">Favorite Offer</label>
+          <select
+            class="form-control"
+            id="field_favoriteOffers"
+            data-cy="favoriteOffer"
+            multiple
+            name="favoriteOffers"
+            formControlName="favoriteOffers"
+            [compareWith]="compareOffer"
+          >
+            <option [ngValue]="offerOption" *ngFor="let offerOption of offersSharedCollection">{{ offerOption.id }}</option>
           </select>
         </div>
       </div>

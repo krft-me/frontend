@@ -8,10 +8,40 @@
     -->
     <changeSet id="20231002124850-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="internal_user_id"
+                                 baseTableName="application_user"
+                                 constraintName="fk_application_user__internal_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
         <addForeignKeyConstraint baseColumnNames="city_id"
                                  baseTableName="application_user"
                                  constraintName="fk_application_user__city_id"
                                  referencedColumnNames="id"
                                  referencedTableName="city"/>
+
+        <addForeignKeyConstraint baseColumnNames="application_user_id"
+                                 baseTableName="rel_application_user__favorite_application_user"
+                                 constraintName="fk_rel_application_user__favori__application_user_e1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="favorite_application_user_id"
+                                 baseTableName="rel_application_user__favorite_application_user"
+                                 constraintName="fk_rel_application_user__favori__favorite_application_use_65_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="application_user_id"
+                                 baseTableName="rel_application_user__favorite_offer"
+                                 constraintName="fk_rel_application_user__favorite_offer__application_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="favorite_offer_id"
+                                 baseTableName="rel_application_user__favorite_offer"
+                                 constraintName="fk_rel_application_user__favorite_offer__favorite_offer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="offer"/>
     </changeSet>
 </databaseChangeLog>

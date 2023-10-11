@@ -16,6 +16,7 @@ public class ApplicationUserSqlHelper {
         columns.add(Column.aliased("pseudo", table, columnPrefix + "_pseudo"));
         columns.add(Column.aliased("average_rating", table, columnPrefix + "_average_rating"));
 
+        columns.add(Column.aliased("internal_user_id", table, columnPrefix + "_internal_user_id"));
         columns.add(Column.aliased("city_id", table, columnPrefix + "_city_id"));
         return columns;
     }

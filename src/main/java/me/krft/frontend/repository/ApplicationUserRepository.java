@@ -15,11 +15,36 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface ApplicationUserRepository extends ReactiveCrudRepository<ApplicationUser, Long>, ApplicationUserRepositoryInternal {
+    @Override
+    Mono<ApplicationUser> findOneWithEagerRelationships(Long id);
+
+    @Override
+    Flux<ApplicationUser> findAllWithEagerRelationships();
+
+    @Override
+    Flux<ApplicationUser> findAllWithEagerRelationships(Pageable page);
+
+    @Query("SELECT * FROM application_user entity WHERE entity.internal_user_id = :id")
+    Flux<ApplicationUser> findByInternalUser(Long id);
+
+    @Query("SELECT * FROM application_user entity WHERE entity.internal_user_id IS NULL")
+    Flux<ApplicationUser> findAllWhereInternalUserIsNull();
+
     @Query("SELECT * FROM application_user entity WHERE entity.city_id = :id")
     Flux<ApplicationUser> findByCity(Long id);
 
     @Query("SELECT * FROM application_user entity WHERE entity.city_id IS NULL")
     Flux<ApplicationUser> findAllWhereCityIsNull();
+
+    @Query(
+        "SELECT entity.* FROM application_user entity JOIN rel_application_user__favorite_application_user joinTable ON entity.id = joinTable.favorite_application_user_id WHERE joinTable.favorite_application_user_id = :id"
+    )
+    Flux<ApplicationUser> findByFavoriteApplicationUser(Long id);
+
+    @Query(
+        "SELECT entity.* FROM application_user entity JOIN rel_application_user__favorite_offer joinTable ON entity.id = joinTable.favorite_offer_id WHERE joinTable.favorite_offer_id = :id"
+    )
+    Flux<ApplicationUser> findByFavoriteOffer(Long id);
 
     @Override
     <S extends ApplicationUser> Mono<S> save(S entity);
@@ -45,4 +70,11 @@ interface ApplicationUserRepositoryInternal {
     // this is not supported at the moment because of https://github.com/jhipster/generator-jhipster/issues/18269
     // Flux<ApplicationUser> findAllBy(Pageable pageable, Criteria criteria);
 
+    Mono<ApplicationUser> findOneWithEagerRelationships(Long id);
+
+    Flux<ApplicationUser> findAllWithEagerRelationships();
+
+    Flux<ApplicationUser> findAllWithEagerRelationships(Pageable page);
+
+    Mono<Void> deleteById(Long id);
 }

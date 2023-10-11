@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 import me.krft.frontend.KrftmeApp;
 import me.krft.frontend.config.AsyncSyncConfiguration;
 import me.krft.frontend.config.EmbeddedSQL;
+import me.krft.frontend.config.TestSecurityConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
@@ -15,7 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = { KrftmeApp.class, AsyncSyncConfiguration.class })
+@SpringBootTest(classes = { KrftmeApp.class, AsyncSyncConfiguration.class, TestSecurityConfiguration.class })
 @EmbeddedSQL
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public @interface IntegrationTest {

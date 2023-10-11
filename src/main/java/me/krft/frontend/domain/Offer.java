@@ -31,6 +31,13 @@ public class Offer implements Serializable {
     @JsonIgnoreProperties(value = { "categories", "offer" }, allowSetters = true)
     private Set<Machine> machines = new HashSet<>();
 
+    @Transient
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
+    private Set<ApplicationUser> followers = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -87,6 +94,37 @@ public class Offer implements Serializable {
     public Offer removeMachine(Machine machine) {
         this.machines.remove(machine);
         machine.setOffer(null);
+        return this;
+    }
+
+    public Set<ApplicationUser> getFollowers() {
+        return this.followers;
+    }
+
+    public void setFollowers(Set<ApplicationUser> applicationUsers) {
+        if (this.followers != null) {
+            this.followers.forEach(i -> i.removeFavoriteOffer(this));
+        }
+        if (applicationUsers != null) {
+            applicationUsers.forEach(i -> i.addFavoriteOffer(this));
+        }
+        this.followers = applicationUsers;
+    }
+
+    public Offer followers(Set<ApplicationUser> applicationUsers) {
+        this.setFollowers(applicationUsers);
+        return this;
+    }
+
+    public Offer addFollowers(ApplicationUser applicationUser) {
+        this.followers.add(applicationUser);
+        applicationUser.getFavoriteOffers().add(this);
+        return this;
+    }
+
+    public Offer removeFollowers(ApplicationUser applicationUser) {
+        this.followers.remove(applicationUser);
+        applicationUser.getFavoriteOffers().remove(this);
         return this;
     }
 

@@ -40,11 +40,14 @@ public class ApplicationUserOffer implements Serializable {
     private Set<Tag> tags = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "machines" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "machines", "followers" }, allowSetters = true)
     private Offer offer;
 
     @Transient
-    @JsonIgnoreProperties(value = { "city" }, allowSetters = true)
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
     private ApplicationUser applicationUser;
 
     @Column("offer_id")

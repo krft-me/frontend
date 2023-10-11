@@ -22,7 +22,11 @@
       "lastName": "Last Name",
       "pseudo": "Pseudo",
       "averageRating": "Average Rating",
-      "city": "City"
+      "internalUser": "Internal User",
+      "city": "City",
+      "favoriteApplicationUser": "Favorite Application User",
+      "favoriteOffer": "Favorite Offer",
+      "followers": "Followers"
     }
   }
 }

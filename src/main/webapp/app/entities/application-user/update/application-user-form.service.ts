@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type ApplicationUserFormGroupInput = IApplicationUser | PartialWithRequiredKeyOf<NewApplicationUser>;
 
-type ApplicationUserFormDefaults = Pick<NewApplicationUser, 'id'>;
+type ApplicationUserFormDefaults = Pick<NewApplicationUser, 'id' | 'favoriteApplicationUsers' | 'favoriteOffers' | 'followers'>;
 
 type ApplicationUserFormGroupContent = {
   id: FormControl<IApplicationUser['id'] | NewApplicationUser['id']>;
@@ -22,7 +22,11 @@ type ApplicationUserFormGroupContent = {
   lastName: FormControl<IApplicationUser['lastName']>;
   pseudo: FormControl<IApplicationUser['pseudo']>;
   averageRating: FormControl<IApplicationUser['averageRating']>;
+  internalUser: FormControl<IApplicationUser['internalUser']>;
   city: FormControl<IApplicationUser['city']>;
+  favoriteApplicationUsers: FormControl<IApplicationUser['favoriteApplicationUsers']>;
+  favoriteOffers: FormControl<IApplicationUser['favoriteOffers']>;
+  followers: FormControl<IApplicationUser['followers']>;
 };
 
 export type ApplicationUserFormGroup = FormGroup<ApplicationUserFormGroupContent>;
@@ -54,7 +58,11 @@ export class ApplicationUserFormService {
       averageRating: new FormControl(applicationUserRawValue.averageRating, {
         validators: [Validators.required],
       }),
+      internalUser: new FormControl(applicationUserRawValue.internalUser),
       city: new FormControl(applicationUserRawValue.city),
+      favoriteApplicationUsers: new FormControl(applicationUserRawValue.favoriteApplicationUsers ?? []),
+      favoriteOffers: new FormControl(applicationUserRawValue.favoriteOffers ?? []),
+      followers: new FormControl(applicationUserRawValue.followers ?? []),
     });
   }
 
@@ -75,6 +83,9 @@ export class ApplicationUserFormService {
   private getFormDefaults(): ApplicationUserFormDefaults {
     return {
       id: null,
+      favoriteApplicationUsers: [],
+      favoriteOffers: [],
+      followers: [],
     };
   }
 }

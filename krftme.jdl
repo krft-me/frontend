@@ -69,6 +69,10 @@ enum State {
     DONE
 }
 
+relationship OneToOne {
+    ApplicationUser{internalUser} to User
+}
+
 relationship OneToMany {
     ApplicationUserOffer{rating} to Rating
     ApplicationUserOffer{showcase} to Showcase
@@ -87,4 +91,9 @@ relationship ManyToOne {
     ApplicationUser{city} to City
     City{region} to Region
     Region{country} to Country
+}
+
+relationship ManyToMany {
+    ApplicationUser{favoriteApplicationUser} to ApplicationUser{followers}
+    ApplicationUser{favoriteOffer} to Offer{followers}
 }

@@ -2,6 +2,8 @@ package me.krft.frontend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -38,8 +40,32 @@ public class ApplicationUser implements Serializable {
     private Double averageRating;
 
     @Transient
+    private User internalUser;
+
+    @Transient
     @JsonIgnoreProperties(value = { "region" }, allowSetters = true)
     private City city;
+
+    @Transient
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
+    private Set<ApplicationUser> favoriteApplicationUsers = new HashSet<>();
+
+    @Transient
+    @JsonIgnoreProperties(value = { "machines", "followers" }, allowSetters = true)
+    private Set<Offer> favoriteOffers = new HashSet<>();
+
+    @Transient
+    @JsonIgnoreProperties(
+        value = { "internalUser", "city", "favoriteApplicationUsers", "favoriteOffers", "followers" },
+        allowSetters = true
+    )
+    private Set<ApplicationUser> followers = new HashSet<>();
+
+    @Column("internal_user_id")
+    private String internalUserId;
 
     @Column("city_id")
     private Long cityId;
@@ -111,6 +137,20 @@ public class ApplicationUser implements Serializable {
         this.averageRating = averageRating;
     }
 
+    public User getInternalUser() {
+        return this.internalUser;
+    }
+
+    public void setInternalUser(User user) {
+        this.internalUser = user;
+        this.internalUserId = user != null ? user.getId() : null;
+    }
+
+    public ApplicationUser internalUser(User user) {
+        this.setInternalUser(user);
+        return this;
+    }
+
     public City getCity() {
         return this.city;
     }
@@ -123,6 +163,95 @@ public class ApplicationUser implements Serializable {
     public ApplicationUser city(City city) {
         this.setCity(city);
         return this;
+    }
+
+    public Set<ApplicationUser> getFavoriteApplicationUsers() {
+        return this.favoriteApplicationUsers;
+    }
+
+    public void setFavoriteApplicationUsers(Set<ApplicationUser> applicationUsers) {
+        this.favoriteApplicationUsers = applicationUsers;
+    }
+
+    public ApplicationUser favoriteApplicationUsers(Set<ApplicationUser> applicationUsers) {
+        this.setFavoriteApplicationUsers(applicationUsers);
+        return this;
+    }
+
+    public ApplicationUser addFavoriteApplicationUser(ApplicationUser applicationUser) {
+        this.favoriteApplicationUsers.add(applicationUser);
+        applicationUser.getFollowers().add(this);
+        return this;
+    }
+
+    public ApplicationUser removeFavoriteApplicationUser(ApplicationUser applicationUser) {
+        this.favoriteApplicationUsers.remove(applicationUser);
+        applicationUser.getFollowers().remove(this);
+        return this;
+    }
+
+    public Set<Offer> getFavoriteOffers() {
+        return this.favoriteOffers;
+    }
+
+    public void setFavoriteOffers(Set<Offer> offers) {
+        this.favoriteOffers = offers;
+    }
+
+    public ApplicationUser favoriteOffers(Set<Offer> offers) {
+        this.setFavoriteOffers(offers);
+        return this;
+    }
+
+    public ApplicationUser addFavoriteOffer(Offer offer) {
+        this.favoriteOffers.add(offer);
+        offer.getFollowers().add(this);
+        return this;
+    }
+
+    public ApplicationUser removeFavoriteOffer(Offer offer) {
+        this.favoriteOffers.remove(offer);
+        offer.getFollowers().remove(this);
+        return this;
+    }
+
+    public Set<ApplicationUser> getFollowers() {
+        return this.followers;
+    }
+
+    public void setFollowers(Set<ApplicationUser> applicationUsers) {
+        if (this.followers != null) {
+            this.followers.forEach(i -> i.removeFavoriteApplicationUser(this));
+        }
+        if (applicationUsers != null) {
+            applicationUsers.forEach(i -> i.addFavoriteApplicationUser(this));
+        }
+        this.followers = applicationUsers;
+    }
+
+    public ApplicationUser followers(Set<ApplicationUser> applicationUsers) {
+        this.setFollowers(applicationUsers);
+        return this;
+    }
+
+    public ApplicationUser addFollowers(ApplicationUser applicationUser) {
+        this.followers.add(applicationUser);
+        applicationUser.getFavoriteApplicationUsers().add(this);
+        return this;
+    }
+
+    public ApplicationUser removeFollowers(ApplicationUser applicationUser) {
+        this.followers.remove(applicationUser);
+        applicationUser.getFavoriteApplicationUsers().remove(this);
+        return this;
+    }
+
+    public String getInternalUserId() {
+        return this.internalUserId;
+    }
+
+    public void setInternalUserId(String user) {
+        this.internalUserId = user;
     }
 
     public Long getCityId() {
