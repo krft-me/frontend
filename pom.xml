@@ -1223,7 +1223,6 @@
                             <execution>
                                 <id>webapp build test</id>
                                 <goals>
-                                <goals>
                                     <goal>npm</goal>
                                 </goals>
                                 <phase>test</phase>
