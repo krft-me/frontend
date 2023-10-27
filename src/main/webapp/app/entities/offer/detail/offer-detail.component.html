@@ -9,16 +9,29 @@
 
       <jhi-alert></jhi-alert>
 
-      <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
-        <dd>
-          <span>{{ offer.id }}</span>
-        </dd>
-        <dt><span jhiTranslate="krftmeApp.offer.name">Name</span></dt>
-        <dd>
-          <span>{{ offer.name }}</span>
-        </dd>
-      </dl>
+      <div class="details">
+        <div class="details-img">
+          <img src="{{ offer.picture_link }}" alt="img_offer" />
+        </div>
+        <div class="details-text">
+          <h1>
+            {{ offer.title }}
+          </h1>
+          <h2>
+            {{ offer.machine }}
+          </h2>
+          <h2>
+            {{ offer.autor }}
+          </h2>
+          <p>
+            {{ offer.description }}
+          </p>
+        </div>
+      </div>
+
+      <div class="packages">
+        <jhi-offer-package *ngFor="let package of this.offer.packages" [package]="package" ngClass="package"> </jhi-offer-package>
+      </div>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
