@@ -32,7 +32,7 @@
       "error",
       {
         "type": "attribute",
-        "prefix": "jhi",
+        "prefix": "krftme",
         "style": "camelCase"
       }
     ],
