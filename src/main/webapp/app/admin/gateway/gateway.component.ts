@@ -4,7 +4,7 @@ import { GatewayRoutesService } from './gateway-routes.service';
 import { GatewayRoute } from './gateway-route.model';
 
 @Component({
-  selector: 'jhi-gateway',
+  selector: 'krftme-gateway',
   templateUrl: './gateway.component.html',
   providers: [GatewayRoutesService],
 })

@@ -10,7 +10,7 @@ import { CityDeleteDialogComponent } from '../delete/city-delete-dialog.componen
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-city',
+  selector: 'krftme-city',
   templateUrl: './city.component.html',
 })
 export class CityComponent implements OnInit {

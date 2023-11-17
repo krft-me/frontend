@@ -10,7 +10,7 @@ import { CountryDeleteDialogComponent } from '../delete/country-delete-dialog.co
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-country',
+  selector: 'krftme-country',
   templateUrl: './country.component.html',
 })
 export class CountryComponent implements OnInit {

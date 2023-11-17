@@ -11,7 +11,7 @@ import { IApplicationUserOffer } from 'app/entities/application-user-offer/appli
 import { ApplicationUserOfferService } from 'app/entities/application-user-offer/service/application-user-offer.service';
 
 @Component({
-  selector: 'jhi-tag-update',
+  selector: 'krftme-tag-update',
   templateUrl: './tag-update.component.html',
 })
 export class TagUpdateComponent implements OnInit {

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IApplicationUser } from '../application-user.model';
 
 @Component({
-  selector: 'jhi-application-user-detail',
+  selector: 'krftme-application-user-detail',
   templateUrl: './application-user-detail.component.html',
 })
 export class ApplicationUserDetailComponent implements OnInit {

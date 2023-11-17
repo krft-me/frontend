@@ -10,7 +10,7 @@ import { ApplicationUserBadgeDeleteDialogComponent } from '../delete/application
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-application-user-badge',
+  selector: 'krftme-application-user-badge',
   templateUrl: './application-user-badge.component.html',
 })
 export class ApplicationUserBadgeComponent implements OnInit {

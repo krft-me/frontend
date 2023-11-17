@@ -15,7 +15,7 @@ import { IOffer } from 'app/entities/offer/offer.model';
 import { OfferService } from 'app/entities/offer/service/offer.service';
 
 @Component({
-  selector: 'jhi-application-user-update',
+  selector: 'krftme-application-user-update',
   templateUrl: './application-user-update.component.html',
 })
 export class ApplicationUserUpdateComponent implements OnInit {

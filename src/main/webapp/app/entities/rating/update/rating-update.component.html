@@ -1,12 +1,12 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-rating-heading" data-cy="RatingCreateUpdateHeading" jhiTranslate="krftmeApp.rating.home.createOrEditLabel">
+      <h2 id="krftme-rating-heading" data-cy="RatingCreateUpdateHeading" jhiTranslate="krftmeApp.rating.home.createOrEditLabel">
         Créer ou éditer un Rating
       </h2>
 
       <div>
-        <jhi-alert-error></jhi-alert-error>
+        <krftme-alert-error></krftme-alert-error>
 
         <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>

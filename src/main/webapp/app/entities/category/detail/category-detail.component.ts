@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ICategory } from '../category.model';
 
 @Component({
-  selector: 'jhi-category-detail',
+  selector: 'krftme-category-detail',
   templateUrl: './category-detail.component.html',
 })
 export class CategoryDetailComponent implements OnInit {

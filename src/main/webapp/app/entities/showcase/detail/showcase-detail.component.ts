@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IShowcase } from '../showcase.model';
 
 @Component({
-  selector: 'jhi-showcase-detail',
+  selector: 'krftme-showcase-detail',
   templateUrl: './showcase-detail.component.html',
 })
 export class ShowcaseDetailComponent implements OnInit {

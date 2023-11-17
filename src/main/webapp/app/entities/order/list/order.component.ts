@@ -10,7 +10,7 @@ import { OrderDeleteDialogComponent } from '../delete/order-delete-dialog.compon
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-order',
+  selector: 'krftme-order',
   templateUrl: './order.component.html',
 })
 export class OrderComponent implements OnInit {

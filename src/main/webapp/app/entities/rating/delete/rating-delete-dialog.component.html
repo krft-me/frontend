@@ -6,8 +6,8 @@
   </div>
 
   <div class="modal-body">
-    <jhi-alert-error></jhi-alert-error>
-    <p id="jhi-delete-rating-heading" jhiTranslate="krftmeApp.rating.delete.question" [translateValues]="{ id: rating.id }">
+    <krftme-alert-error></krftme-alert-error>
+    <p id="krftme-delete-rating-heading" jhiTranslate="krftmeApp.rating.delete.question" [translateValues]="{ id: rating.id }">
       Êtes-vous certain de vouloir supprimer le Rating {{ rating.id }} ?
     </p>
   </div>
@@ -17,7 +17,7 @@
       <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
     </button>
 
-    <button id="jhi-confirm-delete-rating" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+    <button id="krftme-confirm-delete-rating" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
       <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
     </button>
   </div>

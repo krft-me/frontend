@@ -11,7 +11,7 @@ import { IOffer } from 'app/entities/offer/offer.model';
 import { OfferService } from 'app/entities/offer/service/offer.service';
 
 @Component({
-  selector: 'jhi-machine-update',
+  selector: 'krftme-machine-update',
   templateUrl: './machine-update.component.html',
 })
 export class MachineUpdateComponent implements OnInit {

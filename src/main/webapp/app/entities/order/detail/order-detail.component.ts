@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IOrder } from '../order.model';
 
 @Component({
-  selector: 'jhi-order-detail',
+  selector: 'krftme-order-detail',
   templateUrl: './order-detail.component.html',
 })
 export class OrderDetailComponent implements OnInit {

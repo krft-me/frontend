@@ -2,7 +2,7 @@
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
       <h2
-        id="jhi-application-user-badge-heading"
+        id="krftme-application-user-badge-heading"
         data-cy="ApplicationUserBadgeCreateUpdateHeading"
         jhiTranslate="krftmeApp.applicationUserBadge.home.createOrEditLabel"
       >
@@ -10,7 +10,7 @@
       </h2>
 
       <div>
-        <jhi-alert-error></jhi-alert-error>
+        <krftme-alert-error></krftme-alert-error>
 
         <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>

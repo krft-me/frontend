@@ -9,7 +9,7 @@ import { IOffer } from '../offer.model';
 import { OfferService } from '../service/offer.service';
 
 @Component({
-  selector: 'jhi-offer-update',
+  selector: 'krftme-offer-update',
   templateUrl: './offer-update.component.html',
 })
 export class OfferUpdateComponent implements OnInit {

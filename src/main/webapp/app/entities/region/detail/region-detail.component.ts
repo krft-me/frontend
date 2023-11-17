@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IRegion } from '../region.model';
 
 @Component({
-  selector: 'jhi-region-detail',
+  selector: 'krftme-region-detail',
   templateUrl: './region-detail.component.html',
 })
 export class RegionDetailComponent implements OnInit {

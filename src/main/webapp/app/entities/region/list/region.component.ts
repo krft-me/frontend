@@ -10,7 +10,7 @@ import { RegionDeleteDialogComponent } from '../delete/region-delete-dialog.comp
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-region',
+  selector: 'krftme-region',
   templateUrl: './region.component.html',
 })
 export class RegionComponent implements OnInit {

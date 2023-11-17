@@ -13,7 +13,7 @@ import { IBadge } from 'app/entities/badge/badge.model';
 import { BadgeService } from 'app/entities/badge/service/badge.service';
 
 @Component({
-  selector: 'jhi-application-user-badge-update',
+  selector: 'krftme-application-user-badge-update',
   templateUrl: './application-user-badge-update.component.html',
 })
 export class ApplicationUserBadgeUpdateComponent implements OnInit {

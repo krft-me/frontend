@@ -10,7 +10,7 @@ import { ApplicationUserDeleteDialogComponent } from '../delete/application-user
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-application-user',
+  selector: 'krftme-application-user',
   templateUrl: './application-user.component.html',
 })
 export class ApplicationUserComponent implements OnInit {

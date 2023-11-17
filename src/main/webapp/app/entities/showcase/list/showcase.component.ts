@@ -10,7 +10,7 @@ import { ShowcaseDeleteDialogComponent } from '../delete/showcase-delete-dialog.
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-showcase',
+  selector: 'krftme-showcase',
   templateUrl: './showcase.component.html',
 })
 export class ShowcaseComponent implements OnInit {

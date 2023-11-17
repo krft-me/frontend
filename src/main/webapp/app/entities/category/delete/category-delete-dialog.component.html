@@ -6,8 +6,8 @@
   </div>
 
   <div class="modal-body">
-    <jhi-alert-error></jhi-alert-error>
-    <p id="jhi-delete-category-heading" jhiTranslate="krftmeApp.category.delete.question" [translateValues]="{ id: category.id }">
+    <krftme-alert-error></krftme-alert-error>
+    <p id="krftme-delete-category-heading" jhiTranslate="krftmeApp.category.delete.question" [translateValues]="{ id: category.id }">
       Êtes-vous certain de vouloir supprimer le Category {{ category.id }} ?
     </p>
   </div>
@@ -17,7 +17,7 @@
       <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
     </button>
 
-    <button id="jhi-confirm-delete-category" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+    <button id="krftme-confirm-delete-category" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
       <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
     </button>
   </div>

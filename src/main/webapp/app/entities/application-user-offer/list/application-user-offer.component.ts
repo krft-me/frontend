@@ -10,7 +10,7 @@ import { ApplicationUserOfferDeleteDialogComponent } from '../delete/application
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-application-user-offer',
+  selector: 'krftme-application-user-offer',
   templateUrl: './application-user-offer.component.html',
 })
 export class ApplicationUserOfferComponent implements OnInit {

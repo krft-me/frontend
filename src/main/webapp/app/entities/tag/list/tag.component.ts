@@ -10,7 +10,7 @@ import { TagDeleteDialogComponent } from '../delete/tag-delete-dialog.component'
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-tag',
+  selector: 'krftme-tag',
   templateUrl: './tag.component.html',
 })
 export class TagComponent implements OnInit {

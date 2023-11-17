@@ -12,7 +12,7 @@ import { EventManager, EventWithContent } from 'app/core/util/event-manager.serv
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 
 @Component({
-  selector: 'jhi-badge-update',
+  selector: 'krftme-badge-update',
   templateUrl: './badge-update.component.html',
 })
 export class BadgeUpdateComponent implements OnInit {

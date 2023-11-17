@@ -11,7 +11,7 @@ import { IApplicationUserOffer } from 'app/entities/application-user-offer/appli
 import { ApplicationUserOfferService } from 'app/entities/application-user-offer/service/application-user-offer.service';
 
 @Component({
-  selector: 'jhi-rating-update',
+  selector: 'krftme-rating-update',
   templateUrl: './rating-update.component.html',
 })
 export class RatingUpdateComponent implements OnInit {

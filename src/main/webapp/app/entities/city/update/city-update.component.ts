@@ -11,7 +11,7 @@ import { IRegion } from 'app/entities/region/region.model';
 import { RegionService } from 'app/entities/region/service/region.service';
 
 @Component({
-  selector: 'jhi-city-update',
+  selector: 'krftme-city-update',
   templateUrl: './city-update.component.html',
 })
 export class CityUpdateComponent implements OnInit {

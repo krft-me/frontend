@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IRating } from '../rating.model';
 
 @Component({
-  selector: 'jhi-rating-detail',
+  selector: 'krftme-rating-detail',
   templateUrl: './rating-detail.component.html',
 })
 export class RatingDetailComponent implements OnInit {

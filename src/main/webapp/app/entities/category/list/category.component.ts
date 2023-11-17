@@ -10,7 +10,7 @@ import { CategoryDeleteDialogComponent } from '../delete/category-delete-dialog.
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-category',
+  selector: 'krftme-category',
   templateUrl: './category.component.html',
 })
 export class CategoryComponent implements OnInit {

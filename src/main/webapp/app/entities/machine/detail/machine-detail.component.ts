@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IMachine } from '../machine.model';
 
 @Component({
-  selector: 'jhi-machine-detail',
+  selector: 'krftme-machine-detail',
   templateUrl: './machine-detail.component.html',
 })
 export class MachineDetailComponent implements OnInit {

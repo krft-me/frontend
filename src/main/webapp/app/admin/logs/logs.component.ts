@@ -4,7 +4,7 @@ import { Log, LoggersResponse, Level } from './log.model';
 import { LogsService } from './logs.service';
 
 @Component({
-  selector: 'jhi-logs',
+  selector: 'krftme-logs',
   templateUrl: './logs.component.html',
 })
 export class LogsComponent implements OnInit {
