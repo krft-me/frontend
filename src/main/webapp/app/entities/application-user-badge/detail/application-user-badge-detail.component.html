@@ -2,7 +2,7 @@
   <div class="col-8">
     <div *ngIf="applicationUserBadge">
       <h2 data-cy="applicationUserBadgeDetailsHeading">
-        <span jhiTranslate="krftmeApp.applicationUserBadge.detail.title">Application User Badge</span>
+        <span krftmeTranslate="krftmeApp.applicationUserBadge.detail.title">Application User Badge</span>
       </h2>
 
       <hr />
@@ -12,15 +12,15 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ applicationUserBadge.id }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.applicationUserBadge.obtentionDate">Obtention Date</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.applicationUserBadge.obtentionDate">Obtention Date</span></dt>
         <dd>
           <span>{{ applicationUserBadge.obtentionDate | formatMediumDatetime }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.applicationUserBadge.applicationUser">Application User</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.applicationUserBadge.applicationUser">Application User</span></dt>
         <dd>
           <div *ngIf="applicationUserBadge.applicationUser">
             <a [routerLink]="['/application-user', applicationUserBadge.applicationUser.id, 'view']">{{
@@ -28,7 +28,7 @@
             }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.applicationUserBadge.badge">Badge</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.applicationUserBadge.badge">Badge</span></dt>
         <dd>
           <div *ngIf="applicationUserBadge.badge">
             <a [routerLink]="['/badge', applicationUserBadge.badge.id, 'view']">{{ applicationUserBadge.badge.id }}</a>
@@ -37,11 +37,11 @@
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
       <button type="button" [routerLink]="['/application-user-badge', applicationUserBadge.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>

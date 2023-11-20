@@ -1,9 +1,9 @@
 <div>
   <h2>
-    <span id="health-page-heading" jhiTranslate="health.title" data-cy="healthPageHeading">Diagnostics</span>
+    <span id="health-page-heading" krftmeTranslate="health.title" data-cy="healthPageHeading">Diagnostics</span>
 
     <button class="btn btn-primary float-end" (click)="refresh()">
-      <fa-icon icon="sync"></fa-icon> <span jhiTranslate="health.refresh.button">Rafraîchir</span>
+      <fa-icon icon="sync"></fa-icon> <span krftmeTranslate="health.refresh.button">Rafraîchir</span>
     </button>
   </h2>
 
@@ -11,9 +11,9 @@
     <table id="healthCheck" class="table table-striped" aria-describedby="health-page-heading">
       <thead>
         <tr>
-          <th scope="col" jhiTranslate="health.table.service">Nom du service</th>
-          <th scope="col" class="text-center" jhiTranslate="health.table.status">État</th>
-          <th scope="col" class="text-center" jhiTranslate="health.details.details">Détails</th>
+          <th scope="col" krftmeTranslate="health.table.service">Nom du service</th>
+          <th scope="col" class="text-center" krftmeTranslate="health.table.status">État</th>
+          <th scope="col" class="text-center" krftmeTranslate="health.details.details">Détails</th>
         </tr>
       </thead>
       <tbody *ngIf="health">
@@ -25,7 +25,7 @@
             <span
               class="badge"
               [ngClass]="getBadgeClass(componentHealth.value!.status)"
-              jhiTranslate="{{ 'health.status.' + componentHealth.value!.status }}"
+              krftmeTranslate="{{ 'health.status.' + componentHealth.value!.status }}"
             >
               {{
                 { UNKNOWN: 'INCONNU', UP: 'DISPONIBLE', OUT_OF_SERVICE: 'OUT_OF_SERVICE', DOWN: 'HORS SERVICE' }[
