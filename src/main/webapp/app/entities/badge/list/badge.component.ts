@@ -11,7 +11,7 @@ import { DataUtils } from 'app/core/util/data-util.service';
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-badge',
+  selector: 'krftme-badge',
   templateUrl: './badge.component.html',
 })
 export class BadgeComponent implements OnInit {

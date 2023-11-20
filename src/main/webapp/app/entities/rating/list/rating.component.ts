@@ -10,7 +10,7 @@ import { RatingDeleteDialogComponent } from '../delete/rating-delete-dialog.comp
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-rating',
+  selector: 'krftme-rating',
   templateUrl: './rating.component.html',
 })
 export class RatingComponent implements OnInit {

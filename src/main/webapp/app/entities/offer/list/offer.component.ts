@@ -10,7 +10,7 @@ import { OfferDeleteDialogComponent } from '../delete/offer-delete-dialog.compon
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-offer',
+  selector: 'krftme-offer',
   templateUrl: './offer.component.html',
 })
 export class OfferComponent implements OnInit {

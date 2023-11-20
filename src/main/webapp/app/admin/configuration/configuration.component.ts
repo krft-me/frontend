@@ -4,7 +4,7 @@ import { ConfigurationService } from './configuration.service';
 import { Bean, PropertySource } from './configuration.model';
 
 @Component({
-  selector: 'jhi-configuration',
+  selector: 'krftme-configuration',
   templateUrl: './configuration.component.html',
 })
 export class ConfigurationComponent implements OnInit {

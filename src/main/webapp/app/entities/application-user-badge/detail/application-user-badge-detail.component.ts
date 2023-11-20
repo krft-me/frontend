@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IApplicationUserBadge } from '../application-user-badge.model';
 
 @Component({
-  selector: 'jhi-application-user-badge-detail',
+  selector: 'krftme-application-user-badge-detail',
   templateUrl: './application-user-badge-detail.component.html',
 })
 export class ApplicationUserBadgeDetailComponent implements OnInit {

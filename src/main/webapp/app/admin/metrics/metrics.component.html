@@ -10,42 +10,42 @@
   <h3 jhiTranslate="metrics.jvm.title">Métriques de la JVM</h3>
 
   <div class="row" *ngIf="metrics && !updatingMetrics">
-    <jhi-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></jhi-jvm-memory>
+    <krftme-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></krftme-jvm-memory>
 
-    <jhi-jvm-threads class="col-md-4" [threads]="threads"></jhi-jvm-threads>
+    <krftme-jvm-threads class="col-md-4" [threads]="threads"></krftme-jvm-threads>
 
-    <jhi-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></jhi-metrics-system>
+    <krftme-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></krftme-metrics-system>
   </div>
 
-  <jhi-metrics-garbagecollector
+  <krftme-metrics-garbagecollector
     *ngIf="metrics && metricsKeyExists('garbageCollector')"
     [updating]="updatingMetrics"
     [garbageCollectorMetrics]="metrics.garbageCollector"
-  ></jhi-metrics-garbagecollector>
+  ></krftme-metrics-garbagecollector>
 
   <div class="well well-lg" *ngIf="updatingMetrics" jhiTranslate="metrics.updating">Mise à jour...</div>
 
-  <jhi-metrics-request
+  <krftme-metrics-request
     *ngIf="metrics && metricsKeyExists('http.server.requests')"
     [updating]="updatingMetrics"
     [requestMetrics]="metrics['http.server.requests']"
-  ></jhi-metrics-request>
+  ></krftme-metrics-request>
 
-  <jhi-metrics-endpoints-requests
+  <krftme-metrics-endpoints-requests
     *ngIf="metrics && metricsKeyExists('services')"
     [updating]="updatingMetrics"
     [endpointsRequestsMetrics]="metrics.services"
-  ></jhi-metrics-endpoints-requests>
+  ></krftme-metrics-endpoints-requests>
 
-  <jhi-metrics-cache
+  <krftme-metrics-cache
     *ngIf="metrics && metricsKeyExists('cache')"
     [updating]="updatingMetrics"
     [cacheMetrics]="metrics.cache"
-  ></jhi-metrics-cache>
+  ></krftme-metrics-cache>
 
-  <jhi-metrics-datasource
+  <krftme-metrics-datasource
     *ngIf="metrics && metricsKeyExistsAndObjectNotEmpty('databases')"
     [updating]="updatingMetrics"
     [datasourceMetrics]="metrics.databases"
-  ></jhi-metrics-datasource>
+  ></krftme-metrics-datasource>
 </div>

@@ -14,7 +14,7 @@ import { ApplicationUserService } from 'app/entities/application-user/service/ap
 import { State } from 'app/entities/enumerations/state.model';
 
 @Component({
-  selector: 'jhi-order-update',
+  selector: 'krftme-order-update',
   templateUrl: './order-update.component.html',
 })
 export class OrderUpdateComponent implements OnInit {

@@ -10,7 +10,7 @@ import { MachineDeleteDialogComponent } from '../delete/machine-delete-dialog.co
 import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
-  selector: 'jhi-machine',
+  selector: 'krftme-machine',
   templateUrl: './machine.component.html',
 })
 export class MachineComponent implements OnInit {

@@ -9,7 +9,7 @@ import { ICountry } from '../country.model';
 import { CountryService } from '../service/country.service';
 
 @Component({
-  selector: 'jhi-country-update',
+  selector: 'krftme-country-update',
   templateUrl: './country-update.component.html',
 })
 export class CountryUpdateComponent implements OnInit {

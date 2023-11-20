@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IOffer } from '../offer.model';
 
 @Component({
-  selector: 'jhi-offer-detail',
+  selector: 'krftme-offer-detail',
   templateUrl: './offer-detail.component.html',
 })
 export class OfferDetailComponent implements OnInit {

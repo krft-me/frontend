@@ -11,7 +11,7 @@ import { IMachine } from 'app/entities/machine/machine.model';
 import { MachineService } from 'app/entities/machine/service/machine.service';
 
 @Component({
-  selector: 'jhi-category-update',
+  selector: 'krftme-category-update',
   templateUrl: './category-update.component.html',
 })
 export class CategoryUpdateComponent implements OnInit {

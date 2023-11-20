@@ -5,7 +5,7 @@ import { IBadge } from '../badge.model';
 import { DataUtils } from 'app/core/util/data-util.service';
 
 @Component({
-  selector: 'jhi-badge-detail',
+  selector: 'krftme-badge-detail',
   templateUrl: './badge-detail.component.html',
 })
 export class BadgeDetailComponent implements OnInit {

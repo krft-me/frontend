@@ -4,7 +4,7 @@ import { CacheMetrics } from 'app/admin/metrics/metrics.model';
 import { filterNaN } from 'app/core/util/operators';
 
 @Component({
-  selector: 'jhi-metrics-cache',
+  selector: 'krftme-metrics-cache',
   templateUrl: './metrics-cache.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

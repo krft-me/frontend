@@ -11,7 +11,7 @@ import { IApplicationUserOffer } from 'app/entities/application-user-offer/appli
 import { ApplicationUserOfferService } from 'app/entities/application-user-offer/service/application-user-offer.service';
 
 @Component({
-  selector: 'jhi-showcase-update',
+  selector: 'krftme-showcase-update',
   templateUrl: './showcase-update.component.html',
 })
 export class ShowcaseUpdateComponent implements OnInit {

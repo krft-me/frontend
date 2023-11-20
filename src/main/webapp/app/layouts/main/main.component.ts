@@ -7,7 +7,7 @@ import dayjs from 'dayjs/esm';
 import { AccountService } from 'app/core/auth/account.service';
 
 @Component({
-  selector: 'jhi-main',
+  selector: 'krftme-main',
   templateUrl: './main.component.html',
 })
 export class MainComponent implements OnInit {

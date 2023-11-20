@@ -13,7 +13,7 @@ import { IApplicationUser } from 'app/entities/application-user/application-user
 import { ApplicationUserService } from 'app/entities/application-user/service/application-user.service';
 
 @Component({
-  selector: 'jhi-application-user-offer-update',
+  selector: 'krftme-application-user-offer-update',
   templateUrl: './application-user-offer-update.component.html',
 })
 export class ApplicationUserOfferUpdateComponent implements OnInit {

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ICity } from '../city.model';
 
 @Component({
-  selector: 'jhi-city-detail',
+  selector: 'krftme-city-detail',
   templateUrl: './city-detail.component.html',
 })
 export class CityDetailComponent implements OnInit {
