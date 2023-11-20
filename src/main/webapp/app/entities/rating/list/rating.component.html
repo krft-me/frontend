@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="RatingHeading">
-    <span jhiTranslate="krftmeApp.rating.home.title">Ratings</span>
+    <span krftmeTranslate="krftmeApp.rating.home.title">Ratings</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="krftmeApp.rating.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.rating.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/rating/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.rating.home.createLabel"> Créer un nouveau Rating </span>
+        <span krftmeTranslate="krftmeApp.rating.home.createLabel"> Créer un nouveau Rating </span>
       </button>
     </div>
   </h2>
@@ -25,34 +25,34 @@
   <krftme-alert></krftme-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="ratings?.length === 0">
-    <span jhiTranslate="krftmeApp.rating.home.notFound">Aucun Rating trouvé</span>
+    <span krftmeTranslate="krftmeApp.rating.home.notFound">Aucun Rating trouvé</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="ratings && ratings.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+        <tr krftmeSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" krftmeSortBy="id">
             <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
+              <span krftmeTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="rate">
+          <th scope="col" krftmeSortBy="rate">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.rating.rate">Rate</span>
+              <span krftmeTranslate="krftmeApp.rating.rate">Rate</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="comment">
+          <th scope="col" krftmeSortBy="comment">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.rating.comment">Comment</span>
+              <span krftmeTranslate="krftmeApp.rating.comment">Comment</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="applicationUserOffer.id">
+          <th scope="col" krftmeSortBy="applicationUserOffer.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.rating.applicationUserOffer">Application User Offer</span>
+              <span krftmeTranslate="krftmeApp.rating.applicationUserOffer">Application User Offer</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -75,17 +75,17 @@
             <div class="btn-group">
               <button type="submit" [routerLink]="['/rating', rating.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
               </button>
 
               <button type="submit" [routerLink]="['/rating', rating.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
               </button>
 
               <button type="submit" (click)="delete(rating)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
               </button>
             </div>
           </td>

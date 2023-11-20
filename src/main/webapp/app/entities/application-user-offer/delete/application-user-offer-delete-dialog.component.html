@@ -1,6 +1,6 @@
 <form *ngIf="applicationUserOffer" name="deleteForm" (ngSubmit)="confirmDelete(applicationUserOffer.id!)">
   <div class="modal-header">
-    <h4 class="modal-title" data-cy="applicationUserOfferDeleteDialogHeading" jhiTranslate="entity.delete.title">
+    <h4 class="modal-title" data-cy="applicationUserOfferDeleteDialogHeading" krftmeTranslate="entity.delete.title">
       Confirmation de suppression
     </h4>
 
@@ -11,7 +11,7 @@
     <krftme-alert-error></krftme-alert-error>
     <p
       id="krftme-delete-applicationUserOffer-heading"
-      jhiTranslate="krftmeApp.applicationUserOffer.delete.question"
+      krftmeTranslate="krftmeApp.applicationUserOffer.delete.question"
       [translateValues]="{ id: applicationUserOffer.id }"
     >
       Êtes-vous certain de vouloir supprimer le Application User Offer {{ applicationUserOffer.id }} ?
@@ -20,11 +20,11 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
-      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
     </button>
 
     <button id="krftme-confirm-delete-applicationUserOffer" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
-      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+      <fa-icon icon="times"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.delete">Supprimer</span>
     </button>
   </div>
 </form>

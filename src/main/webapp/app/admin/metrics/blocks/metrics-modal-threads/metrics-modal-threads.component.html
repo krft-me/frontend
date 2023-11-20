@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" jhiTranslate="metrics.jvm.threads.dump.title">Threads dump</h4>
+  <h4 class="modal-title" krftmeTranslate="metrics.jvm.threads.dump.title">Threads dump</h4>
 
   <button type="button" class="btn-close" (click)="dismiss()">&times;</button>
 </div>
@@ -39,8 +39,8 @@
       &nbsp;{{ thread.threadName }} (ID {{ thread.threadId }})
 
       <a (click)="thread.showThreadDump = !thread.showThreadDump" href="javascript:void(0);">
-        <span [hidden]="thread.showThreadDump" jhiTranslate="metrics.jvm.threads.dump.show">Afficher</span>
-        <span [hidden]="!thread.showThreadDump" jhiTranslate="metrics.jvm.threads.dump.hide">Cacher</span>
+        <span [hidden]="thread.showThreadDump" krftmeTranslate="metrics.jvm.threads.dump.show">Afficher</span>
+        <span [hidden]="!thread.showThreadDump" krftmeTranslate="metrics.jvm.threads.dump.hide">Cacher</span>
       </a>
     </h6>
 
@@ -64,11 +64,11 @@
       </caption>
       <thead>
         <tr>
-          <th scope="col" jhiTranslate="metrics.jvm.threads.dump.blockedtime">Temps bloqué</th>
-          <th scope="col" jhiTranslate="metrics.jvm.threads.dump.blockedcount">Nb fois bloqué</th>
-          <th scope="col" jhiTranslate="metrics.jvm.threads.dump.waitedtime">Temps d'attente</th>
-          <th scope="col" jhiTranslate="metrics.jvm.threads.dump.waitedcount">Nb fois en attente</th>
-          <th scope="col" jhiTranslate="metrics.jvm.threads.dump.lockname">Nom du process bloquant</th>
+          <th scope="col" krftmeTranslate="metrics.jvm.threads.dump.blockedtime">Temps bloqué</th>
+          <th scope="col" krftmeTranslate="metrics.jvm.threads.dump.blockedcount">Nb fois bloqué</th>
+          <th scope="col" krftmeTranslate="metrics.jvm.threads.dump.waitedtime">Temps d'attente</th>
+          <th scope="col" krftmeTranslate="metrics.jvm.threads.dump.waitedcount">Nb fois en attente</th>
+          <th scope="col" krftmeTranslate="metrics.jvm.threads.dump.lockname">Nom du process bloquant</th>
         </tr>
       </thead>
       <tbody>

@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="ApplicationUserHeading">
-    <span jhiTranslate="krftmeApp.applicationUser.home.title">ApplicationUsers</span>
+    <span krftmeTranslate="krftmeApp.applicationUser.home.title">ApplicationUsers</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="krftmeApp.applicationUser.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.applicationUser.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/application-user/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.applicationUser.home.createLabel"> Créer un nouveau Application User </span>
+        <span krftmeTranslate="krftmeApp.applicationUser.home.createLabel"> Créer un nouveau Application User </span>
       </button>
     </div>
   </h2>
@@ -25,64 +25,64 @@
   <krftme-alert></krftme-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="applicationUsers?.length === 0">
-    <span jhiTranslate="krftmeApp.applicationUser.home.notFound">Aucun Application User trouvé</span>
+    <span krftmeTranslate="krftmeApp.applicationUser.home.notFound">Aucun Application User trouvé</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="applicationUsers && applicationUsers.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+        <tr krftmeSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" krftmeSortBy="id">
             <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
+              <span krftmeTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="firstName">
+          <th scope="col" krftmeSortBy="firstName">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.firstName">First Name</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.firstName">First Name</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="lastName">
+          <th scope="col" krftmeSortBy="lastName">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.lastName">Last Name</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.lastName">Last Name</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pseudo">
+          <th scope="col" krftmeSortBy="pseudo">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.pseudo">Pseudo</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.pseudo">Pseudo</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="averageRating">
+          <th scope="col" krftmeSortBy="averageRating">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.averageRating">Average Rating</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.averageRating">Average Rating</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="internalUser.id">
+          <th scope="col" krftmeSortBy="internalUser.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.internalUser">Internal User</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.internalUser">Internal User</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="city.id">
+          <th scope="col" krftmeSortBy="city.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.city">City</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.city">City</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="favoriteApplicationUser.id">
+          <th scope="col" krftmeSortBy="favoriteApplicationUser.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.favoriteApplicationUser">Favorite Application User</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.favoriteApplicationUser">Favorite Application User</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="favoriteOffer.id">
+          <th scope="col" krftmeSortBy="favoriteOffer.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.applicationUser.favoriteOffer">Favorite Offer</span>
+              <span krftmeTranslate="krftmeApp.applicationUser.favoriteOffer">Favorite Offer</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -129,7 +129,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
               </button>
 
               <button
@@ -139,12 +139,12 @@
                 data-cy="entityEditButton"
               >
                 <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
               </button>
 
               <button type="submit" (click)="delete(applicationUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
               </button>
             </div>
           </td>

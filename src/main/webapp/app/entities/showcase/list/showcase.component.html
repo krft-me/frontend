@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="ShowcaseHeading">
-    <span jhiTranslate="krftmeApp.showcase.home.title">Showcases</span>
+    <span krftmeTranslate="krftmeApp.showcase.home.title">Showcases</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="krftmeApp.showcase.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.showcase.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/showcase/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.showcase.home.createLabel"> Créer un nouveau Showcase </span>
+        <span krftmeTranslate="krftmeApp.showcase.home.createLabel"> Créer un nouveau Showcase </span>
       </button>
     </div>
   </h2>
@@ -25,28 +25,28 @@
   <krftme-alert></krftme-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="showcases?.length === 0">
-    <span jhiTranslate="krftmeApp.showcase.home.notFound">Aucun Showcase trouvé</span>
+    <span krftmeTranslate="krftmeApp.showcase.home.notFound">Aucun Showcase trouvé</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="showcases && showcases.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+        <tr krftmeSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" krftmeSortBy="id">
             <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
+              <span krftmeTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="imageId">
+          <th scope="col" krftmeSortBy="imageId">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.showcase.imageId">Image Id</span>
+              <span krftmeTranslate="krftmeApp.showcase.imageId">Image Id</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="applicationUserOffer.id">
+          <th scope="col" krftmeSortBy="applicationUserOffer.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.showcase.applicationUserOffer">Application User Offer</span>
+              <span krftmeTranslate="krftmeApp.showcase.applicationUserOffer">Application User Offer</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -75,7 +75,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
               </button>
 
               <button
@@ -85,12 +85,12 @@
                 data-cy="entityEditButton"
               >
                 <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
               </button>
 
               <button type="submit" (click)="delete(showcase)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
               </button>
             </div>
           </td>

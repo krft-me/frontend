@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <div *ngIf="badge">
-      <h2 data-cy="badgeDetailsHeading"><span jhiTranslate="krftmeApp.badge.detail.title">Badge</span></h2>
+      <h2 data-cy="badgeDetailsHeading"><span krftmeTranslate="krftmeApp.badge.detail.title">Badge</span></h2>
 
       <hr />
 
@@ -10,15 +10,15 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ badge.id }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.badge.label">Label</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.badge.label">Label</span></dt>
         <dd>
           <span>{{ badge.label }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.badge.picture">Picture</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.badge.picture">Picture</span></dt>
         <dd>
           <div *ngIf="badge.picture">
             <a (click)="openFile(badge.picture, badge.pictureContentType)">
@@ -30,11 +30,11 @@
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
       <button type="button" [routerLink]="['/badge', badge.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>
