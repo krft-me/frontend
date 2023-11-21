@@ -11,8 +11,8 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import me.krft.frontend.domain.Machine;
+import me.krft.frontend.repository.rowmapper.CategoryRowMapper;
 import me.krft.frontend.repository.rowmapper.MachineRowMapper;
-import me.krft.frontend.repository.rowmapper.OfferRowMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.r2dbc.convert.R2dbcConverter;
@@ -44,16 +44,16 @@ class MachineRepositoryInternalImpl extends SimpleR2dbcRepository<Machine, Long>
     private final R2dbcEntityTemplate r2dbcEntityTemplate;
     private final EntityManager entityManager;
 
-    private final OfferRowMapper offerMapper;
+    private final CategoryRowMapper categoryMapper;
     private final MachineRowMapper machineMapper;
 
     private static final Table entityTable = Table.aliased("machine", EntityManager.ENTITY_ALIAS);
-    private static final Table offerTable = Table.aliased("offer", "offer");
+    private static final Table categoryTable = Table.aliased("category", "category");
 
     public MachineRepositoryInternalImpl(
         R2dbcEntityTemplate template,
         EntityManager entityManager,
-        OfferRowMapper offerMapper,
+        CategoryRowMapper categoryMapper,
         MachineRowMapper machineMapper,
         R2dbcEntityOperations entityOperations,
         R2dbcConverter converter
@@ -66,7 +66,7 @@ class MachineRepositoryInternalImpl extends SimpleR2dbcRepository<Machine, Long>
         this.db = template.getDatabaseClient();
         this.r2dbcEntityTemplate = template;
         this.entityManager = entityManager;
-        this.offerMapper = offerMapper;
+        this.categoryMapper = categoryMapper;
         this.machineMapper = machineMapper;
     }
 
@@ -77,14 +77,14 @@ class MachineRepositoryInternalImpl extends SimpleR2dbcRepository<Machine, Long>
 
     RowsFetchSpec<Machine> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = MachineSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(OfferSqlHelper.getColumns(offerTable, "offer"));
+        columns.addAll(CategorySqlHelper.getColumns(categoryTable, "category"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(offerTable)
-            .on(Column.create("offer_id", entityTable))
-            .equals(Column.create("id", offerTable));
+            .leftOuterJoin(categoryTable)
+            .on(Column.create("category_id", entityTable))
+            .equals(Column.create("id", categoryTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Machine.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -103,7 +103,7 @@ class MachineRepositoryInternalImpl extends SimpleR2dbcRepository<Machine, Long>
 
     private Machine process(Row row, RowMetadata metadata) {
         Machine entity = machineMapper.apply(row, "e");
-        entity.setOffer(offerMapper.apply(row, "offer"));
+        entity.setCategory(categoryMapper.apply(row, "category"));
         return entity;
     }
 

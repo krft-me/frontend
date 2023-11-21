@@ -44,9 +44,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="offer.id">
+          <th scope="col" jhiSortBy="category.id">
             <div class="d-flex">
-              <span jhiTranslate="krftmeApp.machine.offer">Offer</span>
+              <span jhiTranslate="krftmeApp.machine.category">Category</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -60,8 +60,8 @@
           </td>
           <td>{{ machine.name }}</td>
           <td>
-            <div *ngIf="machine.offer">
-              <a [routerLink]="['/offer', machine.offer.id, 'view']">{{ machine.offer.id }}</a>
+            <div *ngIf="machine.category">
+              <a [routerLink]="['/category', machine.category.id, 'view']">{{ machine.category.id }}</a>
             </div>
           </td>
           <td class="text-end">

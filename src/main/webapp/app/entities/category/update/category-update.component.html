@@ -22,21 +22,6 @@
             </small>
           </div>
         </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="krftmeApp.category.machine" for="field_machine">Machine</label>
-          <select
-            class="form-control"
-            id="field_machine"
-            data-cy="machine"
-            name="machine"
-            formControlName="machine"
-            [compareWith]="compareMachine"
-          >
-            <option [ngValue]="null"></option>
-            <option [ngValue]="machineOption" *ngFor="let machineOption of machinesSharedCollection">{{ machineOption.id }}</option>
-          </select>
-        </div>
       </div>
 
       <div>

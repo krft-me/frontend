@@ -1,9 +1,9 @@
-import { IOffer } from 'app/entities/offer/offer.model';
+import { ICategory } from 'app/entities/category/category.model';
 
 export interface IMachine {
   id: number;
   name?: string | null;
-  offer?: Pick<IOffer, 'id'> | null;
+  category?: Pick<ICategory, 'id'> | null;
 }
 
 export type NewMachine = Omit<IMachine, 'id'> & { id: null };

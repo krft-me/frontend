@@ -44,12 +44,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="machine.id">
-            <div class="d-flex">
-              <span jhiTranslate="krftmeApp.category.machine">Machine</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -59,11 +53,6 @@
             <a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a>
           </td>
           <td>{{ category.label }}</td>
-          <td>
-            <div *ngIf="category.machine">
-              <a [routerLink]="['/machine', category.machine.id, 'view']">{{ category.machine.id }}</a>
-            </div>
-          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

@@ -13,6 +13,7 @@ public class OfferSqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("name", table, columnPrefix + "_name"));
 
+        columns.add(Column.aliased("machine_id", table, columnPrefix + "_machine_id"));
         return columns;
     }
 }

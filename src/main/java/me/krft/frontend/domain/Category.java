@@ -1,6 +1,5 @@
 package me.krft.frontend.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
@@ -24,13 +23,6 @@ public class Category implements Serializable {
     @NotNull(message = "must not be null")
     @Column("label")
     private String label;
-
-    @Transient
-    @JsonIgnoreProperties(value = { "categories", "offer" }, allowSetters = true)
-    private Machine machine;
-
-    @Column("machine_id")
-    private Long machineId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -58,28 +50,6 @@ public class Category implements Serializable {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public Machine getMachine() {
-        return this.machine;
-    }
-
-    public void setMachine(Machine machine) {
-        this.machine = machine;
-        this.machineId = machine != null ? machine.getId() : null;
-    }
-
-    public Category machine(Machine machine) {
-        this.setMachine(machine);
-        return this;
-    }
-
-    public Long getMachineId() {
-        return this.machineId;
-    }
-
-    public void setMachineId(Long machine) {
-        this.machineId = machine;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

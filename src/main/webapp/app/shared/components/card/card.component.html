@@ -1,0 +1,29 @@
+<div class="card-component">
+  <div class="picture">
+    <img src="{{ this.offerCardApi.offerPicture }}" alt="">
+    <span class="text-light text-md bold bg-accent">{{ this.offerCardApi.city | uppercase }}</span>
+  </div>
+  <div class="offer">
+    <div class="machine">
+      <span class="text-md text-accent">{{ this.offerCardApi.machine }}</span>
+      <span class="text-lg text-dark bold">{{ this.offerCardApi.offer }}</span>
+    </div>
+    <div class="profile">
+      <img src="{{ this.offerCardApi.profilePicture }}" alt="{{ this.offerCardApi.profileName }} profile picture">
+      <span class="text-md text-dark italic">{{ this.offerCardApi.profileName }}</span>
+    </div>
+    <div class="description">
+      <span class="text-sm text-dark">{{ this.offerCardApi.description }}</span>
+    </div>
+    <div class="tags">
+      <jhi-tag *ngFor="let tag of this.offerCardApi.tags" [tag]="tag" [bgColor]="'bg-accent'" [textColor]="'text-light'"></jhi-tag>
+    </div>
+    <div class="rating">
+      <img src="content/images/icons/star.svg" alt="Star icon">
+      <span class="text-md bold">{{ this.offerCardApi.rate }} ({{ this.offerCardApi.numberRates }})</span>
+    </div>
+    <div class="price">
+      <span class="text-dark text-sm">A partir de <span class="text-accent bold">{{ this.offerCardApi.minimalPrice }}€</span></span>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ type OfferFormDefaults = Pick<NewOffer, 'id' | 'followers'>;
 type OfferFormGroupContent = {
   id: FormControl<IOffer['id'] | NewOffer['id']>;
   name: FormControl<IOffer['name']>;
+  machine: FormControl<IOffer['machine']>;
   followers: FormControl<IOffer['followers']>;
 };
 
@@ -42,6 +43,7 @@ export class OfferFormService {
       name: new FormControl(offerRawValue.name, {
         validators: [Validators.required],
       }),
+      machine: new FormControl(offerRawValue.machine),
       followers: new FormControl(offerRawValue.followers ?? []),
     });
   }

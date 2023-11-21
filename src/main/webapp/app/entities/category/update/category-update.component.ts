@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { CategoryFormService, CategoryFormGroup } from './category-form.service';
 import { ICategory } from '../category.model';
 import { CategoryService } from '../service/category.service';
-import { IMachine } from 'app/entities/machine/machine.model';
-import { MachineService } from 'app/entities/machine/service/machine.service';
 
 @Component({
   selector: 'jhi-category-update',
@@ -18,18 +16,13 @@ export class CategoryUpdateComponent implements OnInit {
   isSaving = false;
   category: ICategory | null = null;
 
-  machinesSharedCollection: IMachine[] = [];
-
   editForm: CategoryFormGroup = this.categoryFormService.createCategoryFormGroup();
 
   constructor(
     protected categoryService: CategoryService,
     protected categoryFormService: CategoryFormService,
-    protected machineService: MachineService,
     protected activatedRoute: ActivatedRoute
   ) {}
-
-  compareMachine = (o1: IMachine | null, o2: IMachine | null): boolean => this.machineService.compareMachine(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ category }) => {
@@ -37,8 +30,6 @@ export class CategoryUpdateComponent implements OnInit {
       if (category) {
         this.updateForm(category);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -78,18 +69,5 @@ export class CategoryUpdateComponent implements OnInit {
   protected updateForm(category: ICategory): void {
     this.category = category;
     this.categoryFormService.resetForm(this.editForm, category);
-
-    this.machinesSharedCollection = this.machineService.addMachineToCollectionIfMissing<IMachine>(
-      this.machinesSharedCollection,
-      category.machine
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.machineService
-      .query()
-      .pipe(map((res: HttpResponse<IMachine[]>) => res.body ?? []))
-      .pipe(map((machines: IMachine[]) => this.machineService.addMachineToCollectionIfMissing<IMachine>(machines, this.category?.machine)))
-      .subscribe((machines: IMachine[]) => (this.machinesSharedCollection = machines));
   }
 }

@@ -19,7 +19,7 @@ type MachineFormDefaults = Pick<NewMachine, 'id'>;
 type MachineFormGroupContent = {
   id: FormControl<IMachine['id'] | NewMachine['id']>;
   name: FormControl<IMachine['name']>;
-  offer: FormControl<IMachine['offer']>;
+  category: FormControl<IMachine['category']>;
 };
 
 export type MachineFormGroup = FormGroup<MachineFormGroupContent>;
@@ -42,7 +42,7 @@ export class MachineFormService {
       name: new FormControl(machineRawValue.name, {
         validators: [Validators.required],
       }),
-      offer: new FormControl(machineRawValue.offer),
+      category: new FormControl(machineRawValue.category),
     });
   }
 

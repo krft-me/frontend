@@ -7,8 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import { MachineFormService, MachineFormGroup } from './machine-form.service';
 import { IMachine } from '../machine.model';
 import { MachineService } from '../service/machine.service';
-import { IOffer } from 'app/entities/offer/offer.model';
-import { OfferService } from 'app/entities/offer/service/offer.service';
+import { ICategory } from 'app/entities/category/category.model';
+import { CategoryService } from 'app/entities/category/service/category.service';
 
 @Component({
   selector: 'jhi-machine-update',
@@ -18,18 +18,18 @@ export class MachineUpdateComponent implements OnInit {
   isSaving = false;
   machine: IMachine | null = null;
 
-  offersSharedCollection: IOffer[] = [];
+  categoriesSharedCollection: ICategory[] = [];
 
   editForm: MachineFormGroup = this.machineFormService.createMachineFormGroup();
 
   constructor(
     protected machineService: MachineService,
     protected machineFormService: MachineFormService,
-    protected offerService: OfferService,
+    protected categoryService: CategoryService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
-  compareOffer = (o1: IOffer | null, o2: IOffer | null): boolean => this.offerService.compareOffer(o1, o2);
+  compareCategory = (o1: ICategory | null, o2: ICategory | null): boolean => this.categoryService.compareCategory(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ machine }) => {
@@ -79,14 +79,21 @@ export class MachineUpdateComponent implements OnInit {
     this.machine = machine;
     this.machineFormService.resetForm(this.editForm, machine);
 
-    this.offersSharedCollection = this.offerService.addOfferToCollectionIfMissing<IOffer>(this.offersSharedCollection, machine.offer);
+    this.categoriesSharedCollection = this.categoryService.addCategoryToCollectionIfMissing<ICategory>(
+      this.categoriesSharedCollection,
+      machine.category
+    );
   }
 
   protected loadRelationshipsOptions(): void {
-    this.offerService
+    this.categoryService
       .query()
-      .pipe(map((res: HttpResponse<IOffer[]>) => res.body ?? []))
-      .pipe(map((offers: IOffer[]) => this.offerService.addOfferToCollectionIfMissing<IOffer>(offers, this.machine?.offer)))
-      .subscribe((offers: IOffer[]) => (this.offersSharedCollection = offers));
+      .pipe(map((res: HttpResponse<ICategory[]>) => res.body ?? []))
+      .pipe(
+        map((categories: ICategory[]) =>
+          this.categoryService.addCategoryToCollectionIfMissing<ICategory>(categories, this.machine?.category)
+        )
+      )
+      .subscribe((categories: ICategory[]) => (this.categoriesSharedCollection = categories));
   }
 }

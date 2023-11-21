@@ -26,7 +26,6 @@ public class CategoryRowMapper implements BiFunction<Row, String, Category> {
         Category entity = new Category();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setLabel(converter.fromRow(row, prefix + "_label", String.class));
-        entity.setMachineId(converter.fromRow(row, prefix + "_machine_id", Long.class));
         return entity;
     }
 }

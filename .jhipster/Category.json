@@ -17,13 +17,6 @@
   "name": "Category",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityName": "machine",
-      "otherEntityRelationshipName": "category",
-      "relationshipName": "machine",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "service": "no"
 }

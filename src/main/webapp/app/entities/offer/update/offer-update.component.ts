@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { OfferFormService, OfferFormGroup } from './offer-form.service';
 import { IOffer } from '../offer.model';
 import { OfferService } from '../service/offer.service';
+import { IMachine } from 'app/entities/machine/machine.model';
+import { MachineService } from 'app/entities/machine/service/machine.service';
 
 @Component({
   selector: 'jhi-offer-update',
@@ -16,13 +18,18 @@ export class OfferUpdateComponent implements OnInit {
   isSaving = false;
   offer: IOffer | null = null;
 
+  machinesSharedCollection: IMachine[] = [];
+
   editForm: OfferFormGroup = this.offerFormService.createOfferFormGroup();
 
   constructor(
     protected offerService: OfferService,
     protected offerFormService: OfferFormService,
+    protected machineService: MachineService,
     protected activatedRoute: ActivatedRoute
   ) {}
+
+  compareMachine = (o1: IMachine | null, o2: IMachine | null): boolean => this.machineService.compareMachine(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ offer }) => {
@@ -30,6 +37,8 @@ export class OfferUpdateComponent implements OnInit {
       if (offer) {
         this.updateForm(offer);
       }
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -69,5 +78,18 @@ export class OfferUpdateComponent implements OnInit {
   protected updateForm(offer: IOffer): void {
     this.offer = offer;
     this.offerFormService.resetForm(this.editForm, offer);
+
+    this.machinesSharedCollection = this.machineService.addMachineToCollectionIfMissing<IMachine>(
+      this.machinesSharedCollection,
+      offer.machine
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.machineService
+      .query()
+      .pipe(map((res: HttpResponse<IMachine[]>) => res.body ?? []))
+      .pipe(map((machines: IMachine[]) => this.machineService.addMachineToCollectionIfMissing<IMachine>(machines, this.offer?.machine)))
+      .subscribe((machines: IMachine[]) => (this.machinesSharedCollection = machines));
   }
 }

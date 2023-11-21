@@ -18,6 +18,12 @@
         <dd>
           <span>{{ offer.name }}</span>
         </dd>
+        <dt><span jhiTranslate="krftmeApp.offer.machine">Machine</span></dt>
+        <dd>
+          <div *ngIf="offer.machine">
+            <a [routerLink]="['/machine', offer.machine.id, 'view']">{{ offer.machine.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

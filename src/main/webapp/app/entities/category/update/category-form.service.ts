@@ -19,7 +19,6 @@ type CategoryFormDefaults = Pick<NewCategory, 'id'>;
 type CategoryFormGroupContent = {
   id: FormControl<ICategory['id'] | NewCategory['id']>;
   label: FormControl<ICategory['label']>;
-  machine: FormControl<ICategory['machine']>;
 };
 
 export type CategoryFormGroup = FormGroup<CategoryFormGroupContent>;
@@ -42,7 +41,6 @@ export class CategoryFormService {
       label: new FormControl(categoryRawValue.label, {
         validators: [Validators.required],
       }),
-      machine: new FormControl(categoryRawValue.machine),
     });
   }
 

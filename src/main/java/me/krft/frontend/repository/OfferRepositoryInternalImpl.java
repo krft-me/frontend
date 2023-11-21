@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import me.krft.frontend.domain.Offer;
+import me.krft.frontend.repository.rowmapper.MachineRowMapper;
 import me.krft.frontend.repository.rowmapper.OfferRowMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +26,7 @@ import org.springframework.data.relational.core.sql.Condition;
 import org.springframework.data.relational.core.sql.Conditions;
 import org.springframework.data.relational.core.sql.Expression;
 import org.springframework.data.relational.core.sql.Select;
-import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoinCondition;
 import org.springframework.data.relational.core.sql.Table;
 import org.springframework.data.relational.repository.support.MappingRelationalEntityInformation;
 import org.springframework.r2dbc.core.DatabaseClient;
@@ -43,13 +44,16 @@ class OfferRepositoryInternalImpl extends SimpleR2dbcRepository<Offer, Long> imp
     private final R2dbcEntityTemplate r2dbcEntityTemplate;
     private final EntityManager entityManager;
 
+    private final MachineRowMapper machineMapper;
     private final OfferRowMapper offerMapper;
 
     private static final Table entityTable = Table.aliased("offer", EntityManager.ENTITY_ALIAS);
+    private static final Table machineTable = Table.aliased("machine", "machine");
 
     public OfferRepositoryInternalImpl(
         R2dbcEntityTemplate template,
         EntityManager entityManager,
+        MachineRowMapper machineMapper,
         OfferRowMapper offerMapper,
         R2dbcEntityOperations entityOperations,
         R2dbcConverter converter
@@ -62,6 +66,7 @@ class OfferRepositoryInternalImpl extends SimpleR2dbcRepository<Offer, Long> imp
         this.db = template.getDatabaseClient();
         this.r2dbcEntityTemplate = template;
         this.entityManager = entityManager;
+        this.machineMapper = machineMapper;
         this.offerMapper = offerMapper;
     }
 
@@ -72,7 +77,14 @@ class OfferRepositoryInternalImpl extends SimpleR2dbcRepository<Offer, Long> imp
 
     RowsFetchSpec<Offer> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = OfferSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        SelectFromAndJoin selectFrom = Select.builder().select(columns).from(entityTable);
+        columns.addAll(MachineSqlHelper.getColumns(machineTable, "machine"));
+        SelectFromAndJoinCondition selectFrom = Select
+            .builder()
+            .select(columns)
+            .from(entityTable)
+            .leftOuterJoin(machineTable)
+            .on(Column.create("machine_id", entityTable))
+            .equals(Column.create("id", machineTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Offer.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -91,6 +103,7 @@ class OfferRepositoryInternalImpl extends SimpleR2dbcRepository<Offer, Long> imp
 
     private Offer process(Row row, RowMetadata metadata) {
         Offer entity = offerMapper.apply(row, "e");
+        entity.setMachine(machineMapper.apply(row, "machine"));
         return entity;
     }
 

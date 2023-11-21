@@ -26,6 +26,7 @@ public class OfferRowMapper implements BiFunction<Row, String, Offer> {
         Offer entity = new Offer();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setName(converter.fromRow(row, prefix + "_name", String.class));
+        entity.setMachineId(converter.fromRow(row, prefix + "_machine_id", Long.class));
         return entity;
     }
 }

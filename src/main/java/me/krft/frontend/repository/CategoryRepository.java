@@ -15,12 +15,6 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface CategoryRepository extends ReactiveCrudRepository<Category, Long>, CategoryRepositoryInternal {
-    @Query("SELECT * FROM category entity WHERE entity.machine_id = :id")
-    Flux<Category> findByMachine(Long id);
-
-    @Query("SELECT * FROM category entity WHERE entity.machine_id IS NULL")
-    Flux<Category> findAllWhereMachineIsNull();
-
     @Override
     <S extends Category> Mono<S> save(S entity);
 

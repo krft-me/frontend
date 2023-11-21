@@ -1,0 +1,137 @@
+.card-component {
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: grid;
+  height: 100%;
+  // DESKTOP
+  grid-template-areas:
+    "picture offer";
+  grid-template-columns: 1fr 2fr;
+  // MOBILE
+  @media screen and (max-width: 768px) {
+    grid-template-areas:
+      "picture"
+      "offer";
+    grid-template-columns: 1fr;
+  }
+  .picture {
+    grid-area: picture;
+    display: flex;
+    align-items: end;
+    position: relative;
+    //background-size: auto 100%;
+    //background-repeat: no-repeat;
+    //aspect-ratio: 1 / 1;
+    overflow: hidden;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+    }
+    span {
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  }
+  .offer {
+    grid-area: offer;
+    background-color: white;
+    padding: 18px;
+    display: grid;
+    // DESKTOP
+    grid-template-areas:
+      "machine profile"
+      "description description"
+      "tags tags"
+      "rating price";
+    grid-template-columns: 2fr 1fr;
+    // MOBILE
+    @media screen and (max-width: 768px) {
+      padding: 8px;
+      grid-template-areas:
+        "profile"
+        "machine"
+        "tags"
+        "rating"
+        "price";
+      grid-template-columns: 1fr;
+    }
+    .machine {
+      grid-area: machine;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        span:nth-child(1) {
+          display: none;
+        }
+      }
+    }
+    .profile {
+      grid-area: profile;
+      display: flex;
+      justify-content: end;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        margin: 10px 0;
+        justify-content: center;
+      }
+      align-items: center;
+      img {
+        width: 50px;
+        height: 50px;
+        // MOBILE
+        @media screen and (max-width: 768px) {
+          width: 30px;
+          height: 30px;
+        }
+        border-radius: 50%;
+        margin-right: 1em;
+      }
+    }
+    .description {
+      padding: 24px 0;
+      grid-area: description;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      align-items: center;
+      grid-area: tags;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        //justify-content: center;
+      }
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      grid-area: rating;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        justify-content: end;
+      }
+    }
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      grid-area: price;
+      // MOBILE
+      @media screen and (max-width: 768px) {
+        justify-content: end;
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ public class MachineSqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("name", table, columnPrefix + "_name"));
 
-        columns.add(Column.aliased("offer_id", table, columnPrefix + "_offer_id"));
+        columns.add(Column.aliased("category_id", table, columnPrefix + "_category_id"));
         return columns;
     }
 }

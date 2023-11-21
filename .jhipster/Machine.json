@@ -20,14 +20,7 @@
   "relationships": [
     {
       "otherEntityName": "category",
-      "otherEntityRelationshipName": "machine",
       "relationshipName": "category",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "offer",
-      "otherEntityRelationshipName": "machine",
-      "relationshipName": "offer",
       "relationshipType": "many-to-one"
     }
   ],

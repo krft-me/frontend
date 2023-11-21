@@ -13,7 +13,6 @@ public class CategorySqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("label", table, columnPrefix + "_label"));
 
-        columns.add(Column.aliased("machine_id", table, columnPrefix + "_machine_id"));
         return columns;
     }
 }

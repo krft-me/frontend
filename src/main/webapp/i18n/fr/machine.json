@@ -19,8 +19,7 @@
       },
       "id": "ID",
       "name": "Name",
-      "category": "Category",
-      "offer": "Offer"
+      "category": "Category"
     }
   }
 }

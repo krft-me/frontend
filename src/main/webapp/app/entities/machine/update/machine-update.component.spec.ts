@@ -9,8 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { MachineFormService } from './machine-form.service';
 import { MachineService } from '../service/machine.service';
 import { IMachine } from '../machine.model';
-import { IOffer } from 'app/entities/offer/offer.model';
-import { OfferService } from 'app/entities/offer/service/offer.service';
+import { ICategory } from 'app/entities/category/category.model';
+import { CategoryService } from 'app/entities/category/service/category.service';
 
 import { MachineUpdateComponent } from './machine-update.component';
 
@@ -20,7 +20,7 @@ describe('Machine Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let machineFormService: MachineFormService;
   let machineService: MachineService;
-  let offerService: OfferService;
+  let categoryService: CategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,43 +43,43 @@ describe('Machine Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     machineFormService = TestBed.inject(MachineFormService);
     machineService = TestBed.inject(MachineService);
-    offerService = TestBed.inject(OfferService);
+    categoryService = TestBed.inject(CategoryService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Offer query and add missing value', () => {
+    it('Should call Category query and add missing value', () => {
       const machine: IMachine = { id: 456 };
-      const offer: IOffer = { id: 69278 };
-      machine.offer = offer;
+      const category: ICategory = { id: 74456 };
+      machine.category = category;
 
-      const offerCollection: IOffer[] = [{ id: 31779 }];
-      jest.spyOn(offerService, 'query').mockReturnValue(of(new HttpResponse({ body: offerCollection })));
-      const additionalOffers = [offer];
-      const expectedCollection: IOffer[] = [...additionalOffers, ...offerCollection];
-      jest.spyOn(offerService, 'addOfferToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const categoryCollection: ICategory[] = [{ id: 94422 }];
+      jest.spyOn(categoryService, 'query').mockReturnValue(of(new HttpResponse({ body: categoryCollection })));
+      const additionalCategories = [category];
+      const expectedCollection: ICategory[] = [...additionalCategories, ...categoryCollection];
+      jest.spyOn(categoryService, 'addCategoryToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ machine });
       comp.ngOnInit();
 
-      expect(offerService.query).toHaveBeenCalled();
-      expect(offerService.addOfferToCollectionIfMissing).toHaveBeenCalledWith(
-        offerCollection,
-        ...additionalOffers.map(expect.objectContaining)
+      expect(categoryService.query).toHaveBeenCalled();
+      expect(categoryService.addCategoryToCollectionIfMissing).toHaveBeenCalledWith(
+        categoryCollection,
+        ...additionalCategories.map(expect.objectContaining)
       );
-      expect(comp.offersSharedCollection).toEqual(expectedCollection);
+      expect(comp.categoriesSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
       const machine: IMachine = { id: 456 };
-      const offer: IOffer = { id: 79996 };
-      machine.offer = offer;
+      const category: ICategory = { id: 40025 };
+      machine.category = category;
 
       activatedRoute.data = of({ machine });
       comp.ngOnInit();
 
-      expect(comp.offersSharedCollection).toContain(offer);
+      expect(comp.categoriesSharedCollection).toContain(category);
       expect(comp.machine).toEqual(machine);
     });
   });
@@ -153,13 +153,13 @@ describe('Machine Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareOffer', () => {
-      it('Should forward to offerService', () => {
+    describe('compareCategory', () => {
+      it('Should forward to categoryService', () => {
         const entity = { id: 123 };
         const entity2 = { id: 456 };
-        jest.spyOn(offerService, 'compareOffer');
-        comp.compareOffer(entity, entity2);
-        expect(offerService.compareOffer).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(categoryService, 'compareCategory');
+        comp.compareCategory(entity, entity2);
+        expect(categoryService.compareCategory).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

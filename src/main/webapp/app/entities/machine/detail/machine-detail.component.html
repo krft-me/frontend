@@ -18,10 +18,10 @@
         <dd>
           <span>{{ machine.name }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.machine.offer">Offer</span></dt>
+        <dt><span jhiTranslate="krftmeApp.machine.category">Category</span></dt>
         <dd>
-          <div *ngIf="machine.offer">
-            <a [routerLink]="['/offer', machine.offer.id, 'view']">{{ machine.offer.id }}</a>
+          <div *ngIf="machine.category">
+            <a [routerLink]="['/category', machine.category.id, 'view']">{{ machine.category.id }}</a>
           </div>
         </dd>
       </dl>

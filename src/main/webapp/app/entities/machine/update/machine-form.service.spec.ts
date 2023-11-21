@@ -21,7 +21,7 @@ describe('Machine Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             name: expect.any(Object),
-            offer: expect.any(Object),
+            category: expect.any(Object),
           })
         );
       });
@@ -33,7 +33,7 @@ describe('Machine Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             name: expect.any(Object),
-            offer: expect.any(Object),
+            category: expect.any(Object),
           })
         );
       });

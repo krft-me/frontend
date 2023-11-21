@@ -21,6 +21,7 @@ describe('Offer Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             name: expect.any(Object),
+            machine: expect.any(Object),
             followers: expect.any(Object),
           })
         );
@@ -33,6 +34,7 @@ describe('Offer Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             name: expect.any(Object),
+            machine: expect.any(Object),
             followers: expect.any(Object),
           })
         );

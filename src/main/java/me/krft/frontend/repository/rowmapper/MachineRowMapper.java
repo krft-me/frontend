@@ -26,7 +26,7 @@ public class MachineRowMapper implements BiFunction<Row, String, Machine> {
         Machine entity = new Machine();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setName(converter.fromRow(row, prefix + "_name", String.class));
-        entity.setOfferId(converter.fromRow(row, prefix + "_offer_id", Long.class));
+        entity.setCategoryId(converter.fromRow(row, prefix + "_category_id", Long.class));
         return entity;
     }
 }

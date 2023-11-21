@@ -54,7 +54,7 @@ public class ApplicationUser implements Serializable {
     private Set<ApplicationUser> favoriteApplicationUsers = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "machines", "followers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "machine", "followers" }, allowSetters = true)
     private Set<Offer> favoriteOffers = new HashSet<>();
 
     @Transient

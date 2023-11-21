@@ -15,6 +15,12 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface OfferRepository extends ReactiveCrudRepository<Offer, Long>, OfferRepositoryInternal {
+    @Query("SELECT * FROM offer entity WHERE entity.machine_id = :id")
+    Flux<Offer> findByMachine(Long id);
+
+    @Query("SELECT * FROM offer entity WHERE entity.machine_id IS NULL")
+    Flux<Offer> findAllWhereMachineIsNull();
+
     @Override
     <S extends Offer> Mono<S> save(S entity);
 

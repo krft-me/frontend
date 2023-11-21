@@ -76,8 +76,6 @@ relationship OneToOne {
 relationship OneToMany {
     ApplicationUserOffer{rating} to Rating
     ApplicationUserOffer{showcase} to Showcase
-    Offer{machine} to Machine
-    Machine{category} to Category
     ApplicationUserOffer{tag} to Tag
 }
 
@@ -91,6 +89,8 @@ relationship ManyToOne {
     ApplicationUser{city} to City
     City{region} to Region
     Region{country} to Country
+    Offer{machine} to Machine
+    Machine{category} to Category
 }
 
 relationship ManyToMany {

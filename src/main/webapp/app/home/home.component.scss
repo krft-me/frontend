@@ -21,3 +21,31 @@ Main page styles
     background-size: contain;
   }
 }
+
+.offers {
+  margin: 0 25%;
+  display: grid;
+  grid-template-columns: 1fr;
+  // MOBILE
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    grid-auto-columns: 50%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+.offers {
+  margin: 0 25%;
+  display: grid;
+  grid-template-columns: 1fr;
+  // MOBILE
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    grid-auto-columns: 50%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  grid-gap: 1em;
+  padding: 1em;
+}

@@ -1,9 +1,6 @@
 package me.krft.frontend.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -28,15 +25,10 @@ public class Machine implements Serializable {
     private String name;
 
     @Transient
-    @JsonIgnoreProperties(value = { "machine" }, allowSetters = true)
-    private Set<Category> categories = new HashSet<>();
+    private Category category;
 
-    @Transient
-    @JsonIgnoreProperties(value = { "machines", "followers" }, allowSetters = true)
-    private Offer offer;
-
-    @Column("offer_id")
-    private Long offerId;
+    @Column("category_id")
+    private Long categoryId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -66,57 +58,26 @@ public class Machine implements Serializable {
         this.name = name;
     }
 
-    public Set<Category> getCategories() {
-        return this.categories;
+    public Category getCategory() {
+        return this.category;
     }
 
-    public void setCategories(Set<Category> categories) {
-        if (this.categories != null) {
-            this.categories.forEach(i -> i.setMachine(null));
-        }
-        if (categories != null) {
-            categories.forEach(i -> i.setMachine(this));
-        }
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
+        this.categoryId = category != null ? category.getId() : null;
     }
 
-    public Machine categories(Set<Category> categories) {
-        this.setCategories(categories);
+    public Machine category(Category category) {
+        this.setCategory(category);
         return this;
     }
 
-    public Machine addCategory(Category category) {
-        this.categories.add(category);
-        category.setMachine(this);
-        return this;
+    public Long getCategoryId() {
+        return this.categoryId;
     }
 
-    public Machine removeCategory(Category category) {
-        this.categories.remove(category);
-        category.setMachine(null);
-        return this;
-    }
-
-    public Offer getOffer() {
-        return this.offer;
-    }
-
-    public void setOffer(Offer offer) {
-        this.offer = offer;
-        this.offerId = offer != null ? offer.getId() : null;
-    }
-
-    public Machine offer(Offer offer) {
-        this.setOffer(offer);
-        return this;
-    }
-
-    public Long getOfferId() {
-        return this.offerId;
-    }
-
-    public void setOfferId(Long offer) {
-        this.offerId = offer;
+    public void setCategoryId(Long category) {
+        this.categoryId = category;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
