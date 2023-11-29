@@ -1,0 +1,31 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceOffer": {
+      "home": {
+        "title": "Offers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Offer",
+        "createOrEditLabel": "Créer ou éditer un Offer",
+        "notFound": "Aucun Offer trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Offer {{ id }} ?"
+      },
+      "detail": {
+        "title": "Offer"
+      },
+      "id": "ID",
+      "name": "Name",
+      "userOffers": "User Offers",
+      "machine": "Machine",
+      "category": "Category"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceOffer": {
+      "created": "Un nouveau Offer a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Offer avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Offer avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

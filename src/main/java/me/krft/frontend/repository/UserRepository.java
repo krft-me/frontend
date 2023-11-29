@@ -1,30 +1,24 @@
 package me.krft.frontend.repository;
 
-import static org.springframework.data.relational.core.query.Criteria.where;
-import static org.springframework.data.relational.core.query.Query.query;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import me.krft.frontend.domain.Authority;
 import me.krft.frontend.domain.User;
 import org.apache.commons.beanutils.BeanComparator;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.convert.R2dbcConverter;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
-import org.springframework.data.relational.core.sql.Column;
-import org.springframework.data.relational.core.sql.Expression;
-import org.springframework.data.relational.core.sql.Table;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Spring Data R2DBC repository for the {@link User} entity.
@@ -39,13 +33,13 @@ public interface UserRepository extends R2dbcRepository<User, String>, UserRepos
 
     Mono<Long> count();
 
-    @Query("INSERT INTO jhi_user_authority VALUES(:userId, :authority)")
+    @Query("INSERT INTO krftme_user_authority VALUES(:userId, :authority)")
     Mono<Void> saveUserAuthority(String userId, String authority);
 
-    @Query("DELETE FROM jhi_user_authority")
+    @Query("DELETE FROM krftme_user_authority")
     Mono<Void> deleteAllUserAuthorities();
 
-    @Query("DELETE FROM jhi_user_authority WHERE user_id = :userId")
+    @Query("DELETE FROM krftme_user_authority WHERE user_id = :userId")
     Mono<Void> deleteUserAuthorities(String userId);
 }
 
@@ -84,7 +78,7 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
         long size = pageable.getPageSize();
 
         return db
-            .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id")
+            .sql("SELECT * FROM krftme_user u LEFT JOIN krftme_user_authority ua ON u.id=ua.user_id")
             .map((row, metadata) ->
                 Tuples.of(r2dbcConverter.read(User.class, row, metadata), Optional.ofNullable(row.get("authority_name", String.class)))
             )
@@ -107,7 +101,7 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
 
     private Mono<User> findOneWithAuthoritiesBy(String fieldName, Object fieldValue) {
         return db
-            .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id WHERE u." + fieldName + " = :" + fieldName)
+            .sql("SELECT * FROM krftme_user u LEFT JOIN krftme_user_authority ua ON u.id=ua.user_id WHERE u." + fieldName + " = :" + fieldName)
             .bind(fieldName, fieldValue)
             .map((row, metadata) ->
                 Tuples.of(r2dbcConverter.read(User.class, row, metadata), Optional.ofNullable(row.get("authority_name", String.class)))

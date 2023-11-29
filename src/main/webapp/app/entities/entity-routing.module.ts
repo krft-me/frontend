@@ -1,79 +1,97 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
-        path: 'city',
-        data: { pageTitle: 'krftmeApp.city.home.title' },
-        loadChildren: () => import('./city/city.module').then(m => m.CityModule),
+        path: "city",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceCity.home.title" },
+        loadChildren: () => import("./krftme-microservice/city/city.module").then(m => m.KrftmeMicroserviceCityModule)
       },
       {
-        path: 'region',
-        data: { pageTitle: 'krftmeApp.region.home.title' },
-        loadChildren: () => import('./region/region.module').then(m => m.RegionModule),
+        path: "region"',
+        data: {
+          pageTitle: "krftmeApp.krftmeMicroserviceRegion.home.title"
+          ' },
+          loadChildren: () =>
+          import"./krftme-microservice/region/region.module"
+          ').then(m => m.KrftmeMicroserviceRegionModule,
+        }
+      {
+        path: "country",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceCountry.home.title" },
+        loadChildren: () => import("./krftme-microservice/country/country.module").then(m => m.KrftmeMicroserviceCountryModule)
       },
       {
-        path: 'country',
-        data: { pageTitle: 'krftmeApp.country.home.title' },
-        loadChildren: () => import('./country/country.module').then(m => m.CountryModule),
+        path: "application-user",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceApplicationUser.home.title" },
+        loadChildren: () =>
+          import("./krftme-microservice/application-user/application-user.module").then(m => m.KrftmeMicroserviceApplicationUserModule)
       },
       {
-        path: 'application-user',
-        data: { pageTitle: 'krftmeApp.applicationUser.home.title' },
-        loadChildren: () => import('./application-user/application-user.module').then(m => m.ApplicationUserModule),
+        path: "review",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceReview.home.title" },
+        loadChildren: () => import("./krftme-microservice/review/review.module").then(m => m.KrftmeMicroserviceReviewModule)
       },
       {
-        path: 'rating',
-        data: { pageTitle: 'krftmeApp.rating.home.title' },
-        loadChildren: () => import('./rating/rating.module').then(m => m.RatingModule),
+        path: "machine",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceMachine.home.title" },
+        loadChildren: () => import("./krftme-microservice/machine/machine.module").then(m => m.KrftmeMicroserviceMachineModule)
       },
       {
-        path: 'machine',
-        data: { pageTitle: 'krftmeApp.machine.home.title' },
-        loadChildren: () => import('./machine/machine.module').then(m => m.MachineModule),
+        path: "offer",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceOffer.home.title" },
+        loadChildren: () => import("./krftme-microservice/offer/offer.module").then(m => m.KrftmeMicroserviceOfferModule)
       },
       {
-        path: 'offer',
-        data: { pageTitle: 'krftmeApp.offer.home.title' },
-        loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule),
+        path: "application-user-offer",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceApplicationUserOffer.home.title" },
+        loadChildren: () =>
+          import("./krftme-microservice/application-user-offer/application-user-offer.module").then(
+            m => m.KrftmeMicroserviceApplicationUserOfferModule
+          )
       },
       {
-        path: 'application-user-offer',
-        data: { pageTitle: 'krftmeApp.applicationUserOffer.home.title' },
-        loadChildren: () => import('./application-user-offer/application-user-offer.module').then(m => m.ApplicationUserOfferModule),
+        path: "showcase",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceShowcase.home.title" },
+        loadChildren: () => import("./krftme-microservice/showcase/showcase.module").then(m => m.KrftmeMicroserviceShowcaseModule)
       },
       {
-        path: 'showcase',
-        data: { pageTitle: 'krftmeApp.showcase.home.title' },
-        loadChildren: () => import('./showcase/showcase.module').then(m => m.ShowcaseModule),
+        path: "badge",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceBadge.home.title" },
+        loadChildren: () => import("./krftme-microservice/badge/badge.module").then(m => m.KrftmeMicroserviceBadgeModule)
       },
       {
-        path: 'badge',
-        data: { pageTitle: 'krftmeApp.badge.home.title' },
-        loadChildren: () => import('./badge/badge.module').then(m => m.BadgeModule),
+        path: "application-user-badge",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceApplicationUserBadge.home.title" },
+        loadChildren: () =>
+          import("./krftme-microservice/application-user-badge/application-user-badge.module").then(
+            m => m.KrftmeMicroserviceApplicationUserBadgeModule
+          )
       },
       {
-        path: 'application-user-badge',
-        data: { pageTitle: 'krftmeApp.applicationUserBadge.home.title' },
-        loadChildren: () => import('./application-user-badge/application-user-badge.module').then(m => m.ApplicationUserBadgeModule),
+        path: "order",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceOrder.home.title" },
+        loadChildren: () => import("./krftme-microservice/order/order.module").then(m => m.KrftmeMicroserviceOrderModule)
       },
       {
-        path: 'order',
-        data: { pageTitle: 'krftmeApp.order.home.title' },
-        loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
+        path: "tag",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceTag.home.title" },
+        loadChildren: () => import("./krftme-microservice/tag/tag.module").then(m => m.KrftmeMicroserviceTagModule)
       },
       {
-        path: 'tag',
-        data: { pageTitle: 'krftmeApp.tag.home.title' },
-        loadChildren: () => import('./tag/tag.module').then(m => m.TagModule),
+        path: "machine-category",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceMachineCategory.home.title" },
+        loadChildren: () =>
+          import("./krftme-microservice/machine-category/machine-category.module").then(m => m.KrftmeMicroserviceMachineCategoryModule)
       },
       {
-        path: 'category',
-        data: { pageTitle: 'krftmeApp.category.home.title' },
-        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule),
-      },
+        path: "offer-category",
+        data: { pageTitle: "krftmeApp.krftmeMicroserviceOfferCategory.home.title" },
+        loadChildren: () =>
+          import("./krftme-microservice/offer-category/offer-category.module").then(m => m.KrftmeMicroserviceOfferCategoryModule)
+      }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

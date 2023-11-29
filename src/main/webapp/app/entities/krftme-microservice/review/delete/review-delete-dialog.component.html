@@ -1,0 +1,29 @@
+<form (ngSubmit)="confirmDelete(review.id!)" *ngIf="review" name="deleteForm">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="reviewDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirmation de
+      suppression</h4>
+
+    <button (click)="cancel()" aria-hidden="true" class="btn-close" data-dismiss="modal" type="button">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <krftme-alert-error></krftme-alert-error>
+    <p
+      [translateValues]="{ id: review.id }"
+      id="krftme-delete-review-heading"
+      jhiTranslate="krftmeApp.krftmeMicroserviceReview.delete.question"
+    >
+      Êtes-vous certain de vouloir supprimer le Review {{ review.id }} ?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button (click)="cancel()" class="btn btn-secondary" data-dismiss="modal" type="button">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+    </button>
+
+    <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-review" type="submit">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+    </button>
+  </div>
+</form>

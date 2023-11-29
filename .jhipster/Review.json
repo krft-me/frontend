@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20231129191448",
+  "clientRootFolder": "krftme-microservice",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "review",
+  "fields": [
+    {
+      "fieldName": "rating",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required",
+        "min",
+        "max"
+      ],
+      "fieldValidateRulesMax": "50",
+      "fieldValidateRulesMin": "0",
+      "javadoc": "The rating of the service from 0.0 to 5.0"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String",
+      "javadoc": "Optional comment about the service or the service provider"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Review entity\\nRepresents a user's opinion of a service they have purchased",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
+  "name": "Review",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "review",
+      "ownerSide": true,
+      "relationshipName": "order",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

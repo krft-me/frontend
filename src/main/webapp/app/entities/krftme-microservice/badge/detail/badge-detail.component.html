@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="badge">
+      <h2 data-cy="badgeDetailsHeading"><span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.detail.title">Badge</span>
+      </h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ badge.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.label">Label</span></dt>
+        <dd>
+          <span>{{ badge.label }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceBadge.help.picture' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceBadge.picture"
+          >Picture</span
+          >
+        </dt>
+        <dd>
+          <span>{{ badge.picture }}</span>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/badge', badge.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

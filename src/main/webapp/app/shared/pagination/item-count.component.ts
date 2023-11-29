@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 /**
  * A component that will take care of item count statistics of a pagination.
  */
 @Component({
   selector: 'krftme-item-count',
-  template: ` <div krftmeTranslate="global.item-count" [translateValues]="{ first: first, second: second, total: total }"></div> `,
+  template: ` <div jhiTranslate="global.item-count" [translateValues]="{ first: first, second: second, total: total }"></div> `,
 })
 export class ItemCountComponent {
   /**

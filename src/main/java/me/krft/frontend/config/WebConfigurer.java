@@ -1,7 +1,6 @@
 package me.krft.frontend.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.web.reactive.ResourceHandlerRegistrationCustomizer;
@@ -9,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
 import org.springframework.data.web.ReactivePageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.ReactiveSortHandlerMethodArgumentResolver;
 import org.springframework.util.CollectionUtils;
@@ -24,8 +21,9 @@ import org.zalando.problem.spring.webflux.advice.ProblemExceptionHandler;
 import org.zalando.problem.spring.webflux.advice.ProblemHandling;
 import tech.jhipster.config.JHipsterConstants;
 import tech.jhipster.config.JHipsterProperties;
-import tech.jhipster.config.h2.H2ConfigurationHelper;
 import tech.jhipster.web.filter.reactive.CachingHttpHeadersFilter;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Configuration of web application with Servlet 3.0 APIs.
@@ -37,16 +35,8 @@ public class WebConfigurer implements WebFluxConfigurer {
 
     private final JHipsterProperties jHipsterProperties;
 
-    public WebConfigurer(Environment env, JHipsterProperties jHipsterProperties) {
+    public WebConfigurer(JHipsterProperties jHipsterProperties) {
         this.jHipsterProperties = jHipsterProperties;
-        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
-            try {
-                H2ConfigurationHelper.initH2Console();
-            } catch (Exception e) {
-                // Console may already be running on another app or after a refresh.
-                e.printStackTrace();
-            }
-        }
     }
 
     @Bean

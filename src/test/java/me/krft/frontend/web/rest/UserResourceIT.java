@@ -1,11 +1,5 @@
 package me.krft.frontend.web.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
-
-import java.time.Instant;
-import java.util.*;
-import java.util.function.Consumer;
 import me.krft.frontend.IntegrationTest;
 import me.krft.frontend.config.Constants;
 import me.krft.frontend.domain.Authority;
@@ -21,9 +15,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
-import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import java.time.Instant;
+import java.util.*;
+import java.util.function.Consumer;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
 
 /**
  * Integration tests for the {@link UserResource} REST controller.
@@ -94,7 +94,7 @@ class UserResourceIT {
      */
     public static void deleteEntities(EntityManager em) {
         try {
-            em.deleteAll("jhi_user_authority").block();
+            em.deleteAll("krftme_user_authority").block();
             em.deleteAll(User.class).block();
         } catch (Exception e) {
             // It can fail, if other entities are still referring this - it will be removed later.

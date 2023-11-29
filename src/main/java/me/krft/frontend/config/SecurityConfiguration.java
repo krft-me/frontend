@@ -1,22 +1,13 @@
 package me.krft.frontend.config;
 
-import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
-
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
 import me.krft.frontend.security.AuthoritiesConstants;
 import me.krft.frontend.security.SecurityUtils;
 import me.krft.frontend.security.oauth2.AudienceValidator;
 import me.krft.frontend.security.oauth2.JwtGrantedAuthorityConverter;
 import me.krft.frontend.web.filter.SpaWebFilter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.ParameterizedTypeReference;
@@ -56,6 +47,15 @@ import org.zalando.problem.spring.webflux.advice.security.SecurityProblemSupport
 import reactor.core.publisher.Mono;
 import tech.jhipster.config.JHipsterProperties;
 import tech.jhipster.web.filter.reactive.CookieCsrfFilter;
+
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+
+import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity

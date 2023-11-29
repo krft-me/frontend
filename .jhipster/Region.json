@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124848",
+  "changelogDate": "20231129191445",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,20 +10,35 @@
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1",
+      "javadoc": "The region's name"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Region entity",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "Region",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityName": "city",
+      "otherEntityRelationshipName": "region",
+      "relationshipName": "cities",
+      "relationshipType": "one-to-many"
+    },
+    {
       "otherEntityName": "country",
+      "otherEntityRelationshipName": "regions",
       "relationshipName": "country",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

@@ -10,9 +10,11 @@
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "creationTimestamp": 1695901919199,
+    "creationTimestamp": 1701284805354,
+    "cypressAudit": true,
+    "cypressCoverage": true,
     "databaseType": "sql",
-    "devDatabaseType": "h2Disk",
+    "devDatabaseType": "postgresql",
     "devServerPort": 4200,
     "dtoSuffix": "DTO",
     "enableGradleEnterprise": false,
@@ -24,7 +26,7 @@
       "Region",
       "Country",
       "ApplicationUser",
-      "Rating",
+      "Review",
       "Machine",
       "Offer",
       "ApplicationUserOffer",
@@ -33,14 +35,18 @@
       "ApplicationUserBadge",
       "Order",
       "Tag",
-      "Category"
+      "MachineCategory",
+      "OfferCategory"
     ],
     "entitySuffix": "",
     "jhiPrefix": "krftme",
     "jhipsterVersion": "7.9.4",
-    "jwtSecretKey": "ZGQwMzY5M2FmMmZkZDRmY2RiNTVjMjY5MmQxNzVkZGY4MjdkODkwMzdlYjI5OTEwNmYyYzgyYzJiZDgxMWZiNmFlOWEzMTRlZWFmOGUwZGQ3NDc1MmVmNmNjODE2MTYyYWJjNjllNzMzNmU2M2RhNzFiMDNkZWY2NzczOWFjYmQ=",
-    "languages": ["fr", "en"],
-    "lastLiquibaseTimestamp": 1696250940000,
+    "jwtSecretKey": "OGM0OGQzMTM0MTU5ZDlhOWUxOWI3MjBhMjM0ZmM4YWYwNzNmNGFmYzcyZTQzOTNkNzI1ZTM2MGNmZjY5MWUzOTE1YjUxM2Y0MTQzYjk5OTVkZjY0ZTJmNWViMmRlOTA4YmFmMDI2ZGM2Zjg4NjNjMDk2MTkwYzBlMzRkNDYzNTU=",
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "lastLiquibaseTimestamp": 1701285298000,
     "messageBroker": false,
     "microfrontend": false,
     "microfrontends": [],
@@ -58,8 +64,10 @@
     "skipClient": false,
     "skipFakeData": false,
     "skipUserManagement": true,
-    "testFrameworks": [],
+    "testFrameworks": [
+      "cypress"
+    ],
     "websocket": false,
-    "withAdminUi": true
+    "withAdminUi": false
   }
 }

@@ -1,0 +1,111 @@
+<div>
+  <h2 data-cy="OrderHeading" id="page-heading">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.home.title">Orders</span>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
+        <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        [routerLink]="['/order/new']"
+        class="btn btn-primary jh-create-entity create-order"
+        data-cy="entityCreateButton"
+        id="jh-create-entity"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.home.createLabel"> Créer un nouveau Order </span>
+      </button>
+    </div>
+  </h2>
+
+  <krftme-alert-error></krftme-alert-error>
+
+  <krftme-alert></krftme-alert>
+
+  <div *ngIf="orders?.length === 0" class="alert alert-warning" id="no-result">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.home.notFound">Aucun Order trouvé</span>
+  </div>
+
+  <div *ngIf="orders && orders.length > 0" class="table-responsive table-entities" id="entities">
+    <table aria-describedby="page-heading" class="table table-striped">
+      <thead>
+      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
+        <th jhiSortBy="id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="global.field.id">ID</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="date" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.date">Date</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="state" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.state">State</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="offer.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.offer">Offer</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="customer.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.customer">Customer</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a [routerLink]="['/order', order.id, 'view']">{{ order.id }}</a>
+        </td>
+        <td>{{ order.date | formatMediumDatetime }}</td>
+        <td jhiTranslate="{{ 'krftmeApp.State.' + order.state }}">{{ order.state }}</td>
+        <td>
+          <div *ngIf="order.offer">
+            <a [routerLink]="['/application-user-offer', order.offer.id, 'view']">{{ order.offer.id }}</a>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="order.customer">
+            <a [routerLink]="['/application-user', order.customer.id, 'view']">{{ order.customer.id }}</a>
+          </div>
+        </td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button [routerLink]="['/order', order.id, 'view']" class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                    type="submit">
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+            </button>
+
+            <button [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                    type="submit">
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+            </button>
+
+            <button (click)="delete(order)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

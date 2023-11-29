@@ -1,0 +1,31 @@
+<form *ngIf="applicationUserBadge" name="deleteForm" (ngSubmit)="confirmDelete(applicationUserBadge.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="applicationUserBadgeDeleteDialogHeading" jhiTranslate="entity.delete.title">
+      Confirmation de suppression
+    </h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <krftme-alert-error></krftme-alert-error>
+    <p
+      id="krftme-delete-applicationUserBadge-heading"
+      jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserBadge.delete.question"
+      [translateValues]="{ id: applicationUserBadge.id }"
+    >
+      Êtes-vous certain de vouloir supprimer le Application User Badge {{ applicationUserBadge.id }} ?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+    </button>
+
+    <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-applicationUserBadge"
+            type="submit">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+    </button>
+  </div>
+</form>

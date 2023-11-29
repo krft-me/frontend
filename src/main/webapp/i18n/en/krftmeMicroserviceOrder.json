@@ -1,0 +1,36 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceOrder": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order",
+        "createOrEditLabel": "Create or edit a Order",
+        "notFound": "No Orders found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "id": "ID",
+      "date": "Date",
+      "state": "State",
+      "review": "Review",
+      "offer": "Offer",
+      "customer": "Customer",
+      "help": {
+        "date": "Date the order was placed",
+        "state": "State of the order"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceOrder": {
+      "created": "A new Order is created with identifier {{ param }}",
+      "updated": "A Order is updated with identifier {{ param }}",
+      "deleted": "A Order is deleted with identifier {{ param }}"
+    }
+  }
+}

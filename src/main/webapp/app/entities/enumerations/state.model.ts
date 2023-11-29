@@ -5,7 +5,7 @@ export enum State {
 
   SIGNED = 'SIGNED',
 
-  INPROGRESS = 'INPROGRESS',
+  IN_PROGRESS = 'IN_PROGRESS',
 
   CANCELLED = 'CANCELLED',
 

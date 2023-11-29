@@ -1,0 +1,29 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceOfferCategory": {
+      "home": {
+        "title": "OfferCategories",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Offer Category",
+        "createOrEditLabel": "Créer ou éditer un Offer Category",
+        "notFound": "Aucun Offer Category trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Offer Category {{ id }} ?"
+      },
+      "detail": {
+        "title": "Offer Category"
+      },
+      "id": "ID",
+      "label": "Label",
+      "offers": "Offers"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceOfferCategory": {
+      "created": "Un nouveau Offer Category a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Offer Category avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Offer Category avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

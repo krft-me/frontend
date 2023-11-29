@@ -1,0 +1,42 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceApplicationUser": {
+      "home": {
+        "title": "ApplicationUsers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Application User",
+        "createOrEditLabel": "Créer ou éditer un Application User",
+        "notFound": "Aucun Application User trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Application User {{ id }} ?"
+      },
+      "detail": {
+        "title": "Application User"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "profilePictureId": "Profile Picture Id",
+      "internalUser": "Internal User",
+      "offers": "Offers",
+      "badges": "Badges",
+      "orders": "Orders",
+      "city": "City",
+      "help": {
+        "firstName": "The user&#39;s first name",
+        "lastName": "The user&#39;s last name name",
+        "username": "The user&#39;s username",
+        "profilePictureId": "The user&#39;s profile picture ID"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceApplicationUser": {
+      "created": "Un nouveau Application User a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Application User avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Application User avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

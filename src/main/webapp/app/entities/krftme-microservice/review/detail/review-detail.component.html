@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="review">
+      <h2 data-cy="reviewDetailsHeading"><span
+        jhiTranslate="krftmeApp.krftmeMicroserviceReview.detail.title">Review</span></h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ review.id }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceReview.help.rating' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceReview.rating"
+          >Rating</span
+          >
+        </dt>
+        <dd>
+          <span>{{ review.rating }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceReview.help.comment' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceReview.comment"
+          >Comment</span
+          >
+        </dt>
+        <dd>
+          <span>{{ review.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceReview.order">Order</span></dt>
+        <dd>
+          <div *ngIf="review.order">
+            <a [routerLink]="['/order', review.order.id, 'view']">{{ review.order.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/review', review.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

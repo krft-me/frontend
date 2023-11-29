@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form (ngSubmit)="save()" [formGroup]="editForm" name="editForm" novalidate role="form">
+      <h2 data-cy="OfferCreateUpdateHeading" id="krftme-offer-heading"
+          jhiTranslate="krftmeApp.krftmeMicroserviceOffer.home.createOrEditLabel">
+        Créer ou éditer un Offer
+      </h2>
+
+      <div>
+        <krftme-alert-error></krftme-alert-error>
+
+        <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
+          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
+                 type="number" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_name" jhiTranslate="krftmeApp.krftmeMicroserviceOffer.name">Name</label>
+          <input class="form-control" data-cy="name" formControlName="name" id="field_name" name="name" type="text" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small *ngIf="editForm.get('name')?.errors?.required" class="form-text text-danger"
+                   jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+            <small
+              *ngIf="editForm.get('name')?.errors?.minlength"
+              [translateValues]="{ min: 1 }"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.minlength"
+            >
+              Ce champ doit faire au minimum 1 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_machine"
+                 jhiTranslate="krftmeApp.krftmeMicroserviceOffer.machine">Machine</label>
+          <select
+            [compareWith]="compareMachine"
+            class="form-control"
+            data-cy="machine"
+            formControlName="machine"
+            id="field_machine"
+            name="machine"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let machineOption of machinesSharedCollection"
+                    [ngValue]="machineOption">{{ machineOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_category" jhiTranslate="krftmeApp.krftmeMicroserviceOffer.category">Category</label>
+          <select
+            [compareWith]="compareOfferCategory"
+            class="form-control"
+            data-cy="category"
+            formControlName="category"
+            id="field_category"
+            name="category"
+          >
+            <option *ngIf="editForm.get(['category'])!.value == null" [ngValue]="null" selected></option>
+            <option *ngFor="let offerCategoryOption of offerCategoriesSharedCollection" [ngValue]="offerCategoryOption">
+              {{ offerCategoryOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['category'])!.invalid && (editForm.get(['category'])!.dirty || editForm.get(['category'])!.touched)">
+          <small
+            *ngIf="editForm.get(['category'])?.errors?.required"
+            class="form-text text-danger"
+            jhiTranslate="entity.validation.required"
+          >
+            Ce champ est obligatoire.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
+                type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+          data-cy="entityCreateSaveButton"
+          id="save-entity"
+          type="submit"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124854",
+  "changelogDate": "20231129191451",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,43 +10,75 @@
     {
       "fieldName": "description",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength",
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "512",
+      "fieldValidateRulesMinlength": "1",
+      "javadoc": "Description of the service provided, written by the user providing it"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
+      "fieldValidateRulesMin": "0",
+      "javadoc": "The price of the service, set by the user providing it"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ],
+      "javadoc": "Active means the offer is visible to the users, we shouldn't delete it"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Relationship entity between user, offer and machine",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "ApplicationUserOffer",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "rating",
-      "otherEntityRelationshipName": "applicationUserOffer",
-      "relationshipName": "rating",
+      "otherEntityName": "showcase",
+      "otherEntityRelationshipName": "offer",
+      "relationshipName": "showcases",
       "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "showcase",
-      "otherEntityRelationshipName": "applicationUserOffer",
-      "relationshipName": "showcase",
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "offer",
+      "relationshipName": "orders",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "tag",
-      "otherEntityRelationshipName": "applicationUserOffer",
-      "relationshipName": "tag",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "offer",
-      "relationshipName": "offer",
-      "relationshipType": "many-to-one"
+      "otherEntityRelationshipName": "offers",
+      "ownerSide": true,
+      "relationshipName": "tags",
+      "relationshipType": "many-to-many"
     },
     {
       "otherEntityName": "applicationUser",
-      "relationshipName": "applicationUser",
-      "relationshipType": "many-to-one"
+      "otherEntityRelationshipName": "offers",
+      "relationshipName": "provider",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "offer",
+      "otherEntityRelationshipName": "userOffers",
+      "relationshipName": "offer",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

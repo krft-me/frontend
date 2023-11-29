@@ -1,0 +1,131 @@
+<div>
+  <h2 data-cy="ApplicationUserHeading" id="page-heading">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.home.title">ApplicationUsers</span>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
+        <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
+        <span
+          jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        [routerLink]="['/application-user/new']"
+        class="btn btn-primary jh-create-entity create-application-user"
+        data-cy="entityCreateButton"
+        id="jh-create-entity"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.home.createLabel"> Créer un nouveau Application User </span>
+      </button>
+    </div>
+  </h2>
+
+  <krftme-alert-error></krftme-alert-error>
+
+  <krftme-alert></krftme-alert>
+
+  <div *ngIf="applicationUsers?.length === 0" class="alert alert-warning" id="no-result">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.home.notFound">Aucun Application User trouvé</span>
+  </div>
+
+  <div *ngIf="applicationUsers && applicationUsers.length > 0" class="table-responsive table-entities" id="entities">
+    <table aria-describedby="page-heading" class="table table-striped">
+      <thead>
+      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
+        <th jhiSortBy="id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="global.field.id">ID</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="firstName" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.firstName">First Name</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="lastName" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.lastName">Last Name</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="username" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.username">Username</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="profilePictureId" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.profilePictureId">Profile Picture Id</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="internalUser.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.internalUser">Internal User</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="city.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.city">City</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let applicationUser of applicationUsers; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a [routerLink]="['/application-user', applicationUser.id, 'view']">{{ applicationUser.id }}</a>
+        </td>
+        <td>{{ applicationUser.firstName }}</td>
+        <td>{{ applicationUser.lastName }}</td>
+        <td>{{ applicationUser.username }}</td>
+        <td>{{ applicationUser.profilePictureId }}</td>
+        <td>
+          {{ applicationUser.internalUser?.id }}
+        </td>
+        <td>
+          <div *ngIf="applicationUser.city">
+            <a [routerLink]="['/city', applicationUser.city.id, 'view']">{{ applicationUser.city.id }}</a>
+          </div>
+        </td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button
+              [routerLink]="['/application-user', applicationUser.id, 'view']"
+              class="btn btn-info btn-sm"
+              data-cy="entityDetailsButton"
+              type="submit"
+            >
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+            </button>
+
+            <button
+              [routerLink]="['/application-user', applicationUser.id, 'edit']"
+              class="btn btn-primary btn-sm"
+              data-cy="entityEditButton"
+              type="submit"
+            >
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+            </button>
+
+            <button (click)="delete(applicationUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton"
+                    type="submit">
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

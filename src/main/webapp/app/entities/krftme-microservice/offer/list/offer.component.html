@@ -1,0 +1,104 @@
+<div>
+  <h2 data-cy="OfferHeading" id="page-heading">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.home.title">Offers</span>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
+        <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        [routerLink]="['/offer/new']"
+        class="btn btn-primary jh-create-entity create-offer"
+        data-cy="entityCreateButton"
+        id="jh-create-entity"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.home.createLabel"> Créer un nouveau Offer </span>
+      </button>
+    </div>
+  </h2>
+
+  <krftme-alert-error></krftme-alert-error>
+
+  <krftme-alert></krftme-alert>
+
+  <div *ngIf="offers?.length === 0" class="alert alert-warning" id="no-result">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.home.notFound">Aucun Offer trouvé</span>
+  </div>
+
+  <div *ngIf="offers && offers.length > 0" class="table-responsive table-entities" id="entities">
+    <table aria-describedby="page-heading" class="table table-striped">
+      <thead>
+      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
+        <th jhiSortBy="id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="global.field.id">ID</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="name" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.name">Name</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="machine.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.machine">Machine</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="category.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceOffer.category">Category</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let offer of offers; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a [routerLink]="['/offer', offer.id, 'view']">{{ offer.id }}</a>
+        </td>
+        <td>{{ offer.name }}</td>
+        <td>
+          <div *ngIf="offer.machine">
+            <a [routerLink]="['/machine', offer.machine.id, 'view']">{{ offer.machine.id }}</a>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="offer.category">
+            <a [routerLink]="['/offer-category', offer.category.id, 'view']">{{ offer.category.id }}</a>
+          </div>
+        </td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button [routerLink]="['/offer', offer.id, 'view']" class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                    type="submit">
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+            </button>
+
+            <button [routerLink]="['/offer', offer.id, 'edit']" class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                    type="submit">
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+            </button>
+
+            <button (click)="delete(offer)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

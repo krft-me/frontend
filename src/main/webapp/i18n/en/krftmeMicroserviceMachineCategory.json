@@ -1,0 +1,29 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceMachineCategory": {
+      "home": {
+        "title": "Machine Categories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Machine Category",
+        "createOrEditLabel": "Create or edit a Machine Category",
+        "notFound": "No Machine Categories found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Machine Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Machine Category"
+      },
+      "id": "ID",
+      "label": "Label",
+      "machines": "Machines"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceMachineCategory": {
+      "created": "A new Machine Category is created with identifier {{ param }}",
+      "updated": "A Machine Category is updated with identifier {{ param }}",
+      "deleted": "A Machine Category is deleted with identifier {{ param }}"
+    }
+  }
+}

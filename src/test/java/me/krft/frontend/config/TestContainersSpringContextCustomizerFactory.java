@@ -1,12 +1,8 @@
 package me.krft.frontend.config;
 
-import java.util.Arrays;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.test.context.ContextConfigurationAttributes;
@@ -14,10 +10,13 @@ import org.springframework.test.context.ContextCustomizer;
 import org.springframework.test.context.ContextCustomizerFactory;
 import tech.jhipster.config.JHipsterConstants;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TestContainersSpringContextCustomizerFactory implements ContextCustomizerFactory {
 
-    private Logger log = LoggerFactory.getLogger(TestContainersSpringContextCustomizerFactory.class);
-
+    private static SqlTestContainer devTestContainer;
+    private final Logger log = LoggerFactory.getLogger(TestContainersSpringContextCustomizerFactory.class);
     private static SqlTestContainer prodTestContainer;
 
     @Override
@@ -29,6 +28,31 @@ public class TestContainersSpringContextCustomizerFactory implements ContextCust
             if (null != sqlAnnotation) {
                 log.debug("detected the EmbeddedSQL annotation on class {}", testClass.getName());
                 log.info("Warming up the sql database");
+                if (
+                    Arrays
+                        .asList(context.getEnvironment().getActiveProfiles())
+                        .contains("test" + JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
+                ) {
+                    if (null == devTestContainer) {
+                        try {
+                            Class<? extends SqlTestContainer> containerClass = (Class<? extends SqlTestContainer>) Class.forName(
+                                this.getClass().getPackageName() + ".PostgreSqlTestContainer"
+                            );
+                            devTestContainer = beanFactory.createBean(containerClass);
+                            beanFactory.registerSingleton(containerClass.getName(), devTestContainer);
+                            // ((DefaultListableBeanFactory)beanFactory).registerDisposableBean(containerClass.getName(), devTestContainer);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    testValues =
+                        testValues.and(
+                            "spring.r2dbc.url=" + devTestContainer.getTestContainer().getJdbcUrl().replace("jdbc", "r2dbc") + ""
+                        );
+                    testValues = testValues.and("spring.r2dbc.username=" + devTestContainer.getTestContainer().getUsername());
+                    testValues = testValues.and("spring.r2dbc.password=" + devTestContainer.getTestContainer().getPassword());
+                    testValues = testValues.and("spring.liquibase.url=" + devTestContainer.getTestContainer().getJdbcUrl() + "");
+                }
                 if (
                     Arrays
                         .asList(context.getEnvironment().getActiveProfiles())

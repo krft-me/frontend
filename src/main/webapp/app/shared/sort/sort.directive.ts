@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
 @Directive({
-  selector: '[krftmeSort]',
+  selector: '[jhiSort]',
 })
 export class SortDirective<T> {
   @Input()

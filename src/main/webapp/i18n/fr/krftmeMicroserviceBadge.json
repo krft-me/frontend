@@ -1,0 +1,33 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceBadge": {
+      "home": {
+        "title": "Badges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Badge",
+        "createOrEditLabel": "Créer ou éditer un Badge",
+        "notFound": "Aucun Badge trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Badge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Badge"
+      },
+      "id": "ID",
+      "label": "Label",
+      "picture": "Picture",
+      "users": "Users",
+      "help": {
+        "picture": "The badge&#39;s icon, should be a blob later"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceBadge": {
+      "created": "Un nouveau Badge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Badge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Badge avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

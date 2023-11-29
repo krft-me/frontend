@@ -1,0 +1,42 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceApplicationUser": {
+      "home": {
+        "title": "Application Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Application User",
+        "createOrEditLabel": "Create or edit a Application User",
+        "notFound": "No Application Users found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Application User {{ id }}?"
+      },
+      "detail": {
+        "title": "Application User"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "profilePictureId": "Profile Picture Id",
+      "internalUser": "Internal User",
+      "offers": "Offers",
+      "badges": "Badges",
+      "orders": "Orders",
+      "city": "City",
+      "help": {
+        "firstName": "The user&#39;s first name",
+        "lastName": "The user&#39;s last name name",
+        "username": "The user&#39;s username",
+        "profilePictureId": "The user&#39;s profile picture ID"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceApplicationUser": {
+      "created": "A new Application User is created with identifier {{ param }}",
+      "updated": "A Application User is updated with identifier {{ param }}",
+      "deleted": "A Application User is deleted with identifier {{ param }}"
+    }
+  }
+}
