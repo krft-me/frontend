@@ -4,7 +4,7 @@
       <h2
         data-cy="ApplicationUserOfferCreateUpdateHeading"
         id="krftme-application-user-offer-heading"
-        jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.createOrEditLabel"
+        krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.createOrEditLabel"
       >
         Créer ou éditer un Application User Offer
       </h2>
@@ -13,9 +13,8 @@
         <krftme-alert-error></krftme-alert-error>
 
         <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
-          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
-          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
-                 type="number" />
+          <label class="form-label" for="field_id" krftmeTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id" type="number" />
         </div>
 
         <div class="row mb-3">
@@ -23,8 +22,8 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.description' | translate"
             class="form-label"
             for="field_description"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.description"
-          >Description</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.description"
+            >Description</label
           >
           <input
             class="form-control"
@@ -34,12 +33,11 @@
             name="description"
             type="text"
           />
-          <div
-            *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+          <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
             <small
               *ngIf="editForm.get('description')?.errors?.required"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.required"
+              krftmeTranslate="entity.validation.required"
             >
               Ce champ est obligatoire.
             </small>
@@ -47,7 +45,7 @@
               *ngIf="editForm.get('description')?.errors?.minlength"
               [translateValues]="{ min: 1 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.minlength"
+              krftmeTranslate="entity.validation.minlength"
             >
               Ce champ doit faire au minimum 1 caractères.
             </small>
@@ -55,7 +53,7 @@
               *ngIf="editForm.get('description')?.errors?.maxlength"
               [translateValues]="{ max: 512 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.maxlength"
+              krftmeTranslate="entity.validation.maxlength"
             >
               Ce champ doit faire moins de 512 caractères.
             </small>
@@ -67,27 +65,31 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.price' | translate"
             class="form-label"
             for="field_price"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.price"
-          >Price</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.price"
+            >Price</label
           >
-          <input class="form-control" data-cy="price" formControlName="price" id="field_price" name="price"
-                 type="number" />
-          <div
-            *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
-            <small *ngIf="editForm.get('price')?.errors?.required" class="form-text text-danger"
-                   jhiTranslate="entity.validation.required">
+          <input class="form-control" data-cy="price" formControlName="price" id="field_price" name="price" type="number" />
+          <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+            <small
+              *ngIf="editForm.get('price')?.errors?.required"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.required"
+            >
               Ce champ est obligatoire.
             </small>
             <small
               *ngIf="editForm.get('price')?.errors?.min"
               [translateValues]="{ min: 0 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.min"
+              krftmeTranslate="entity.validation.min"
             >
               Ce champ doit être supérieur à 0.
             </small>
-            <small [hidden]="!editForm.get('price')?.errors?.number" class="form-text text-danger"
-                   jhiTranslate="entity.validation.number">
+            <small
+              [hidden]="!editForm.get('price')?.errors?.number"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.number"
+            >
               Ce champ doit être un nombre.
             </small>
           </div>
@@ -98,22 +100,23 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.active' | translate"
             class="form-label"
             for="field_active"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.active"
-          >Active</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.active"
+            >Active</label
           >
-          <input class="form-check" data-cy="active" formControlName="active" id="field_active" name="active"
-                 type="checkbox" />
-          <div
-            *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
-            <small *ngIf="editForm.get('active')?.errors?.required" class="form-text text-danger"
-                   jhiTranslate="entity.validation.required">
+          <input class="form-check" data-cy="active" formControlName="active" id="field_active" name="active" type="checkbox" />
+          <div *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
+            <small
+              *ngIf="editForm.get('active')?.errors?.required"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.required"
+            >
               Ce champ est obligatoire.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label for="field_tags" jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.tags">Tags</label>
+          <label for="field_tags" krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.tags">Tags</label>
           <select
             [compareWith]="compareTag"
             class="form-control"
@@ -128,9 +131,8 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_provider"
-                 jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.provider"
-          >Provider</label
+          <label class="form-label" for="field_provider" krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.provider"
+            >Provider</label
           >
           <select
             [compareWith]="compareApplicationUser"
@@ -141,47 +143,42 @@
             name="provider"
           >
             <option *ngIf="editForm.get(['provider'])!.value == null" [ngValue]="null" selected></option>
-            <option *ngFor="let applicationUserOption of applicationUsersSharedCollection"
-                    [ngValue]="applicationUserOption">
+            <option *ngFor="let applicationUserOption of applicationUsersSharedCollection" [ngValue]="applicationUserOption">
               {{ applicationUserOption.id }}
             </option>
           </select>
         </div>
-        <div
-          *ngIf="editForm.get(['provider'])!.invalid && (editForm.get(['provider'])!.dirty || editForm.get(['provider'])!.touched)">
+        <div *ngIf="editForm.get(['provider'])!.invalid && (editForm.get(['provider'])!.dirty || editForm.get(['provider'])!.touched)">
           <small
             *ngIf="editForm.get(['provider'])?.errors?.required"
             class="form-text text-danger"
-            jhiTranslate="entity.validation.required"
+            krftmeTranslate="entity.validation.required"
           >
             Ce champ est obligatoire.
           </small>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_offer"
-                 jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.offer">Offer</label>
-          <select [compareWith]="compareOffer" class="form-control" data-cy="offer" formControlName="offer"
-                  id="field_offer"
-                  name="offer">
+          <label class="form-label" for="field_offer" krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.offer">Offer</label>
+          <select [compareWith]="compareOffer" class="form-control" data-cy="offer" formControlName="offer" id="field_offer" name="offer">
             <option *ngIf="editForm.get(['offer'])!.value == null" [ngValue]="null" selected></option>
-            <option *ngFor="let offerOption of offersSharedCollection"
-                    [ngValue]="offerOption">{{ offerOption.id }}</option>
+            <option *ngFor="let offerOption of offersSharedCollection" [ngValue]="offerOption">{{ offerOption.id }}</option>
           </select>
         </div>
-        <div
-          *ngIf="editForm.get(['offer'])!.invalid && (editForm.get(['offer'])!.dirty || editForm.get(['offer'])!.touched)">
-          <small *ngIf="editForm.get(['offer'])?.errors?.required" class="form-text text-danger"
-                 jhiTranslate="entity.validation.required">
+        <div *ngIf="editForm.get(['offer'])!.invalid && (editForm.get(['offer'])!.dirty || editForm.get(['offer'])!.touched)">
+          <small
+            *ngIf="editForm.get(['offer'])?.errors?.required"
+            class="form-text text-danger"
+            krftmeTranslate="entity.validation.required"
+          >
             Ce champ est obligatoire.
           </small>
         </div>
       </div>
 
       <div>
-        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
-                type="button">
-          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save" type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
         </button>
 
         <button
@@ -191,7 +188,7 @@
           id="save-entity"
           type="submit"
         >
-          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+          <fa-icon icon="save"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.save">Sauvegarder</span>
         </button>
       </div>
     </form>

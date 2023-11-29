@@ -2,7 +2,7 @@
   <div class="col-8">
     <div *ngIf="applicationUserOffer">
       <h2 data-cy="applicationUserOfferDetailsHeading">
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.detail.title">Application User Offer</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.detail.title">Application User Offer</span>
       </h2>
 
       <hr />
@@ -12,15 +12,15 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ applicationUserOffer.id }}</span>
         </dd>
         <dt>
           <span
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.description' | translate"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.description"
-          >Description</span
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.description"
+            >Description</span
           >
         </dt>
         <dd>
@@ -29,8 +29,8 @@
         <dt>
           <span
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.price' | translate"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.price"
-          >Price</span
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.price"
+            >Price</span
           >
         </dt>
         <dd>
@@ -39,28 +39,27 @@
         <dt>
           <span
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUserOffer.help.active' | translate"
-            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.active"
-          >Active</span
+            krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.active"
+            >Active</span
           >
         </dt>
         <dd>
           <span>{{ applicationUserOffer.active }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.tags">Tags</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.tags">Tags</span></dt>
         <dd>
           <span *ngFor="let tags of applicationUserOffer.tags; let last = last">
             <a [routerLink]="['/tag', tags.id, 'view']">{{ tags.id }}</a
             >{{ last ? '' : ', ' }}
           </span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.provider">Provider</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.provider">Provider</span></dt>
         <dd>
           <div *ngIf="applicationUserOffer.provider">
-            <a
-              [routerLink]="['/application-user', applicationUserOffer.provider.id, 'view']">{{ applicationUserOffer.provider.id }}</a>
+            <a [routerLink]="['/application-user', applicationUserOffer.provider.id, 'view']">{{ applicationUserOffer.provider.id }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.offer">Offer</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.offer">Offer</span></dt>
         <dd>
           <div *ngIf="applicationUserOffer.offer">
             <a [routerLink]="['/offer', applicationUserOffer.offer.id, 'view']">{{ applicationUserOffer.offer.id }}</a>
@@ -69,12 +68,11 @@
       </dl>
 
       <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
-      <button [routerLink]="['/application-user-offer', applicationUserOffer.id, 'edit']" class="btn btn-primary"
-              type="button">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      <button [routerLink]="['/application-user-offer', applicationUserOffer.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>

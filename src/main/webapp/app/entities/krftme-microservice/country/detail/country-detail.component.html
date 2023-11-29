@@ -1,8 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <div *ngIf="country">
-      <h2 data-cy="countryDetailsHeading"><span
-        jhiTranslate="krftmeApp.krftmeMicroserviceCountry.detail.title">Country</span></h2>
+      <h2 data-cy="countryDetailsHeading"><span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.detail.title">Country</span></h2>
 
       <hr />
 
@@ -11,15 +10,15 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ country.id }}</span>
         </dd>
         <dt>
           <span
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.name' | translate"
-            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.name"
-          >Name</span
+            krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.name"
+            >Name</span
           >
         </dt>
         <dd>
@@ -28,8 +27,8 @@
         <dt>
           <span
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.isoCode' | translate"
-            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode"
-          >Iso Code</span
+            krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode"
+            >Iso Code</span
           >
         </dt>
         <dd>
@@ -38,11 +37,11 @@
       </dl>
 
       <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
       <button [routerLink]="['/country', country.id, 'edit']" class="btn btn-primary" type="button">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="CityHeading">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.home.title">Cities</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.home.title">Cities</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/city/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.home.createLabel"> Créer un nouveau City </span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.home.createLabel"> Créer un nouveau City </span>
       </button>
     </div>
   </h2>
@@ -25,39 +25,39 @@
   <krftme-alert></krftme-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="cities?.length === 0">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.home.notFound">Aucun City trouvé</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.home.notFound">Aucun City trouvé</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="cities && cities.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
-        <th jhiSortBy="id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="global.field.id">ID</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="name" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.name">Name</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="zipCode" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.zipCode">Zip Code</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="region.id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceCity.region">Region</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th scope="col"></th>
-      </tr>
+        <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" krftmeSort>
+          <th krftmeSortBy="id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="name" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="zipCode" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.zipCode">Zip Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="region.id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceCity.region">Region</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
       </thead>
       <tbody>
         <tr *ngFor="let city of cities; trackBy: trackId" data-cy="entityTable">
@@ -75,17 +75,17 @@
             <div class="btn-group">
               <button type="submit" [routerLink]="['/city', city.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
               </button>
 
               <button type="submit" [routerLink]="['/city', city.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
               </button>
 
               <button type="submit" (click)="delete(city)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
               </button>
             </div>
           </td>

@@ -1,11 +1,11 @@
 <div>
   <h2 data-cy="OfferCategoryHeading" id="page-heading">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.title">OfferCategories</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.title">OfferCategories</span>
 
     <div class="d-flex justify-content-end">
       <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
         <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,8 +15,7 @@
         id="jh-create-entity"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span
-          jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.createLabel"> Créer un nouveau Offer Category </span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.createLabel"> Créer un nouveau Offer Category </span>
       </button>
     </div>
   </h2>
@@ -26,64 +25,63 @@
   <krftme-alert></krftme-alert>
 
   <div *ngIf="offerCategories?.length === 0" class="alert alert-warning" id="no-result">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.notFound">Aucun Offer Category trouvé</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.home.notFound">Aucun Offer Category trouvé</span>
   </div>
 
   <div *ngIf="offerCategories && offerCategories.length > 0" class="table-responsive table-entities" id="entities">
     <table aria-describedby="page-heading" class="table table-striped">
       <thead>
-      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
-        <th jhiSortBy="id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="global.field.id">ID</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="label" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.label">Label</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th scope="col"></th>
-      </tr>
+        <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" krftmeSort>
+          <th krftmeSortBy="id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="label" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.label">Label</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let offerCategory of offerCategories; trackBy: trackId" data-cy="entityTable">
-        <td>
-          <a [routerLink]="['/offer-category', offerCategory.id, 'view']">{{ offerCategory.id }}</a>
-        </td>
-        <td>{{ offerCategory.label }}</td>
-        <td class="text-end">
-          <div class="btn-group">
-            <button
-              [routerLink]="['/offer-category', offerCategory.id, 'view']"
-              class="btn btn-info btn-sm"
-              data-cy="entityDetailsButton"
-              type="submit"
-            >
-              <fa-icon icon="eye"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
-            </button>
+        <tr *ngFor="let offerCategory of offerCategories; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/offer-category', offerCategory.id, 'view']">{{ offerCategory.id }}</a>
+          </td>
+          <td>{{ offerCategory.label }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                [routerLink]="['/offer-category', offerCategory.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+                type="submit"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
+              </button>
 
-            <button
-              [routerLink]="['/offer-category', offerCategory.id, 'edit']"
-              class="btn btn-primary btn-sm"
-              data-cy="entityEditButton"
-              type="submit"
-            >
-              <fa-icon icon="pencil-alt"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
-            </button>
+              <button
+                [routerLink]="['/offer-category', offerCategory.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+                type="submit"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
+              </button>
 
-            <button (click)="delete(offerCategory)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton"
-                    type="submit">
-              <fa-icon icon="times"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
-            </button>
-          </div>
-        </td>
-      </tr>
+              <button (click)="delete(offerCategory)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

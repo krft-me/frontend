@@ -1,7 +1,8 @@
 <form (ngSubmit)="confirmDelete(machineCategory.id!)" *ngIf="machineCategory" name="deleteForm">
   <div class="modal-header">
-    <h4 class="modal-title" data-cy="machineCategoryDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirmation
-      de suppression</h4>
+    <h4 class="modal-title" data-cy="machineCategoryDeleteDialogHeading" krftmeTranslate="entity.delete.title">
+      Confirmation de suppression
+    </h4>
 
     <button (click)="cancel()" aria-hidden="true" class="btn-close" data-dismiss="modal" type="button">&times;</button>
   </div>
@@ -11,7 +12,7 @@
     <p
       [translateValues]="{ id: machineCategory.id }"
       id="krftme-delete-machineCategory-heading"
-      jhiTranslate="krftmeApp.krftmeMicroserviceMachineCategory.delete.question"
+      krftmeTranslate="krftmeApp.krftmeMicroserviceMachineCategory.delete.question"
     >
       Êtes-vous certain de vouloir supprimer le Machine Category {{ machineCategory.id }} ?
     </p>
@@ -19,12 +20,11 @@
 
   <div class="modal-footer">
     <button (click)="cancel()" class="btn btn-secondary" data-dismiss="modal" type="button">
-      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
     </button>
 
-    <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-machineCategory"
-            type="submit">
-      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+    <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-machineCategory" type="submit">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.delete">Supprimer</span>
     </button>
   </div>
 </form>

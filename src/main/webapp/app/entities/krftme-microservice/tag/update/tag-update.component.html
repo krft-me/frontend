@@ -1,8 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form (ngSubmit)="save()" [formGroup]="editForm" name="editForm" novalidate role="form">
-      <h2 data-cy="TagCreateUpdateHeading" id="krftme-tag-heading"
-          jhiTranslate="krftmeApp.krftmeMicroserviceTag.home.createOrEditLabel">
+      <h2 data-cy="TagCreateUpdateHeading" id="krftme-tag-heading" krftmeTranslate="krftmeApp.krftmeMicroserviceTag.home.createOrEditLabel">
         Créer ou éditer un Tag
       </h2>
 
@@ -10,26 +9,26 @@
         <krftme-alert-error></krftme-alert-error>
 
         <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
-          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
-          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
-                 type="number" />
+          <label class="form-label" for="field_id" krftmeTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id" type="number" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_label" jhiTranslate="krftmeApp.krftmeMicroserviceTag.label">Label</label>
-          <input class="form-control" data-cy="label" formControlName="label" id="field_label" name="label"
-                 type="text" />
-          <div
-            *ngIf="editForm.get('label')!.invalid && (editForm.get('label')!.dirty || editForm.get('label')!.touched)">
-            <small *ngIf="editForm.get('label')?.errors?.required" class="form-text text-danger"
-                   jhiTranslate="entity.validation.required">
+          <label class="form-label" for="field_label" krftmeTranslate="krftmeApp.krftmeMicroserviceTag.label">Label</label>
+          <input class="form-control" data-cy="label" formControlName="label" id="field_label" name="label" type="text" />
+          <div *ngIf="editForm.get('label')!.invalid && (editForm.get('label')!.dirty || editForm.get('label')!.touched)">
+            <small
+              *ngIf="editForm.get('label')?.errors?.required"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.required"
+            >
               Ce champ est obligatoire.
             </small>
             <small
               *ngIf="editForm.get('label')?.errors?.minlength"
               [translateValues]="{ min: 1 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.minlength"
+              krftmeTranslate="entity.validation.minlength"
             >
               Ce champ doit faire au minimum 1 caractères.
             </small>
@@ -38,9 +37,8 @@
       </div>
 
       <div>
-        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
-                type="button">
-          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save" type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
         </button>
 
         <button
@@ -50,7 +48,7 @@
           id="save-entity"
           type="submit"
         >
-          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+          <fa-icon icon="save"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.save">Sauvegarder</span>
         </button>
       </div>
     </form>

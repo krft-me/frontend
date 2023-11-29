@@ -2,7 +2,7 @@
   <div class="col-8">
     <div *ngIf="offerCategory">
       <h2 data-cy="offerCategoryDetailsHeading">
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.detail.title">Offer Category</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.detail.title">Offer Category</span>
       </h2>
 
       <hr />
@@ -12,22 +12,22 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ offerCategory.id }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceOfferCategory.label">Label</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceOfferCategory.label">Label</span></dt>
         <dd>
           <span>{{ offerCategory.label }}</span>
         </dd>
       </dl>
 
       <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
       <button [routerLink]="['/offer-category', offerCategory.id, 'edit']" class="btn btn-primary" type="button">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>

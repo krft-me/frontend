@@ -1,8 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <div *ngIf="showcase">
-      <h2 data-cy="showcaseDetailsHeading"><span jhiTranslate="krftmeApp.krftmeMicroserviceShowcase.detail.title">Showcase</span>
-      </h2>
+      <h2 data-cy="showcaseDetailsHeading"><span krftmeTranslate="krftmeApp.krftmeMicroserviceShowcase.detail.title">Showcase</span></h2>
 
       <hr />
 
@@ -11,15 +10,15 @@
       <krftme-alert></krftme-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span krftmeTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ showcase.id }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceShowcase.imageId">Image Id</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceShowcase.imageId">Image Id</span></dt>
         <dd>
           <span>{{ showcase.imageId }}</span>
         </dd>
-        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceShowcase.offer">Offer</span></dt>
+        <dt><span krftmeTranslate="krftmeApp.krftmeMicroserviceShowcase.offer">Offer</span></dt>
         <dd>
           <div *ngIf="showcase.offer">
             <a [routerLink]="['/application-user-offer', showcase.offer.id, 'view']">{{ showcase.offer.id }}</a>
@@ -28,11 +27,11 @@
       </dl>
 
       <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.back">Retour</span>
       </button>
 
       <button [routerLink]="['/showcase', showcase.id, 'edit']" class="btn btn-primary" type="button">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.edit">Editer</span>
       </button>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <h2
         data-cy="ReviewCreateUpdateHeading"
         id="krftme-review-heading"
-        jhiTranslate="krftmeApp.krftmeMicroserviceReview.home.createOrEditLabel"
+        krftmeTranslate="krftmeApp.krftmeMicroserviceReview.home.createOrEditLabel"
       >
         Créer ou éditer un Review
       </h2>
@@ -13,9 +13,8 @@
         <krftme-alert-error></krftme-alert-error>
 
         <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
-          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
-          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
-                 type="number" />
+          <label class="form-label" for="field_id" krftmeTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id" type="number" />
         </div>
 
         <div class="row mb-3">
@@ -23,22 +22,23 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceReview.help.rating' | translate"
             class="form-label"
             for="field_rating"
-            jhiTranslate="krftmeApp.krftmeMicroserviceReview.rating"
-          >Rating</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceReview.rating"
+            >Rating</label
           >
-          <input class="form-control" data-cy="rating" formControlName="rating" id="field_rating" name="rating"
-                 type="number" />
-          <div
-            *ngIf="editForm.get('rating')!.invalid && (editForm.get('rating')!.dirty || editForm.get('rating')!.touched)">
-            <small *ngIf="editForm.get('rating')?.errors?.required" class="form-text text-danger"
-                   jhiTranslate="entity.validation.required">
+          <input class="form-control" data-cy="rating" formControlName="rating" id="field_rating" name="rating" type="number" />
+          <div *ngIf="editForm.get('rating')!.invalid && (editForm.get('rating')!.dirty || editForm.get('rating')!.touched)">
+            <small
+              *ngIf="editForm.get('rating')?.errors?.required"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.required"
+            >
               Ce champ est obligatoire.
             </small>
             <small
               *ngIf="editForm.get('rating')?.errors?.min"
               [translateValues]="{ min: 0 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.min"
+              krftmeTranslate="entity.validation.min"
             >
               Ce champ doit être supérieur à 0.
             </small>
@@ -46,12 +46,15 @@
               *ngIf="editForm.get('rating')?.errors?.max"
               [translateValues]="{ max: 50 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.max"
+              krftmeTranslate="entity.validation.max"
             >
               Ce champ doit être inférieur à 50.
             </small>
-            <small [hidden]="!editForm.get('rating')?.errors?.number" class="form-text text-danger"
-                   jhiTranslate="entity.validation.number">
+            <small
+              [hidden]="!editForm.get('rating')?.errors?.number"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.number"
+            >
               Ce champ doit être un nombre.
             </small>
           </div>
@@ -62,36 +65,33 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceReview.help.comment' | translate"
             class="form-label"
             for="field_comment"
-            jhiTranslate="krftmeApp.krftmeMicroserviceReview.comment"
-          >Comment</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceReview.comment"
+            >Comment</label
           >
-          <input class="form-control" data-cy="comment" formControlName="comment" id="field_comment" name="comment"
-                 type="text" />
+          <input class="form-control" data-cy="comment" formControlName="comment" id="field_comment" name="comment" type="text" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_order"
-                 jhiTranslate="krftmeApp.krftmeMicroserviceReview.order">Order</label>
-          <select [compareWith]="compareOrder" class="form-control" data-cy="order" formControlName="order"
-                  id="field_order"
-                  name="order">
+          <label class="form-label" for="field_order" krftmeTranslate="krftmeApp.krftmeMicroserviceReview.order">Order</label>
+          <select [compareWith]="compareOrder" class="form-control" data-cy="order" formControlName="order" id="field_order" name="order">
             <option *ngIf="editForm.get(['order'])!.value == null" [ngValue]="null" selected></option>
             <option *ngFor="let orderOption of ordersCollection" [ngValue]="orderOption">{{ orderOption.id }}</option>
           </select>
         </div>
-        <div
-          *ngIf="editForm.get(['order'])!.invalid && (editForm.get(['order'])!.dirty || editForm.get(['order'])!.touched)">
-          <small *ngIf="editForm.get(['order'])?.errors?.required" class="form-text text-danger"
-                 jhiTranslate="entity.validation.required">
+        <div *ngIf="editForm.get(['order'])!.invalid && (editForm.get(['order'])!.dirty || editForm.get(['order'])!.touched)">
+          <small
+            *ngIf="editForm.get(['order'])?.errors?.required"
+            class="form-text text-danger"
+            krftmeTranslate="entity.validation.required"
+          >
             Ce champ est obligatoire.
           </small>
         </div>
       </div>
 
       <div>
-        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
-                type="button">
-          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save" type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
         </button>
 
         <button
@@ -101,7 +101,7 @@
           id="save-entity"
           type="submit"
         >
-          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+          <fa-icon icon="save"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.save">Sauvegarder</span>
         </button>
       </div>
     </form>

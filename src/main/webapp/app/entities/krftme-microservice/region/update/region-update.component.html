@@ -4,7 +4,7 @@
       <h2
         data-cy="RegionCreateUpdateHeading"
         id="krftme-region-heading"
-        jhiTranslate="krftmeApp.krftmeMicroserviceRegion.home.createOrEditLabel"
+        krftmeTranslate="krftmeApp.krftmeMicroserviceRegion.home.createOrEditLabel"
       >
         Créer ou éditer un Region
       </h2>
@@ -13,9 +13,8 @@
         <krftme-alert-error></krftme-alert-error>
 
         <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
-          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
-          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
-                 type="number" />
+          <label class="form-label" for="field_id" krftmeTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id" type="number" />
         </div>
 
         <div class="row mb-3">
@@ -23,20 +22,23 @@
             [ngbTooltip]="'krftmeApp.krftmeMicroserviceRegion.help.name' | translate"
             class="form-label"
             for="field_name"
-            jhiTranslate="krftmeApp.krftmeMicroserviceRegion.name"
-          >Name</label
+            krftmeTranslate="krftmeApp.krftmeMicroserviceRegion.name"
+            >Name</label
           >
           <input class="form-control" data-cy="name" formControlName="name" id="field_name" name="name" type="text" />
           <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
-            <small *ngIf="editForm.get('name')?.errors?.required" class="form-text text-danger"
-                   jhiTranslate="entity.validation.required">
+            <small
+              *ngIf="editForm.get('name')?.errors?.required"
+              class="form-text text-danger"
+              krftmeTranslate="entity.validation.required"
+            >
               Ce champ est obligatoire.
             </small>
             <small
               *ngIf="editForm.get('name')?.errors?.minlength"
               [translateValues]="{ min: 1 }"
               class="form-text text-danger"
-              jhiTranslate="entity.validation.minlength"
+              krftmeTranslate="entity.validation.minlength"
             >
               Ce champ doit faire au minimum 1 caractères.
             </small>
@@ -44,7 +46,7 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_country" jhiTranslate="krftmeApp.krftmeMicroserviceRegion.country">Country</label>
+          <label class="form-label" for="field_country" krftmeTranslate="krftmeApp.krftmeMicroserviceRegion.country">Country</label>
           <select
             [compareWith]="compareCountry"
             class="form-control"
@@ -54,16 +56,14 @@
             name="country"
           >
             <option *ngIf="editForm.get(['country'])!.value == null" [ngValue]="null" selected></option>
-            <option *ngFor="let countryOption of countriesSharedCollection"
-                    [ngValue]="countryOption">{{ countryOption.id }}</option>
+            <option *ngFor="let countryOption of countriesSharedCollection" [ngValue]="countryOption">{{ countryOption.id }}</option>
           </select>
         </div>
-        <div
-          *ngIf="editForm.get(['country'])!.invalid && (editForm.get(['country'])!.dirty || editForm.get(['country'])!.touched)">
+        <div *ngIf="editForm.get(['country'])!.invalid && (editForm.get(['country'])!.dirty || editForm.get(['country'])!.touched)">
           <small
             *ngIf="editForm.get(['country'])?.errors?.required"
             class="form-text text-danger"
-            jhiTranslate="entity.validation.required"
+            krftmeTranslate="entity.validation.required"
           >
             Ce champ est obligatoire.
           </small>
@@ -71,9 +71,8 @@
       </div>
 
       <div>
-        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
-                type="button">
-          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save" type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
         </button>
 
         <button
@@ -83,7 +82,7 @@
           id="save-entity"
           type="submit"
         >
-          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+          <fa-icon icon="save"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.save">Sauvegarder</span>
         </button>
       </div>
     </form>

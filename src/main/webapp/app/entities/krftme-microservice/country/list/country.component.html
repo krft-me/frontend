@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="CountryHeading">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.home.title">Countries</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.home.title">Countries</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/country/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.home.createLabel"> Créer un nouveau Country </span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.home.createLabel"> Créer un nouveau Country </span>
       </button>
     </div>
   </h2>
@@ -25,33 +25,33 @@
   <krftme-alert></krftme-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="countries?.length === 0">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.home.notFound">Aucun Country trouvé</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.home.notFound">Aucun Country trouvé</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="countries && countries.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
-        <th jhiSortBy="id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="global.field.id">ID</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="name" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.name">Name</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="isoCode" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode">Iso Code</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th scope="col"></th>
-      </tr>
+        <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" krftmeSort>
+          <th krftmeSortBy="id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="name" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="isoCode" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode">Iso Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
       </thead>
       <tbody>
         <tr *ngFor="let country of countries; trackBy: trackId" data-cy="entityTable">
@@ -69,7 +69,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
               </button>
 
               <button
@@ -79,12 +79,12 @@
                 data-cy="entityEditButton"
               >
                 <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
               </button>
 
               <button type="submit" (click)="delete(country)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
               </button>
             </div>
           </td>

@@ -1,11 +1,11 @@
 <div>
   <h2 data-cy="ReviewHeading" id="page-heading">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.home.title">Reviews</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.home.title">Reviews</span>
 
     <div class="d-flex justify-content-end">
       <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
         <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.home.refreshListLabel">Actualiser la liste</span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.home.refreshListLabel">Actualiser la liste</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         id="jh-create-entity"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.home.createLabel"> Créer un nouveau Review </span>
+        <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.home.createLabel"> Créer un nouveau Review </span>
       </button>
     </div>
   </h2>
@@ -25,75 +25,71 @@
   <krftme-alert></krftme-alert>
 
   <div *ngIf="reviews?.length === 0" class="alert alert-warning" id="no-result">
-    <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.home.notFound">Aucun Review trouvé</span>
+    <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.home.notFound">Aucun Review trouvé</span>
   </div>
 
   <div *ngIf="reviews && reviews.length > 0" class="table-responsive table-entities" id="entities">
     <table aria-describedby="page-heading" class="table table-striped">
       <thead>
-      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
-        <th jhiSortBy="id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="global.field.id">ID</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="rating" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.rating">Rating</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="comment" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.comment">Comment</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th jhiSortBy="order.id" scope="col">
-          <div class="d-flex">
-            <span jhiTranslate="krftmeApp.krftmeMicroserviceReview.order">Order</span>
-            <fa-icon class="p-1" icon="sort"></fa-icon>
-          </div>
-        </th>
-        <th scope="col"></th>
-      </tr>
+        <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" krftmeSort>
+          <th krftmeSortBy="id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="rating" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.rating">Rating</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="comment" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th krftmeSortBy="order.id" scope="col">
+            <div class="d-flex">
+              <span krftmeTranslate="krftmeApp.krftmeMicroserviceReview.order">Order</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let review of reviews; trackBy: trackId" data-cy="entityTable">
-        <td>
-          <a [routerLink]="['/review', review.id, 'view']">{{ review.id }}</a>
-        </td>
-        <td>{{ review.rating }}</td>
-        <td>{{ review.comment }}</td>
-        <td>
-          <div *ngIf="review.order">
-            <a [routerLink]="['/order', review.order.id, 'view']">{{ review.order.id }}</a>
-          </div>
-        </td>
-        <td class="text-end">
-          <div class="btn-group">
-            <button [routerLink]="['/review', review.id, 'view']" class="btn btn-info btn-sm"
-                    data-cy="entityDetailsButton"
-                    type="submit">
-              <fa-icon icon="eye"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
-            </button>
+        <tr *ngFor="let review of reviews; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/review', review.id, 'view']">{{ review.id }}</a>
+          </td>
+          <td>{{ review.rating }}</td>
+          <td>{{ review.comment }}</td>
+          <td>
+            <div *ngIf="review.order">
+              <a [routerLink]="['/order', review.order.id, 'view']">{{ review.order.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button [routerLink]="['/review', review.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton" type="submit">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.view">Voir</span>
+              </button>
 
-            <button [routerLink]="['/review', review.id, 'edit']" class="btn btn-primary btn-sm"
-                    data-cy="entityEditButton"
-                    type="submit">
-              <fa-icon icon="pencil-alt"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
-            </button>
+              <button [routerLink]="['/review', review.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton" type="submit">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.edit">Editer</span>
+              </button>
 
-            <button (click)="delete(review)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
-              <fa-icon icon="times"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
-            </button>
-          </div>
-        </td>
-      </tr>
+              <button (click)="delete(review)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" krftmeTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

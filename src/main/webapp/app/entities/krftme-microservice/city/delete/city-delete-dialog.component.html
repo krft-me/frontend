@@ -1,26 +1,28 @@
 <form (ngSubmit)="confirmDelete(city.id!)" *ngIf="city" name="deleteForm">
   <div class="modal-header">
-    <h4 class="modal-title" data-cy="cityDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirmation de
-      suppression</h4>
+    <h4 class="modal-title" data-cy="cityDeleteDialogHeading" krftmeTranslate="entity.delete.title">Confirmation de suppression</h4>
 
     <button (click)="cancel()" aria-hidden="true" class="btn-close" data-dismiss="modal" type="button">&times;</button>
   </div>
 
   <div class="modal-body">
     <krftme-alert-error></krftme-alert-error>
-    <p [translateValues]="{ id: city.id }" id="krftme-delete-city-heading"
-       jhiTranslate="krftmeApp.krftmeMicroserviceCity.delete.question">
+    <p
+      [translateValues]="{ id: city.id }"
+      id="krftme-delete-city-heading"
+      krftmeTranslate="krftmeApp.krftmeMicroserviceCity.delete.question"
+    >
       Êtes-vous certain de vouloir supprimer le City {{ city.id }} ?
     </p>
   </div>
 
   <div class="modal-footer">
     <button (click)="cancel()" class="btn btn-secondary" data-dismiss="modal" type="button">
-      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.cancel">Annuler</span>
     </button>
 
     <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-city" type="submit">
-      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+      <fa-icon icon="times"></fa-icon>&nbsp;<span krftmeTranslate="entity.action.delete">Supprimer</span>
     </button>
   </div>
 </form>
