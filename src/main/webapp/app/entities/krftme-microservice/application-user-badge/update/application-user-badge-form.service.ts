@@ -109,7 +109,7 @@ export class ApplicationUserBadgeFormService {
   ): ApplicationUserBadgeFormRawValue | PartialWithRequiredKeyOf<NewApplicationUserBadgeFormRawValue> {
     return {
       ...applicationUserBadge,
-      obtainedDate: applicationUserBadge.obtainedDate ? applicationUserBadge.obtainedDate.format(DATE_TIME_FORMAT) : undefine,
+      obtainedDate: applicationUserBadge.obtainedDate ? applicationUserBadge.obtainedDate.format(DATE_TIME_FORMAT) : undefined,
     };
   }
 }
