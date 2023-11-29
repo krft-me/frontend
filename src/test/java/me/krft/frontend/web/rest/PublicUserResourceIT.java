@@ -86,9 +86,9 @@ class PublicUserResourceIT {
             .expectBody()
             .jsonPath("$")
             .isArray()
-            .jsonPath("$[?(@=='" + AuthoritiesConstants.ADMIN + "')]")
+            .jsonPath("$[?(@=='" + AuthoritiesConstants.ADMIN + ")]")
             .hasJsonPath()
-            .jsonPath("$[?(@=='" + AuthoritiesConstants.USER + "')]")
+            .jsonPath("$[?(@=='" + AuthoritiesConstants.USER + ")]")
             .hasJsonPath();
     }
 }

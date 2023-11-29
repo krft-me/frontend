@@ -35,7 +35,7 @@ describe('ApplicationUserBadge Form Service', () => {
             id: expect.any(Object),
             obtainedDate: expect.any(Object),
             user: expect.any(Object),
-            badge: expect.any(Object
+            badge: expect.any(Object),
           })
         );
       });

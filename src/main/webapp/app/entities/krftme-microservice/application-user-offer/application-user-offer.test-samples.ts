@@ -9,9 +9,9 @@ export const sampleWithRequiredData: IApplicationUserOffer = {
 
 export const sampleWithPartialData: IApplicationUserOffer = {
   id: 14277,
-  description: "Soap Coordinateur Synergized"',
+  description: "Soap Coordinateur Synergized",
   price: 23412,
-  active: tru
+  active: true
 };
 
 export const sampleWithFullData: IApplicationUserOffer = {

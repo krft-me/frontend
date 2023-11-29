@@ -41,7 +41,7 @@ describe('ApplicationUser Form Service', () => {
             username: expect.any(Object),
             profilePictureId: expect.any(Object),
             internalUser: expect.any(Object),
-            city: expect.any(Object
+            city: expect.any(Object)
           })
         );
       });

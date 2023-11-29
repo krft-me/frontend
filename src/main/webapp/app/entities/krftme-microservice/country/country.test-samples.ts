@@ -12,7 +12,7 @@ export const sampleWithPartialData: ICountry = {
 
 export const sampleWithFullData: ICountry = {
   id: 14843,
-  name: "Mandatory"',
+  name: "Mandatory",
   isoCode: "Pro"
 };
 

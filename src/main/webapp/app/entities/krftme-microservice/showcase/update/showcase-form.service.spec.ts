@@ -33,7 +33,7 @@ describe('Showcase Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             imageId: expect.any(Object),
-            offer: expect.any(Object
+            offer: expect.any(Object)
           })
         );
       });

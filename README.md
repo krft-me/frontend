@@ -140,7 +140,7 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/krftme
+            issuer-uri: http://localhost:9080/realms/jhipster
         registration:
           oidc:
             client-id: web_app
@@ -260,20 +260,16 @@ jhipster:
         - https://{your-auth0-domain}/api/v2/
 ```
 
-Before running Cypress tests, specify Auth0 user credentials by overriding the `CYPRESS_E2E_USERNAME`
-and `CYPRESS_E2E_PASSWORD` environment variables.
+Before running Cypress tests, specify Auth0 user credentials by overriding the `CYPRESS_E2E_USERNAME` and `CYPRESS_E2E_PASSWORD` environment variables.
 
 ```
 export CYPRESS_E2E_USERNAME="<your-username>"
 export CYPRESS_E2E_PASSWORD="<your-password>"
 ```
 
-See Cypress' documentation for setting
-OS [environment variables](https://docs.cypress.io/guides/guides/environment-variables#Setting) to learn more.
+See Cypress' documentation for setting OS [environment variables](https://docs.cypress.io/guides/guides/environment-variables#Setting) to learn more.
 
-**Auth0 requires a user to provide authorization consent on the first login.** Consent flow is currently not handled in
-the Cypress test suite. To mitigate the issue, you can use a user account that has already granted consent to authorize
-application access via interactive login.
+**Auth0 requires a user to provide authorization consent on the first login.** Consent flow is currently not handled in the Cypress test suite. To mitigate the issue, you can use a user account that has already granted consent to authorize application access via interactive login.
 
 ## Building for production
 
@@ -320,16 +316,12 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 npm test
 ```
 
-UI end-to-end tests are powered by [Cypress][]. They're located
-in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`)
-in a second one.
+UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
+and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
 
 #### Lighthouse audits
 
-You can execute
-automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by
-running `npm run e2e:cypress:audits`.
+You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
 You should only run the audits when your application is packaged with the production profile.
 The lighthouse report is created in `target/cypress/lhreport.html`
 
@@ -361,12 +353,9 @@ Sonar is used to analyse code quality. You can start a local Sonar server (acces
 docker-compose -f src/main/docker/sonar.yml up -d
 ```
 
-Note: we have turned off authentication in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box
-experience while trying out SonarQube, for real use cases turn it back on.
+Note: we have turned off authentication in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
 
-You can run a Sonar analysis with using
-the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven
-plugin.
+You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
 
 Then, run a Sonar analysis:
 
@@ -431,29 +420,16 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [using jhipster in development]: https://www.jhipster.tech/documentation-archive/v7.9.4/development/
 [service discovery and configuration with consul]: https://www.jhipster.tech/documentation-archive/v7.9.4/microservices-architecture/#consul
 [using docker and docker-compose]: https://www.jhipster.tech/documentation-archive/v7.9.4/docker-compose
-
 [using jhipster in production]: https://www.jhipster.tech/documentation-archive/v7.9.4/production/
-
 [running tests page]: https://www.jhipster.tech/documentation-archive/v7.9.4/running-tests/
-
 [code quality page]: https://www.jhipster.tech/documentation-archive/v7.9.4/code-quality/
-
 [setting up continuous integration]: https://www.jhipster.tech/documentation-archive/v7.9.4/setting-up-ci/
-
 [node.js]: https://nodejs.org/
-
 [npm]: https://www.npmjs.com/
-
 [webpack]: https://webpack.github.io/
-
 [browsersync]: https://www.browsersync.io/
-
 [jest]: https://facebook.github.io/jest/
-
 [cypress]: https://www.cypress.io/
-
 [leaflet]: https://leafletjs.com/
-
 [definitelytyped]: https://definitelytyped.org/
-
 [angular cli]: https://cli.angular.io/

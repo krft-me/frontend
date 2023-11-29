@@ -40,9 +40,7 @@ describe("OfferCategory routing resolve service", () => {
   });
 
   describe("resolve", () => {
-    "should return IOfferCategory returned by find";
-    find;
-    ', () => {
+    it('should return IOfferCategory returned by find', () => {
     // GIVEN
     service.find = jest.fn(id => of(new HttpResponse({ body: { id } })));
     mockActivatedRouteSnapshot.params = { id: 123 };

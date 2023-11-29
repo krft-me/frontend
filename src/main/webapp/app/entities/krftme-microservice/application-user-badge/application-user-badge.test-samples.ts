@@ -9,7 +9,7 @@ export const sampleWithRequiredData: IApplicationUserBadge = {
 
 export const sampleWithPartialData: IApplicationUserBadge = {
   id: 490,
-  obtainedDate: dayjs"2023-11-29T04:47"',
+  obtainedDate: dayjs("2023-11-29T04:47"),
 };
 
 export const sampleWithFullData: IApplicationUserBadge = {

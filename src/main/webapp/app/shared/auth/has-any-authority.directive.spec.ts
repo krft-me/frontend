@@ -1,21 +1,20 @@
-jest.mock("app/core/auth/account.service");
+jest.mock('app/core/auth/account.service');
 
-import { Component, ElementRef, ViewChild } from "@angular/core";
-import { TestBed, waitForAsync } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { Subject } from "rxjs";
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
 
-import { AccountService } from "app/core/auth/account.service";
-import { Account } from "app/core/auth/account.model";
+import { AccountService } from 'app/core/auth/account.service';
+import { Account } from 'app/core/auth/account.model';
 
-import { HasAnyAuthorityDirective } from "./has-any-authority.directive";
+import { HasAnyAuthorityDirective } from './has-any-authority.directive';
 
 @Component({
-  template: `
-    <div *jhiHasAnyAuthority="'ROLE_ADMIN'" #content></div> `
+  template: ` <div *krftmeHasAnyAuthority="'ROLE_ADMIN'" #content></div> `,
 })
 class TestHasAnyAuthorityDirectiveComponent {
-  @ViewChild("content", { static: false })
+  @ViewChild('content', { static: false })
   content?: ElementRef;
 }
 
@@ -26,7 +25,7 @@ describe('HasAnyAuthorityDirective tests', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [HasAnyAuthorityDirective, TestHasAnyAuthorityDirectiveComponent],
-      providers: [AccountService]
+      providers: [AccountService],
     });
   }));
 
@@ -35,19 +34,19 @@ describe('HasAnyAuthorityDirective tests', () => {
     mockAccountService.getAuthenticationState = jest.fn(() => authenticationState.asObservable());
   });
 
-  describe('se"set jhiHasAnyAuthority") => {
-  it('sh"should show restricted content to user if user has required role") => {
-  // GIVEN
-  mockAccountService.hasAnyAuthority = jest.fn(() => true);
-  const fixture = TestBed.createComponent(TestHasAnyAuthorityDirectiveComponent);
-  const comp = fixture.componentInstance;
+  describe('set krftmeHasAnyAuthority', () => {
+    it('should show restricted content to user if user has required role', () => {
+      // GIVEN
+      mockAccountService.hasAnyAuthority = jest.fn(() => true);
+      const fixture = TestBed.createComponent(TestHasAnyAuthorityDirectiveComponent);
+      const comp = fixture.componentInstance;
 
-  // WHEN
-  fixture.detectChanges();
+      // WHEN
+      fixture.detectChanges();
 
-  // THEN
-  expect(comp.content).toBeDefined();
-});
+      // THEN
+      expect(comp.content).toBeDefined();
+    });
 
     it('should not show restricted content to user if user has not required role', () => {
       // GIVEN
@@ -61,17 +60,17 @@ describe('HasAnyAuthorityDirective tests', () => {
       // THEN
       expect(comp.content).toBeUndefined();
     });
-})
+  });
 
-describe("change authorities", () => {
-  it("should show or not show restricted content correctly if user authorities are changing", () => {
-    // GIVEN
-    mockAccountService.hasAnyAuthority = jest.fn(() => true);
-    const fixture = TestBed.createComponent(TestHasAnyAuthorityDirectiveComponent);
-    const comp = fixture.componentInstance;
+  describe('change authorities', () => {
+    it('should show or not show restricted content correctly if user authorities are changing', () => {
+      // GIVEN
+      mockAccountService.hasAnyAuthority = jest.fn(() => true);
+      const fixture = TestBed.createComponent(TestHasAnyAuthorityDirectiveComponent);
+      const comp = fixture.componentInstance;
 
-    // WHEN
-    fixture.detectChanges();
+      // WHEN
+      fixture.detectChanges();
 
       // THEN
       expect(comp.content).toBeDefined();
@@ -128,4 +127,4 @@ describe("change authorities", () => {
       expect(mockAccountService.hasAnyAuthority).not.toHaveBeenCalled();
     });
   });
-})
+});

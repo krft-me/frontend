@@ -59,10 +59,10 @@ describe("Showcase Management Update Component", () => {
       showcase.offer = offer;
 
       const applicationUserOfferCollection: IApplicationUserOffer[] = [{ id: 15258 }];
-      jest.spyOn(applicationUserOfferService, 'que"query"ckReturnValue(of(new HttpResponse({ body: applicationUserOfferCollection })));
+      jest.spyOn(applicationUserOfferService, 'query').mockReturnValue(of(new HttpResponse({ body: applicationUserOfferCollection })));
       const additionalApplicationUserOffers = [offer];
       const expectedCollection: IApplicationUserOffer[] = [...additionalApplicationUserOffers, ...applicationUserOfferCollection];
-      jest.spyOn(applicationUserOfferService, 'add"addApplicationUserOfferToCollectionIfMissing"ckReturnValue(expectedCollection);
+      jest.spyOn(applicationUserOfferService, 'addApplicationUserOfferToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ showcase });
       comp.ngOnInit();

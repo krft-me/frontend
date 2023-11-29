@@ -58,7 +58,7 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://DO_NOT_CALL:9080/realms/krftme
+            issuer-uri: http://DO_NOT_CALL:9080/realms/jhipster
 
 server:
   port: 10344

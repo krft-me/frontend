@@ -9,8 +9,8 @@ export const sampleWithRequiredData: IApplicationUser = {
 
 export const sampleWithPartialData: IApplicationUser = {
   id: 34398,
-  firstName: "Jacques"',
-  lastName: "Prevost"',
+  firstName: "Jacques",
+  lastName: "Prevost",
   username: "Electronics transmit"
 };
 

@@ -2,42 +2,42 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 import {
-  accountMenuSelector,
+  navbarSelector,
   adminMenuSelector,
-  entityItemSelector,
+  accountMenuSelector,
+  registerItemSelector,
   loginItemSelector,
   logoutItemSelector,
-  navbarSelector,
+  settingsItemSelector,
   passwordItemSelector,
-  registerItemSelector,
-  settingsItemSelector
-} from "./commands";
+  entityItemSelector,
+} from './commands';
 
-Cypress.Commands.add("clickOnLoginItem", () => {
+Cypress.Commands.add('clickOnLoginItem', () => {
   return cy.get(navbarSelector).get(accountMenuSelector).click().get(loginItemSelector).click();
 });
 
-Cypress.Commands.add("clickOnLogoutItem", () => {
+Cypress.Commands.add('clickOnLogoutItem', () => {
   return cy.get(navbarSelector).get(accountMenuSelector).click().get(logoutItemSelector).click();
 });
 
-Cypress.Commands.add("clickOnRegisterItem", () => {
+Cypress.Commands.add('clickOnRegisterItem', () => {
   return cy.get(navbarSelector).get(accountMenuSelector).click().get(registerItemSelector).click();
 });
 
-Cypress.Commands.add("clickOnSettingsItem", () => {
+Cypress.Commands.add('clickOnSettingsItem', () => {
   return cy.get(navbarSelector).get(accountMenuSelector).click().get(settingsItemSelector).click();
 });
 
-Cypress.Commands.add("clickOnPasswordItem", () => {
+Cypress.Commands.add('clickOnPasswordItem', () => {
   return cy.get(navbarSelector).get(accountMenuSelector).click().get(passwordItemSelector).click();
 });
 
-Cypress.Commands.add("clickOnAdminMenuItem", (item: string) => {
+Cypress.Commands.add('clickOnAdminMenuItem', (item: string) => {
   return cy.get(navbarSelector).get(adminMenuSelector).click().get(`.dropdown-item[href="/admin/${item}"]`).click();
 });
 
-Cypress.Commands.add("clickOnEntityMenuItem", (entityName: string) => {
+Cypress.Commands.add('clickOnEntityMenuItem', (entityName: string) => {
   return cy.get(navbarSelector).get(entityItemSelector).click().get(`.dropdown-item[href="/${entityName}"]`).click({ force: true });
 });
 
@@ -45,17 +45,11 @@ declare global {
   namespace Cypress {
     interface Chainable {
       clickOnLoginItem(): Cypress.Chainable;
-
       clickOnLogoutItem(): Cypress.Chainable;
-
       clickOnRegisterItem(): Cypress.Chainable;
-
       clickOnSettingsItem(): Cypress.Chainable;
-
       clickOnPasswordItem(): Cypress.Chainable;
-
       clickOnAdminMenuItem(item: string): Cypress.Chainable;
-
       clickOnEntityMenuItem(entityName: string): Cypress.Chainable;
     }
   }

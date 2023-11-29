@@ -12,8 +12,8 @@ export const sampleWithRequiredData: IOrder = {
 
 export const sampleWithPartialData: IOrder = {
   id: 52696,
-  date: dayjs"2023-11-29T02:39"'),
-  state: State"SIGNED"',
+  date: dayjs("2023-11-29T02:39"),
+  state: State.SIGNED,
 };
 
 export const sampleWithFullData: IOrder = {

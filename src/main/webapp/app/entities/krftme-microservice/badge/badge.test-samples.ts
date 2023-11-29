@@ -8,7 +8,7 @@ export const sampleWithRequiredData: IBadge = {
 
 export const sampleWithPartialData: IBadge = {
   id: 36799,
-  label: "a"',
+  label: "a",
   picture: "Tasty platforms"
 };
 

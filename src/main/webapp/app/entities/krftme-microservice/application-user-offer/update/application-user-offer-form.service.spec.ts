@@ -41,7 +41,7 @@ describe('ApplicationUserOffer Form Service', () => {
             active: expect.any(Object),
             tags: expect.any(Object),
             provider: expect.any(Object),
-            offer: expect.any(Object
+            offer: expect.any(Object),
           })
         );
       });

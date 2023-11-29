@@ -33,7 +33,7 @@ describe('Country Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             name: expect.any(Object),
-            isoCode: expect.any(Object
+            isoCode: expect.any(Object),
           })
         );
       });

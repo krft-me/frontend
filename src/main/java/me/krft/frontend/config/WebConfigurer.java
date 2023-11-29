@@ -1,6 +1,7 @@
 package me.krft.frontend.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.web.reactive.ResourceHandlerRegistrationCustomizer;
@@ -22,8 +23,6 @@ import org.zalando.problem.spring.webflux.advice.ProblemHandling;
 import tech.jhipster.config.JHipsterConstants;
 import tech.jhipster.config.JHipsterProperties;
 import tech.jhipster.web.filter.reactive.CachingHttpHeadersFilter;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Configuration of web application with Servlet 3.0 APIs.

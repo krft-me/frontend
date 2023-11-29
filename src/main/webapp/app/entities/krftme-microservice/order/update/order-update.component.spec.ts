@@ -65,10 +65,10 @@ describe("Order Management Update Component", () => {
       order.offer = offer;
 
       const applicationUserOfferCollection: IApplicationUserOffer[] = [{ id: 50484 }];
-      jest.spyOn(applicationUserOfferService, 'query"query"ReturnValue(of(new HttpResponse({ body: applicationUserOfferCollection })));
+      jest.spyOn(applicationUserOfferService, 'query').mockReturnValue(of(new HttpResponse({ body: applicationUserOfferCollection })));
       const additionalApplicationUserOffers = [offer];
       const expectedCollection: IApplicationUserOffer[] = [...additionalApplicationUserOffers, ...applicationUserOfferCollection];
-      jest.spyOn(applicationUserOfferService, 'addAp"addApplicationUserOfferToCollectionIfMissing"ReturnValue(expectedCollection);
+      jest.spyOn(applicationUserOfferService, 'addApplicationUserOfferToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ order });
       comp.ngOnInit();

@@ -22,7 +22,7 @@ describe('City Form Service', () => {
             id: expect.any(Object),
             name: expect.any(Object),
             zipCode: expect.any(Object),
-            region: expect.any(Object)
+            region: expect.any(Object),
           })
         );
       });
@@ -35,7 +35,7 @@ describe('City Form Service', () => {
             id: expect.any(Object),
             name: expect.any(Object),
             zipCode: expect.any(Object),
-            region: expect.any(Object
+            region: expect.any(Object),
           })
         );
       });

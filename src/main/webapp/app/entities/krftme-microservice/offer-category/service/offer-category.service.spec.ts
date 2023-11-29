@@ -41,7 +41,7 @@ describe("OfferCategory Service", () => {
       expect(expectedResult).toMatchObject(expected);
     });
 
-    it('shoul"should create a OfferCategory"> {
+    it('shoul create a OfferCategory', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const offerCategory = { ...sampleWithNewData };
     const returnedFromService = { ...requireRestSample };
@@ -49,20 +49,20 @@ describe("OfferCategory Service", () => {
 
     service.create(offerCategory).subscribe(resp => (expectedResult = resp.body));
 
-    const req = httpMock.expectOne({
-      method: "POST""POST"     req.flush(returnedFromService);
+    const req = httpMock.expectOne({ method: "POST"});
+      req.flush(returnedFromService);
       expect(expectedResult).toMatchObject(expected);
     });
 
-    it('shoul"should update a OfferCategory"> {
+    it("should update a OfferCategory", () => {
     const offerCategory = { ...sampleWithRequiredData };
     const returnedFromService = { ...requireRestSample };
     const expected = { ...sampleWithRequiredData };
 
     service.update(offerCategory).subscribe(resp => (expectedResult = resp.body));
 
-    const req = httpMock.expectOne({
-      method: "PUT" "PUT"     req.flush(returnedFromService);
+    const req = httpMock.expectOne({ method: "PUT"});
+      req.flush(returnedFromService);
       expect(expectedResult).toMatchObject(expected);
     });
 

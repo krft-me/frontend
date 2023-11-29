@@ -24,7 +24,7 @@ export class ParseLinks {
       const section: string[] = p.split(';');
 
       if (section.length !== 2) {
-        throw new Error('section could not be split on ";"');
+        throw new Error('section could not be split on ');
       }
 
       const url: string = section[0].replace(/<(.*)>/, '$1').trim(); // NOSONAR

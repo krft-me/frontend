@@ -37,7 +37,7 @@ describe('Order Form Service', () => {
             date: expect.any(Object),
             state: expect.any(Object),
             offer: expect.any(Object),
-            customer: expect.any(Object
+            customer: expect.any(Object)
           })
         );
       });

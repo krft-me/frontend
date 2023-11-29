@@ -40,9 +40,7 @@ describe("Review routing resolve service", () => {
   });
 
   describe("resolve", () => {
-    "should return IReview returned by find";
-    find;
-    ', () => {
+    it("should return IReview returned by find", () => {
     // GIVEN
     service.find = jest.fn(id => of(new HttpResponse({ body: { id } })));
     mockActivatedRouteSnapshot.params = { id: 123 };

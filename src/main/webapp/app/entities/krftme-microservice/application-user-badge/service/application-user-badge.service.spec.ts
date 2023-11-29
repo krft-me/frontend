@@ -13,7 +13,7 @@ import { ApplicationUserBadgeService, RestApplicationUserBadge } from "./applica
 
 const requireRestSample: RestApplicationUserBadge = {
   ...sampleWithRequiredData,
-  obtainedDate: sampleWithRequiredData.obtainedDate?.toJSON(,
+  obtainedDate: sampleWithRequiredData.obtainedDate?.toJSON(),
 };
 
 describe('ApplicationUserBadge Service', () => {

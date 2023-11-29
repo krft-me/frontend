@@ -41,7 +41,7 @@ describe("Review Service", () => {
       expect(expectedResult).toMatchObject(expected);
     });
 
-    it('shoul"should create a Review"> {
+    it('should create a Review', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const review = { ...sampleWithNewData };
     const returnedFromService = { ...requireRestSample };
@@ -49,20 +49,20 @@ describe("Review Service", () => {
 
     service.create(review).subscribe(resp => (expectedResult = resp.body));
 
-    const req = httpMock.expectOne({
-      method: "POST""POST"     req.flush(returnedFromService);
+    const req = httpMock.expectOne({ method: "POST"});
+      req.flush(returnedFromService);
       expect(expectedResult).toMatchObject(expected);
     });
 
-    it('shoul"should update a Review"> {
+    it('should update a Review', () => {
     const review = { ...sampleWithRequiredData };
     const returnedFromService = { ...requireRestSample };
     const expected = { ...sampleWithRequiredData };
 
     service.update(review).subscribe(resp => (expectedResult = resp.body));
 
-    const req = httpMock.expectOne({
-      method: "PUT" "PUT"     req.flush(returnedFromService);
+    const req = httpMock.expectOne({ method: "PUT"});
+      req.flush(returnedFromService);
       expect(expectedResult).toMatchObject(expected);
     });
 

@@ -61,10 +61,10 @@ describe("ApplicationUserBadge Management Update Component", () => {
       applicationUserBadge.user = user;
 
       const applicationUserCollection: IApplicationUser[] = [{ id: 28291 }];
-      jest.spyOn(applicationUserService, 'q"query"mockReturnValue(of(new HttpResponse({ body: applicationUserCollection })));
+      jest.spyOn(applicationUserService, 'query').mockReturnValue(of(new HttpResponse({ body: applicationUserCollection })));
       const additionalApplicationUsers = [user];
       const expectedCollection: IApplicationUser[] = [...additionalApplicationUsers, ...applicationUserCollection];
-      jest.spyOn(applicationUserService, 'a"addApplicationUserToCollectionIfMissing"mockReturnValue(expectedCollection);
+      jest.spyOn(applicationUserService, 'addApplicationUserToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ applicationUserBadge });
       comp.ngOnInit();

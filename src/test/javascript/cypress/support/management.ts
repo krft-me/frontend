@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-Cypress.Commands.add("getManagementInfo", () => {
+Cypress.Commands.add('getManagementInfo', () => {
   return cy
     .request({
-      method: "GET",
-      url: "/management/info"
+      method: 'GET',
+      url: '/management/info',
     })
     .then(response => response.body);
 });

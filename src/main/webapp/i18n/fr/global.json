@@ -7,21 +7,6 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
-        "krftmeMicroserviceCity": "City",
-        "krftmeMicroserviceRegion": "Region",
-        "krftmeMicroserviceCountry": "Country",
-        "krftmeMicroserviceApplicationUser": "Application User",
-        "krftmeMicroserviceReview": "Review",
-        "krftmeMicroserviceMachine": "Machine",
-        "krftmeMicroserviceOffer": "Offer",
-        "krftmeMicroserviceApplicationUserOffer": "Application User Offer",
-        "krftmeMicroserviceShowcase": "Showcase",
-        "krftmeMicroserviceBadge": "Badge",
-        "krftmeMicroserviceApplicationUserBadge": "Application User Badge",
-        "krftmeMicroserviceOrder": "Order",
-        "krftmeMicroserviceTag": "Tag",
-        "krftmeMicroserviceMachineCategory": "Machine Category",
-        "krftmeMicroserviceOfferCategory": "Offer Category",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

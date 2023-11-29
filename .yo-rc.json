@@ -42,10 +42,7 @@
     "jhiPrefix": "krftme",
     "jhipsterVersion": "7.9.4",
     "jwtSecretKey": "OGM0OGQzMTM0MTU5ZDlhOWUxOWI3MjBhMjM0ZmM4YWYwNzNmNGFmYzcyZTQzOTNkNzI1ZTM2MGNmZjY5MWUzOTE1YjUxM2Y0MTQzYjk5OTVkZjY0ZTJmNWViMmRlOTA4YmFmMDI2ZGM2Zjg4NjNjMDk2MTkwYzBlMzRkNDYzNTU=",
-    "languages": [
-      "fr",
-      "en"
-    ],
+    "languages": ["fr", "en"],
     "lastLiquibaseTimestamp": 1701285298000,
     "messageBroker": false,
     "microfrontend": false,
@@ -64,9 +61,7 @@
     "skipClient": false,
     "skipFakeData": false,
     "skipUserManagement": true,
-    "testFrameworks": [
-      "cypress"
-    ],
+    "testFrameworks": ["cypress"],
     "websocket": false,
     "withAdminUi": false
   }

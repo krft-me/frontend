@@ -35,7 +35,7 @@ describe('Offer Form Service', () => {
             id: expect.any(Object),
             name: expect.any(Object),
             machine: expect.any(Object),
-            category: expect.any(Object
+            category: expect.any(Object)
           })
         );
       });

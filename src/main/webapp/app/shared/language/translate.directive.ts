@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Input, Directive, ElementRef, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { translationNotFoundMessage } from 'app/config/translation.config';
   selector: '[krftmeTranslate]',
 })
 export class TranslateDirective implements OnChanges, OnInit, OnDestroy {
-  @Input() jhiTranslate!: string;
+  @Input() krftmeTranslate!: string;
   @Input() translateValues?: { [key: string]: unknown };
 
   private readonly directiveDestroyed = new Subject();
@@ -39,13 +39,13 @@ export class TranslateDirective implements OnChanges, OnInit, OnDestroy {
 
   private getTranslation(): void {
     this.translateService
-      .get(this.jhiTranslate, this.translateValues)
+      .get(this.krftmeTranslate, this.translateValues)
       .pipe(takeUntil(this.directiveDestroyed))
       .subscribe({
         next: value => {
           this.el.nativeElement.innerHTML = value;
         },
-        error: () => `${translationNotFoundMessage}[${this.jhiTranslate}]`,
+        error: () => `${translationNotFoundMessage}[${this.krftmeTranslate}]`,
       });
   }
 }

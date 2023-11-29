@@ -33,7 +33,7 @@ describe('Tag Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             label: expect.any(Object),
-            offers: expect.any(Object
+            offers: expect.any(Object)
           })
         );
       });
