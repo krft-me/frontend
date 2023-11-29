@@ -136,8 +136,7 @@
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span
-                  jhiTranslate="global.menu.entities.krftmeMicroserviceApplicationUserOffer">Application User Offer</span>
+                <span jhiTranslate="global.menu.entities.krftmeMicroserviceApplicationUserOffer">Application User Offer</span>
               </a>
             </li>
             <li>
@@ -173,8 +172,7 @@
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span
-                  jhiTranslate="global.menu.entities.krftmeMicroserviceApplicationUserBadge">Application User Badge</span>
+                <span jhiTranslate="global.menu.entities.krftmeMicroserviceApplicationUserBadge">Application User Badge</span>
               </a>
             </li>
             <li>
@@ -269,7 +267,7 @@
             <li *ngFor="let language of languages">
               <a
                 class="dropdown-item"
-                [jhiActiveMenu]="language"
+                [krftmeActiveMenu]="language"
                 href="javascript:void(0);"
                 (click)="changeLanguage(language); collapseNavbar()"
                 >{{ language | findLanguageFromKey }}</a
