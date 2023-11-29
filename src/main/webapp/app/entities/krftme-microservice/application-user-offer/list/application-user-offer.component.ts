@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Data, ParamMap, Router } from "@angular/router";
-import { combineLatest, filter, Observable, switchMap, tap } from "rxjs";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
+import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IApplicationUserOffer } from "../application-user-offer.model";
-import { ASC, DEFAULT_SORT_DATA, DESC, ITEM_DELETED_EVENT, SORT } from "app/config/navigation.constants";
-import { ApplicationUserOfferService, EntityArrayResponseType } from "../service/application-user-offer.service";
-import { ApplicationUserOfferDeleteDialogComponent } from "../delete/application-user-offer-delete-dialog.component";
-import { SortService } from "app/shared/sort/sort.service";
+import { IApplicationUserOffer } from '../application-user-offer.model';
+import { ASC, DEFAULT_SORT_DATA, DESC, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
+import { ApplicationUserOfferService, EntityArrayResponseType } from '../service/application-user-offer.service';
+import { ApplicationUserOfferDeleteDialogComponent } from '../delete/application-user-offer-delete-dialog.component';
+import { SortService } from 'app/shared/sort/sort.service';
 
 @Component({
   selector: 'krftme-application-user-offer',
@@ -93,7 +93,7 @@ export class ApplicationUserOfferComponent implements OnInit {
     this.isLoading = true;
     const queryObject = {
       eagerload: true,
-      sort: this.getSortQueryParam(predicate, ascending,
+      sort: this.getSortQueryParam(predicate, ascending),
     };
     return this.applicationUserOfferService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
   }

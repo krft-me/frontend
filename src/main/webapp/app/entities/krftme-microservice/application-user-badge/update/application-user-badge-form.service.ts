@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import dayjs from "dayjs/esm";
-import { DATE_TIME_FORMAT } from "app/config/input.constants";
-import { IApplicationUserBadge, NewApplicationUserBadge } from "../application-user-badge.model";
+import dayjs from 'dayjs/esm';
+import { DATE_TIME_FORMAT } from 'app/config/input.constants';
+import { IApplicationUserBadge, NewApplicationUserBadge } from '../application-user-badge.model';
 
 /**
  * A partial Type with required key is used as form input.
  */
-type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, "id">> & { id: T["id"] };
+type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>> & { id: T['id'] };
 
 /**
  * Type for createFormGroup and resetForm argument.
@@ -19,7 +19,7 @@ type ApplicationUserBadgeFormGroupInput = IApplicationUserBadge | PartialWithReq
 /**
  * Type that converts some properties for forms.
  */
-type FormValueOf<T extends IApplicationUserBadge | NewApplicationUserBadge> = Omit<T, "obtainedDate"> & {
+type FormValueOf<T extends IApplicationUserBadge | NewApplicationUserBadge> = Omit<T, 'obtainedDate'> & {
   obtainedDate?: string | null;
 };
 
@@ -91,7 +91,7 @@ export class ApplicationUserBadgeFormService {
 
     return {
       id: null,
-      obtainedDate: currTime,
+      obtainedDate: currentTime,
     };
   }
 
@@ -109,7 +109,7 @@ export class ApplicationUserBadgeFormService {
   ): ApplicationUserBadgeFormRawValue | PartialWithRequiredKeyOf<NewApplicationUserBadgeFormRawValue> {
     return {
       ...applicationUserBadge,
-      obtainedDate: applicationUserBadge.obtainedDate ? applicationUserBadge.obtainedDate.format(DATE_TIME_FORMAT) : undefi,
+      obtainedDate: applicationUserBadge.obtainedDate ? applicationUserBadge.obtainedDate.format(DATE_TIME_FORMAT) : undefine,
     };
   }
 }

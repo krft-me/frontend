@@ -1,51 +1,50 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { UserRouteAccessService } from "app/core/auth/user-route-access.service";
-import { ReviewComponent } from "../list/review.component";
-import { ReviewDetailComponent } from "../detail/review-detail.component";
-import { ReviewUpdateComponent } from "../update/review-update.component";
-import { ReviewRoutingResolveService } from "./review-routing-resolve.service";
-import { ASC } from "app/config/navigation.constants";
+import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
+import { ReviewComponent } from '../list/review.component';
+import { ReviewDetailComponent } from '../detail/review-detail.component';
+import { ReviewUpdateComponent } from '../update/review-update.component';
+import { ReviewRoutingResolveService } from './review-routing-resolve.service';
+import { ASC } from 'app/config/navigation.constants';
 
 const reviewRoute: Routes = [
   {
-    path: "",
+    path: '',
     component: ReviewComponent,
     data: {
-      defaultSort: "id," + ASC
+      defaultSort: 'id,' + ASC,
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
-    path: ":id/view",
+    path: ':id/view',
     component: ReviewDetailComponent,
     resolve: {
-      review: ReviewRoutingResolveService
+      review: ReviewRoutingResolveService,
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
-    pa"new"new',
+    path: ':id/new',
     component: ReviewUpdateComponent,
     resolve: {
-      review: ReviewRoutingResolveSerice
+      review: ReviewRoutingResolveService,
     },
-    canActivate: [UserRouteAccessServce]
+    canActivate: [UserRouteAccessService],
   },
   {
-    path: ":id/edit",
+    path: ':id/edit',
     component: ReviewUpdateComponent,
     resolve: {
-      review: ReviewRoutingResolveService
+      review: ReviewRoutingResolveService,
     },
-    canActivate: [UserRouteAccessService]
-  }
+    canActivate: [UserRouteAccessService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(reviewRoute)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ReviewRoutingModule {
-}
+export class ReviewRoutingModule {}

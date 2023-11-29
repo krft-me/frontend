@@ -114,7 +114,7 @@ export class ApplicationUserBadgeService {
   protected convertDateFromServer(restApplicationUserBadge: RestApplicationUserBadge): IApplicationUserBadge {
     return {
       ...restApplicationUserBadge,
-      obtainedDate: restApplicationUserBadge.obtainedDate ? dayjs(restApplicationUserBadge.obtainedDate) : undefi,
+      obtainedDate: restApplicationUserBadge.obtainedDate ? dayjs(restApplicationUserBadge.obtainedDate) : undefined,
     };
   }
 

@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { IApplicationUserOffer, NewApplicationUserOffer } from "../application-user-offer.model";
+import { IApplicationUserOffer, NewApplicationUserOffer } from '../application-user-offer.model';
 
 /**
  * A partial Type with required key is used as form input.
  */
-type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, "id">> & { id: T["id"] };
+type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>> & { id: T['id'] };
 
 /**
  * Type for createFormGroup and resetForm argument.
@@ -82,7 +82,6 @@ export class ApplicationUserOfferFormService {
     return {
       id: null,
       active: false,
-      gs: [],
     };
   }
 }
