@@ -1,0 +1,87 @@
+<div>
+  <h2 data-cy="BadgeHeading" id="page-heading">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.home.title">Badges</span>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
+        <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        [routerLink]="['/badge/new']"
+        class="btn btn-primary jh-create-entity create-badge"
+        data-cy="entityCreateButton"
+        id="jh-create-entity"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.home.createLabel"> Créer un nouveau Badge </span>
+      </button>
+    </div>
+  </h2>
+
+  <krftme-alert-error></krftme-alert-error>
+
+  <krftme-alert></krftme-alert>
+
+  <div *ngIf="badges?.length === 0" class="alert alert-warning" id="no-result">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.home.notFound">Aucun Badge trouvé</span>
+  </div>
+
+  <div *ngIf="badges && badges.length > 0" class="table-responsive table-entities" id="entities">
+    <table aria-describedby="page-heading" class="table table-striped">
+      <thead>
+      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
+        <th jhiSortBy="id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="global.field.id">ID</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="label" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.label">Label</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="picture" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceBadge.picture">Picture</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let badge of badges; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a [routerLink]="['/badge', badge.id, 'view']">{{ badge.id }}</a>
+        </td>
+        <td>{{ badge.label }}</td>
+        <td>{{ badge.picture }}</td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button [routerLink]="['/badge', badge.id, 'view']" class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton" type="submit">
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+            </button>
+
+            <button [routerLink]="['/badge', badge.id, 'edit']" class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton" type="submit">
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+            </button>
+
+            <button (click)="delete(badge)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton" type="submit">
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
