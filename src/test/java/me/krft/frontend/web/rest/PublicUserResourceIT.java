@@ -4,8 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
 
 import me.krft.frontend.IntegrationTest;
-import me.krft.frontend.config.Constants;
-import me.krft.frontend.config.TestSecurityConfiguration;
 import me.krft.frontend.domain.User;
 import me.krft.frontend.repository.EntityManager;
 import me.krft.frontend.repository.UserRepository;
@@ -86,9 +84,9 @@ class PublicUserResourceIT {
             .expectBody()
             .jsonPath("$")
             .isArray()
-            .jsonPath("$[?(@=='" + AuthoritiesConstants.ADMIN + ")]")
+            .jsonPath("$[?(@=='" + AuthoritiesConstants.ADMIN + "')]")
             .hasJsonPath()
-            .jsonPath("$[?(@=='" + AuthoritiesConstants.USER + ")]")
+            .jsonPath("$[?(@=='" + AuthoritiesConstants.USER + "')]")
             .hasJsonPath();
     }
 }
