@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124859",
+  "changelogDate": "20231129191456",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,21 +10,29 @@
     {
       "fieldName": "label",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "unique",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Tag entity\\nRepresents a preset keyword for an offer",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "Tag",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
       "otherEntityName": "applicationUserOffer",
-      "otherEntityRelationshipName": "tag",
-      "relationshipName": "applicationUserOffer",
-      "relationshipType": "many-to-one"
+      "otherEntityRelationshipName": "tags",
+      "ownerSide": false,
+      "relationshipName": "offers",
+      "relationshipType": "many-to-many"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

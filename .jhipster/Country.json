@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124849",
+  "changelogDate": "20231129191446",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,14 +10,34 @@
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "javadoc": "The country's name in english"
+    },
+    {
+      "fieldName": "isoCode",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique",
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "3",
+      "javadoc": "ISO 3166-1 alpha-2"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Country entity",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "Country",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
-  "service": "no"
+  "relationships": [
+    {
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "regions",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
 }

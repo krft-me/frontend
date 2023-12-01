@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124850",
+  "changelogDate": "20231129191447",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,26 +10,46 @@
     {
       "fieldName": "firstName",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1",
+      "javadoc": "The user's first name"
     },
     {
       "fieldName": "lastName",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1",
+      "javadoc": "The user's last name name"
     },
     {
-      "fieldName": "pseudo",
+      "fieldName": "username",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1",
+      "javadoc": "The user's username"
     },
     {
-      "fieldName": "averageRating",
-      "fieldType": "Double",
-      "fieldValidateRules": ["required"]
+      "fieldName": "profilePictureId",
+      "fieldType": "UUID",
+      "fieldValidateRules": [
+        "unique"
+      ],
+      "javadoc": "The user's profile picture ID"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "User entity extending the inter {@code User} entity\\nProvides additional information about the user",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "ApplicationUser",
   "pagination": "no",
   "readOnly": false,
@@ -40,31 +61,29 @@
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityName": "applicationUserOffer",
+      "otherEntityRelationshipName": "provider",
+      "relationshipName": "offers",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "applicationUserBadge",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "badges",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "orders",
+      "relationshipType": "one-to-many"
+    },
+    {
       "otherEntityName": "city",
+      "otherEntityRelationshipName": "users",
       "relationshipName": "city",
       "relationshipType": "many-to-one"
-    },
-    {
-      "otherEntityName": "applicationUser",
-      "otherEntityRelationshipName": "followers",
-      "ownerSide": true,
-      "relationshipName": "favoriteApplicationUser",
-      "relationshipType": "many-to-many"
-    },
-    {
-      "otherEntityName": "offer",
-      "otherEntityRelationshipName": "followers",
-      "ownerSide": true,
-      "relationshipName": "favoriteOffer",
-      "relationshipType": "many-to-many"
-    },
-    {
-      "otherEntityName": "applicationUser",
-      "otherEntityRelationshipName": "favoriteApplicationUser",
-      "ownerSide": false,
-      "relationshipName": "followers",
-      "relationshipType": "many-to-many"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

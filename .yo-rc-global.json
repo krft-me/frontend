@@ -1,0 +1,8 @@
+{
+  "generator-jhipster:7.9.4": {
+    "promptValues": {
+      "packageName": "me.krft.frontend",
+      "nativeLanguage": "fr"
+    }
+  }
+}

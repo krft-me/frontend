@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="country">
+      <h2 data-cy="countryDetailsHeading"><span
+        jhiTranslate="krftmeApp.krftmeMicroserviceCountry.detail.title">Country</span></h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ country.id }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.name' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.name"
+          >Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ country.name }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.isoCode' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode"
+          >Iso Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ country.isoCode }}</span>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/country', country.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

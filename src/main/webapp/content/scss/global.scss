@@ -111,7 +111,7 @@ Generic styles
 }
 
 .hand,
-[jhisortby] {
+[krftmesortby] {
   cursor: pointer;
 }
 
@@ -133,7 +133,7 @@ Custom alerts for notification
       font-size: 10px;
     }
   }
-  .krftme-toast {
+  .jhi-toast {
     position: fixed;
     width: 100%;
     &.left {
@@ -152,7 +152,7 @@ Custom alerts for notification
 }
 
 @media screen and (min-width: 480px) {
-  .alerts .krftme-toast {
+  .alerts .jhi-toast {
     width: 50%;
   }
 }

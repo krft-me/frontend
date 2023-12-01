@@ -1,0 +1,40 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceApplicationUserOffer": {
+      "home": {
+        "title": "ApplicationUserOffers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Application User Offer",
+        "createOrEditLabel": "Créer ou éditer un Application User Offer",
+        "notFound": "Aucun Application User Offer trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Application User Offer {{ id }} ?"
+      },
+      "detail": {
+        "title": "Application User Offer"
+      },
+      "id": "ID",
+      "description": "Description",
+      "price": "Price",
+      "active": "Active",
+      "showcases": "Showcases",
+      "orders": "Orders",
+      "tags": "Tags",
+      "provider": "Provider",
+      "offer": "Offer",
+      "help": {
+        "description": "Description of the service provided, written by the user providing it",
+        "price": "The price of the service, set by the user providing it",
+        "active": "Active means the offer is visible to the users, we shouldn&#39;t delete it"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceApplicationUserOffer": {
+      "created": "Un nouveau Application User Offer a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Application User Offer avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Application User Offer avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

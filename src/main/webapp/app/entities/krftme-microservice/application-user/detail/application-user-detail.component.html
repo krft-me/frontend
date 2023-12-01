@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="applicationUser">
+      <h2 data-cy="applicationUserDetailsHeading">
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.detail.title">Application User</span>
+      </h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ applicationUser.id }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.firstName' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.firstName"
+          >First Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ applicationUser.firstName }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.lastName' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.lastName"
+          >Last Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ applicationUser.lastName }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.username' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.username"
+          >Username</span
+          >
+        </dt>
+        <dd>
+          <span>{{ applicationUser.username }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.profilePictureId' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.profilePictureId"
+          >Profile Picture Id</span
+          >
+        </dt>
+        <dd>
+          <span>{{ applicationUser.profilePictureId }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.internalUser">Internal User</span></dt>
+        <dd>
+          <span>{{ applicationUser.internalUser?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.city">City</span></dt>
+        <dd>
+          <div *ngIf="applicationUser.city">
+            <a [routerLink]="['/city', applicationUser.city.id, 'view']">{{ applicationUser.city.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/application-user', applicationUser.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

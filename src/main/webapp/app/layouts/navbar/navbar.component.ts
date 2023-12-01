@@ -1,4 +1,4 @@
-import { Component, OnInit, Compiler, Injector, NgModuleFactory, Type } from '@angular/core';
+import { Component, OnInit, Compiler, Injector, Type } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'ngx-webstorage';

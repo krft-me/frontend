@@ -1,6 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124856",
+  "changelogDate": "20231129191453",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -9,20 +10,37 @@
     {
       "fieldName": "label",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required",
+        "minlength",
+        "unique"
+      ],
+      "fieldValidateRulesMinlength": "1"
     },
     {
       "fieldName": "picture",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "image",
-      "fieldValidateRules": ["required"]
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ],
+      "javadoc": "The badge's icon, should be a blob later"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Badge entity\\nRepresents a certification (example: 100 completed orders)",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "Badge",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
-  "service": "no"
+  "relationships": [
+    {
+      "otherEntityName": "applicationUserBadge",
+      "otherEntityRelationshipName": "badge",
+      "relationshipName": "users",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
 }

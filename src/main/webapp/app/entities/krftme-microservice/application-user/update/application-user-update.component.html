@@ -1,0 +1,183 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form (ngSubmit)="save()" [formGroup]="editForm" name="editForm" novalidate role="form">
+      <h2
+        data-cy="ApplicationUserCreateUpdateHeading"
+        id="krftme-application-user-heading"
+        jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.home.createOrEditLabel"
+      >
+        Créer ou éditer un Application User
+      </h2>
+
+      <div>
+        <krftme-alert-error></krftme-alert-error>
+
+        <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
+          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
+                 type="number" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.firstName' | translate"
+            class="form-label"
+            for="field_firstName"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.firstName"
+          >First Name</label
+          >
+          <input class="form-control" data-cy="firstName" formControlName="firstName" id="field_firstName"
+                 name="firstName"
+                 type="text" />
+          <div
+            *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+            <small
+              *ngIf="editForm.get('firstName')?.errors?.required"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              *ngIf="editForm.get('firstName')?.errors?.minlength"
+              [translateValues]="{ min: 1 }"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.minlength"
+            >
+              Ce champ doit faire au minimum 1 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.lastName' | translate"
+            class="form-label"
+            for="field_lastName"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.lastName"
+          >Last Name</label
+          >
+          <input class="form-control" data-cy="lastName" formControlName="lastName" id="field_lastName" name="lastName"
+                 type="text" />
+          <div
+            *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+            <small
+              *ngIf="editForm.get('lastName')?.errors?.required"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              *ngIf="editForm.get('lastName')?.errors?.minlength"
+              [translateValues]="{ min: 1 }"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.minlength"
+            >
+              Ce champ doit faire au minimum 1 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.username' | translate"
+            class="form-label"
+            for="field_username"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.username"
+          >Username</label
+          >
+          <input class="form-control" data-cy="username" formControlName="username" id="field_username" name="username"
+                 type="text" />
+          <div
+            *ngIf="editForm.get('username')!.invalid && (editForm.get('username')!.dirty || editForm.get('username')!.touched)">
+            <small
+              *ngIf="editForm.get('username')?.errors?.required"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              *ngIf="editForm.get('username')?.errors?.minlength"
+              [translateValues]="{ min: 1 }"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.minlength"
+            >
+              Ce champ doit faire au minimum 1 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceApplicationUser.help.profilePictureId' | translate"
+            class="form-label"
+            for="field_profilePictureId"
+            jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.profilePictureId"
+          >Profile Picture Id</label
+          >
+          <input
+            class="form-control"
+            data-cy="profilePictureId"
+            formControlName="profilePictureId"
+            id="field_profilePictureId"
+            name="profilePictureId"
+            type="text"
+          />
+          <div
+            *ngIf="
+              editForm.get('profilePictureId')!.invalid &&
+              (editForm.get('profilePictureId')!.dirty || editForm.get('profilePictureId')!.touched)
+            "
+          ></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_internalUser"
+                 jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.internalUser"
+          >Internal User</label
+          >
+          <select
+            [compareWith]="compareUser"
+            class="form-control"
+            data-cy="internalUser"
+            formControlName="internalUser"
+            id="field_internalUser"
+            name="internalUser"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let userOption of usersSharedCollection" [ngValue]="userOption">{{ userOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_city" jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.city">City</label>
+          <select [compareWith]="compareCity" class="form-control" data-cy="city" formControlName="city" id="field_city"
+                  name="city">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let cityOption of citiesSharedCollection"
+                    [ngValue]="cityOption">{{ cityOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
+                type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+          data-cy="entityCreateSaveButton"
+          id="save-entity"
+          type="submit"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

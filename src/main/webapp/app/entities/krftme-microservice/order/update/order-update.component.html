@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form (ngSubmit)="save()" [formGroup]="editForm" name="editForm" novalidate role="form">
+      <h2 data-cy="OrderCreateUpdateHeading" id="krftme-order-heading"
+          jhiTranslate="krftmeApp.krftmeMicroserviceOrder.home.createOrEditLabel">
+        Créer ou éditer un Order
+      </h2>
+
+      <div>
+        <krftme-alert-error></krftme-alert-error>
+
+        <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
+          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
+                 type="number" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceOrder.help.date' | translate"
+            class="form-label"
+            for="field_date"
+            jhiTranslate="krftmeApp.krftmeMicroserviceOrder.date"
+          >Date</label
+          >
+          <div class="d-flex">
+            <input
+              class="form-control"
+              data-cy="date"
+              formControlName="date"
+              id="field_date"
+              name="date"
+              placeholder="YYYY-MM-DD HH:mm"
+              type="datetime-local"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small *ngIf="editForm.get('date')?.errors?.required" class="form-text text-danger"
+                   jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+            <small
+              [hidden]="!editForm.get('date')?.errors?.datetimelocal"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.datetimelocal"
+            >
+              Ce champ doit être une date et une heure.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceOrder.help.state' | translate"
+            class="form-label"
+            for="field_state"
+            jhiTranslate="krftmeApp.krftmeMicroserviceOrder.state"
+          >State</label
+          >
+          <select class="form-control" data-cy="state" formControlName="state" id="field_state" name="state">
+            <option [ngValue]="null">{{ 'krftmeApp.State.null' | translate }}</option>
+            <option *ngFor="let state of stateValues"
+                    [value]="state">{{ 'krftmeApp.State.' + state | translate }}</option>
+          </select>
+          <div
+            *ngIf="editForm.get('state')!.invalid && (editForm.get('state')!.dirty || editForm.get('state')!.touched)">
+            <small *ngIf="editForm.get('state')?.errors?.required" class="form-text text-danger"
+                   jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_offer"
+                 jhiTranslate="krftmeApp.krftmeMicroserviceOrder.offer">Offer</label>
+          <select
+            [compareWith]="compareApplicationUserOffer"
+            class="form-control"
+            data-cy="offer"
+            formControlName="offer"
+            id="field_offer"
+            name="offer"
+          >
+            <option *ngIf="editForm.get(['offer'])!.value == null" [ngValue]="null" selected></option>
+            <option *ngFor="let applicationUserOfferOption of applicationUserOffersSharedCollection"
+                    [ngValue]="applicationUserOfferOption">
+              {{ applicationUserOfferOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['offer'])!.invalid && (editForm.get(['offer'])!.dirty || editForm.get(['offer'])!.touched)">
+          <small *ngIf="editForm.get(['offer'])?.errors?.required" class="form-text text-danger"
+                 jhiTranslate="entity.validation.required">
+            Ce champ est obligatoire.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_customer" jhiTranslate="krftmeApp.krftmeMicroserviceOrder.customer">Customer</label>
+          <select
+            [compareWith]="compareApplicationUser"
+            class="form-control"
+            data-cy="customer"
+            formControlName="customer"
+            id="field_customer"
+            name="customer"
+          >
+            <option *ngIf="editForm.get(['customer'])!.value == null" [ngValue]="null" selected></option>
+            <option *ngFor="let applicationUserOption of applicationUsersSharedCollection"
+                    [ngValue]="applicationUserOption">
+              {{ applicationUserOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['customer'])!.invalid && (editForm.get(['customer'])!.dirty || editForm.get(['customer'])!.touched)">
+          <small
+            *ngIf="editForm.get(['customer'])?.errors?.required"
+            class="form-text text-danger"
+            jhiTranslate="entity.validation.required"
+          >
+            Ce champ est obligatoire.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
+                type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+          data-cy="entityCreateSaveButton"
+          id="save-entity"
+          type="submit"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

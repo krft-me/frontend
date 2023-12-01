@@ -39,13 +39,13 @@ public interface UserRepository extends R2dbcRepository<User, String>, UserRepos
 
     Mono<Long> count();
 
-    @Query("INSERT INTO jhi_user_authority VALUES(:userId, :authority)")
+    @Query("INSERT INTO krftme_user_authority VALUES(:userId, :authority)")
     Mono<Void> saveUserAuthority(String userId, String authority);
 
-    @Query("DELETE FROM jhi_user_authority")
+    @Query("DELETE FROM krftme_user_authority")
     Mono<Void> deleteAllUserAuthorities();
 
-    @Query("DELETE FROM jhi_user_authority WHERE user_id = :userId")
+    @Query("DELETE FROM krftme_user_authority WHERE user_id = :userId")
     Mono<Void> deleteUserAuthorities(String userId);
 }
 
@@ -84,7 +84,7 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
         long size = pageable.getPageSize();
 
         return db
-            .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id")
+            .sql("SELECT * FROM krftme_user u LEFT JOIN krftme_user_authority ua ON u.id=ua.user_id")
             .map((row, metadata) ->
                 Tuples.of(r2dbcConverter.read(User.class, row, metadata), Optional.ofNullable(row.get("authority_name", String.class)))
             )
@@ -107,7 +107,12 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
 
     private Mono<User> findOneWithAuthoritiesBy(String fieldName, Object fieldValue) {
         return db
-            .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id WHERE u." + fieldName + " = :" + fieldName)
+            .sql(
+                "SELECT * FROM krftme_user u LEFT JOIN krftme_user_authority ua ON u.id=ua.user_id WHERE u." +
+                fieldName +
+                " = :" +
+                fieldName
+            )
             .bind(fieldName, fieldValue)
             .map((row, metadata) ->
                 Tuples.of(r2dbcConverter.read(User.class, row, metadata), Optional.ofNullable(row.get("authority_name", String.class)))

@@ -1,0 +1,13 @@
+{
+  "krftmeApp": {
+    "State": {
+      "null": "",
+      "WAITING": "WAITING",
+      "UNSIGNED": "UNSIGNED",
+      "SIGNED": "SIGNED",
+      "IN_PROGRESS": "IN_PROGRESS",
+      "CANCELLED": "CANCELLED",
+      "DONE": "DONE"
+    }
+  }
+}

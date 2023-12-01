@@ -1,0 +1,143 @@
+<div>
+  <h2 data-cy="ApplicationUserOfferHeading" id="page-heading">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.title">ApplicationUserOffers</span>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="load()" [disabled]="isLoading" class="btn btn-info me-2">
+        <fa-icon [spin]="isLoading" icon="sync"></fa-icon>
+        <span
+          jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        [routerLink]="['/application-user-offer/new']"
+        class="btn btn-primary jh-create-entity create-application-user-offer"
+        data-cy="entityCreateButton"
+        id="jh-create-entity"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.createLabel">
+          Créer un nouveau Application User Offer
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <krftme-alert-error></krftme-alert-error>
+
+  <krftme-alert></krftme-alert>
+
+  <div *ngIf="applicationUserOffers?.length === 0" class="alert alert-warning" id="no-result">
+    <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.home.notFound">Aucun Application User Offer trouvé</span>
+  </div>
+
+  <div *ngIf="applicationUserOffers && applicationUserOffers.length > 0" class="table-responsive table-entities"
+       id="entities">
+    <table aria-describedby="page-heading" class="table table-striped">
+      <thead>
+      <tr (sortChange)="navigateToWithComponentValues()" [(ascending)]="ascending" [(predicate)]="predicate" jhiSort>
+        <th jhiSortBy="id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="global.field.id">ID</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="description" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.description">Description</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="price" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.price">Price</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="active" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.active">Active</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="tags.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.tags">Tags</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="provider.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.provider">Provider</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th jhiSortBy="offer.id" scope="col">
+          <div class="d-flex">
+            <span jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUserOffer.offer">Offer</span>
+            <fa-icon class="p-1" icon="sort"></fa-icon>
+          </div>
+        </th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let applicationUserOffer of applicationUserOffers; trackBy: trackId" data-cy="entityTable">
+        <td>
+          <a
+            [routerLink]="['/application-user-offer', applicationUserOffer.id, 'view']">{{ applicationUserOffer.id }}</a>
+        </td>
+        <td>{{ applicationUserOffer.description }}</td>
+        <td>{{ applicationUserOffer.price }}</td>
+        <td>{{ applicationUserOffer.active }}</td>
+        <td>
+            <span *ngFor="let tags of applicationUserOffer.tags; let last = last">
+              <a [routerLink]="['/tag', tags.id, 'view']" class="form-control-static">{{ tags.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+        </td>
+        <td>
+          <div *ngIf="applicationUserOffer.provider">
+            <a
+              [routerLink]="['/application-user', applicationUserOffer.provider.id, 'view']">{{ applicationUserOffer.provider.id }}</a>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="applicationUserOffer.offer">
+            <a [routerLink]="['/offer', applicationUserOffer.offer.id, 'view']">{{ applicationUserOffer.offer.id }}</a>
+          </div>
+        </td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button
+              [routerLink]="['/application-user-offer', applicationUserOffer.id, 'view']"
+              class="btn btn-info btn-sm"
+              data-cy="entityDetailsButton"
+              type="submit"
+            >
+              <fa-icon icon="eye"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+            </button>
+
+            <button
+              [routerLink]="['/application-user-offer', applicationUserOffer.id, 'edit']"
+              class="btn btn-primary btn-sm"
+              data-cy="entityEditButton"
+              type="submit"
+            >
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+            </button>
+
+            <button (click)="delete(applicationUserOffer)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton"
+                    type="submit">
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "applications": "*",
+  "changelogDate": "20231129191457",
+  "clientRootFolder": "krftme-microservice",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "machine_category",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "1"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "MachineCategory entity\\nRepresents a preset machine type",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
+  "name": "MachineCategory",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "machine",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "machines",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

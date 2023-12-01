@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tag">
+      <h2 data-cy="tagDetailsHeading"><span jhiTranslate="krftmeApp.krftmeMicroserviceTag.detail.title">Tag</span></h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tag.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceTag.label">Label</span></dt>
+        <dd>
+          <span>{{ tag.label }}</span>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/tag', tag.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -94,7 +94,7 @@ class UserResourceIT {
      */
     public static void deleteEntities(EntityManager em) {
         try {
-            em.deleteAll("jhi_user_authority").block();
+            em.deleteAll("krftme_user_authority").block();
             em.deleteAll(User.class).block();
         } catch (Exception e) {
             // It can fail, if other entities are still referring this - it will be removed later.

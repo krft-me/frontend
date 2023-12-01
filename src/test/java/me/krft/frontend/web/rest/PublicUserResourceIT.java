@@ -1,11 +1,6 @@
 package me.krft.frontend.web.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
-
 import me.krft.frontend.IntegrationTest;
-import me.krft.frontend.config.Constants;
-import me.krft.frontend.config.TestSecurityConfiguration;
 import me.krft.frontend.domain.User;
 import me.krft.frontend.repository.EntityManager;
 import me.krft.frontend.repository.UserRepository;
@@ -19,8 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
+
 /**
- * Integration tests for the {@link UserResource} REST controller.
+ * Integration tests for the {@link UserResourceIT} REST controller.
  */
 @AutoConfigureWebTestClient(timeout = IntegrationTest.DEFAULT_TIMEOUT)
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)

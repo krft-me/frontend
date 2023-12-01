@@ -1,0 +1,29 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceMachineCategory": {
+      "home": {
+        "title": "MachineCategories",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Machine Category",
+        "createOrEditLabel": "Créer ou éditer un Machine Category",
+        "notFound": "Aucun Machine Category trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Machine Category {{ id }} ?"
+      },
+      "detail": {
+        "title": "Machine Category"
+      },
+      "id": "ID",
+      "label": "Label",
+      "machines": "Machines"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceMachineCategory": {
+      "created": "Un nouveau Machine Category a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Machine Category avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Machine Category avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

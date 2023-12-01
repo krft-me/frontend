@@ -1,0 +1,29 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceShowcase": {
+      "home": {
+        "title": "Showcases",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Showcase",
+        "createOrEditLabel": "Créer ou éditer un Showcase",
+        "notFound": "Aucun Showcase trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Showcase {{ id }} ?"
+      },
+      "detail": {
+        "title": "Showcase"
+      },
+      "id": "ID",
+      "imageId": "Image Id",
+      "offer": "Offer"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceShowcase": {
+      "created": "Un nouveau Showcase a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Showcase avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Showcase avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

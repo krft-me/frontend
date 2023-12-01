@@ -1,0 +1,30 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceMachine": {
+      "home": {
+        "title": "Machines",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Machine",
+        "createOrEditLabel": "Créer ou éditer un Machine",
+        "notFound": "Aucun Machine trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Machine {{ id }} ?"
+      },
+      "detail": {
+        "title": "Machine"
+      },
+      "id": "ID",
+      "name": "Name",
+      "offers": "Offers",
+      "category": "Category"
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceMachine": {
+      "created": "Un nouveau Machine a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Machine avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Machine avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

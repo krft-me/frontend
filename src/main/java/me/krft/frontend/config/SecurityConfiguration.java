@@ -16,7 +16,6 @@ import me.krft.frontend.security.oauth2.AudienceValidator;
 import me.krft.frontend.security.oauth2.JwtGrantedAuthorityConverter;
 import me.krft.frontend.web.filter.SpaWebFilter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.ParameterizedTypeReference;
@@ -137,7 +136,7 @@ public class SecurityConfiguration {
             .pathMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN);
 
         http.oauth2Login(oauth2 -> oauth2.authorizationRequestResolver(authorizationRequestResolver(this.clientRegistrationRepository)))
-
+            
             .oauth2ResourceServer()
                 .jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());

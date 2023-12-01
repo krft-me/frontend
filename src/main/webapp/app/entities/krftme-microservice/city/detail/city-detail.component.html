@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="city">
+      <h2 data-cy="cityDetailsHeading"><span jhiTranslate="krftmeApp.krftmeMicroserviceCity.detail.title">City</span>
+      </h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ city.id }}</span>
+        </dd>
+        <dt>
+          <span [ngbTooltip]="'krftmeApp.krftmeMicroserviceCity.help.name' | translate"
+                jhiTranslate="krftmeApp.krftmeMicroserviceCity.name"
+          >Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ city.name }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceCity.help.zipCode' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceCity.zipCode"
+          >Zip Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ city.zipCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceCity.region">Region</span></dt>
+        <dd>
+          <div *ngIf="city.region">
+            <a [routerLink]="['/region', city.region.id, 'view']">{{ city.region.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/city', city.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

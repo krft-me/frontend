@@ -1,0 +1,30 @@
+<form *ngIf="applicationUser" name="deleteForm" (ngSubmit)="confirmDelete(applicationUser.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="applicationUserDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirmation
+      de suppression</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <krftme-alert-error></krftme-alert-error>
+    <p
+      id="krftme-delete-applicationUser-heading"
+      jhiTranslate="krftmeApp.krftmeMicroserviceApplicationUser.delete.question"
+      [translateValues]="{ id: applicationUser.id }"
+    >
+      Êtes-vous certain de vouloir supprimer le Application User {{ applicationUser.id }} ?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+    </button>
+
+    <button class="btn btn-danger" data-cy="entityConfirmDeleteButton" id="krftme-confirm-delete-applicationUser"
+            type="submit">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+    </button>
+  </div>
+</form>

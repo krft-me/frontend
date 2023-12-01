@@ -260,6 +260,17 @@ jhipster:
         - https://{your-auth0-domain}/api/v2/
 ```
 
+Before running Cypress tests, specify Auth0 user credentials by overriding the `CYPRESS_E2E_USERNAME` and `CYPRESS_E2E_PASSWORD` environment variables.
+
+```
+export CYPRESS_E2E_USERNAME="<your-username>"
+export CYPRESS_E2E_PASSWORD="<your-password>"
+```
+
+See Cypress' documentation for setting OS [environment variables](https://docs.cypress.io/guides/guides/environment-variables#Setting) to learn more.
+
+**Auth0 requires a user to provide authorization consent on the first login.** Consent flow is currently not handled in the Cypress test suite. To mitigate the issue, you can use a user account that has already granted consent to authorize application access via interactive login.
+
 ## Building for production
 
 ### Packaging as jar
@@ -305,7 +316,34 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 npm test
 ```
 
+UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
+and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
+
+#### Lighthouse audits
+
+You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
+You should only run the audits when your application is packaged with the production profile.
+The lighthouse report is created in `target/cypress/lhreport.html`
+
 For more information, refer to the [Running tests page][].
+
+### E2E Webapp Code Coverage
+
+When using Cypress, you can generate code coverage report by running your dev server with instrumented code:
+
+Build your Angular application with instrumented code:
+
+    npm run webapp:instrumenter
+
+Start your backend without compiling frontend:
+
+    npm run backend:start
+
+Start your Cypress end to end testing:
+
+    npm run e2e:cypress:coverage
+
+The coverage report is generated under `./coverage/lcov-report/`
 
 ### Code quality
 
@@ -391,6 +429,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [webpack]: https://webpack.github.io/
 [browsersync]: https://www.browsersync.io/
 [jest]: https://facebook.github.io/jest/
+[cypress]: https://www.cypress.io/
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/

@@ -1,0 +1,33 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceApplicationUserBadge": {
+      "home": {
+        "title": "ApplicationUserBadges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Application User Badge",
+        "createOrEditLabel": "Créer ou éditer un Application User Badge",
+        "notFound": "Aucun Application User Badge trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Application User Badge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Application User Badge"
+      },
+      "id": "ID",
+      "obtainedDate": "Obtained Date",
+      "user": "User",
+      "badge": "Badge",
+      "help": {
+        "obtainedDate": "Date the user obtained the badge"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceApplicationUserBadge": {
+      "created": "Un nouveau Application User Badge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Application User Badge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Application User Badge avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

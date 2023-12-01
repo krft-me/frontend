@@ -1,39 +1,60 @@
 {
   "applications": "*",
-  "changelogDate": "20231002124858",
+  "changelogDate": "20231129191455",
+  "clientRootFolder": "krftme-microservice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
-  "entityTableName": "jhi_order",
+  "entityTableName": "krftme_order",
   "fields": [
     {
       "fieldName": "date",
       "fieldType": "Instant",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ],
+      "javadoc": "Date the order was placed"
     },
     {
       "fieldName": "state",
       "fieldType": "State",
-      "fieldValidateRules": ["required"],
-      "fieldValues": "WAITING,UNSIGNED,SIGNED,INPROGRESS,CANCELLED,DONE"
+      "fieldTypeJavadoc": "State enum\\nRepresents the state of an order",
+      "fieldValidateRules": [
+        "required"
+      ],
+      "fieldValues": "WAITING,UNSIGNED,SIGNED,IN_PROGRESS,CANCELLED,DONE",
+      "javadoc": "State of the order"
     }
   ],
   "fluentMethods": true,
+  "javadoc": "Order entity\\nRepresents an order placed by a customer for an offer",
   "jpaMetamodelFiltering": false,
+  "microserviceName": "krftme-microservice",
   "name": "Order",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityName": "review",
+      "otherEntityRelationshipName": "order",
+      "ownerSide": false,
+      "relationshipName": "review",
+      "relationshipType": "one-to-one"
+    },
+    {
       "otherEntityName": "applicationUserOffer",
-      "relationshipName": "provider",
-      "relationshipType": "many-to-one"
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "offer",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     },
     {
       "otherEntityName": "applicationUser",
-      "relationshipName": "client",
-      "relationshipType": "many-to-one"
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

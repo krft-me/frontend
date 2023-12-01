@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.detail.title">Order</span>
+      </h2>
+
+      <hr />
+
+      <krftme-alert-error></krftme-alert-error>
+
+      <krftme-alert></krftme-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceOrder.help.date' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceOrder.date"
+          >Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ order.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceOrder.help.state' | translate"
+            jhiTranslate="krftmeApp.krftmeMicroserviceOrder.state"
+          >State</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'krftmeApp.State.' + order.state }}">{{ order.state }}</span>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.offer">Offer</span></dt>
+        <dd>
+          <div *ngIf="order.offer">
+            <a [routerLink]="['/application-user-offer', order.offer.id, 'view']">{{ order.offer.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="krftmeApp.krftmeMicroserviceOrder.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="order.customer">
+            <a [routerLink]="['/application-user', order.customer.id, 'view']">{{ order.customer.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton" type="submit">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary" type="button">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

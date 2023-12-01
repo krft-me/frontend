@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
  */
 @Component({
   selector: 'krftme-item-count',
-  template: ` <div jhiTranslate="global.item-count" [translateValues]="{ first: first, second: second, total: total }"></div> `,
+  template: ` <div krftmeTranslate="global.item-count" [translateValues]="{ first: first, second: second, total: total }"></div> `,
 })
 export class ItemCountComponent {
   /**

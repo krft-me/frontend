@@ -1,0 +1,33 @@
+{
+  "krftmeApp": {
+    "krftmeMicroserviceRegion": {
+      "home": {
+        "title": "Regions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Region",
+        "createOrEditLabel": "Créer ou éditer un Region",
+        "notFound": "Aucun Region trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Region {{ id }} ?"
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "id": "ID",
+      "name": "Name",
+      "cities": "Cities",
+      "country": "Country",
+      "help": {
+        "name": "The region&#39;s name"
+      }
+    }
+  },
+  "krftmeMicroserviceApp": {
+    "krftmeMicroserviceRegion": {
+      "created": "Un nouveau Region a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Region avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Region avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

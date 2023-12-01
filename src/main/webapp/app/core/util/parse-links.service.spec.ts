@@ -19,13 +19,13 @@ describe('Parse links service test', () => {
     it('should throw an error when passed without comma', inject([ParseLinks], (service: ParseLinks) => {
       expect(function () {
         service.parse('test');
-      }).toThrow(new Error('section could not be split on ";"'));
+      }).toThrow(new Error('section could not be split on '));
     }));
 
     it('should throw an error when passed without semicolon', inject([ParseLinks], (service: ParseLinks) => {
       expect(function () {
         service.parse('test,test2');
-      }).toThrow(new Error('section could not be split on ";"'));
+      }).toThrow(new Error('section could not be split on '));
     }));
 
     it('should return links when headers are passed', inject([ParseLinks], (service: ParseLinks) => {

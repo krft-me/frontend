@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form (ngSubmit)="save()" [formGroup]="editForm" name="editForm" novalidate role="form">
+      <h2
+        data-cy="CountryCreateUpdateHeading"
+        id="krftme-country-heading"
+        jhiTranslate="krftmeApp.krftmeMicroserviceCountry.home.createOrEditLabel"
+      >
+        Créer ou éditer un Country
+      </h2>
+
+      <div>
+        <krftme-alert-error></krftme-alert-error>
+
+        <div *ngIf="editForm.controls.id.value !== null" class="row mb-3">
+          <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+          <input [readonly]="true" class="form-control" data-cy="id" formControlName="id" id="field_id" name="id"
+                 type="number" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.name' | translate"
+            class="form-label"
+            for="field_name"
+            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.name"
+          >Name</label
+          >
+          <input class="form-control" data-cy="name" formControlName="name" id="field_name" name="name" type="text" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            [ngbTooltip]="'krftmeApp.krftmeMicroserviceCountry.help.isoCode' | translate"
+            class="form-label"
+            for="field_isoCode"
+            jhiTranslate="krftmeApp.krftmeMicroserviceCountry.isoCode"
+          >Iso Code</label
+          >
+          <input class="form-control" data-cy="isoCode" formControlName="isoCode" id="field_isoCode" name="isoCode"
+                 type="text" />
+          <div
+            *ngIf="editForm.get('isoCode')!.invalid && (editForm.get('isoCode')!.dirty || editForm.get('isoCode')!.touched)">
+            <small
+              *ngIf="editForm.get('isoCode')?.errors?.required"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              *ngIf="editForm.get('isoCode')?.errors?.maxlength"
+              [translateValues]="{ max: 3 }"
+              class="form-text text-danger"
+              jhiTranslate="entity.validation.maxlength"
+            >
+              Ce champ doit faire moins de 3 caractères.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="previousState()" class="btn btn-secondary" data-cy="entityCreateCancelButton" id="cancel-save"
+                type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+          data-cy="entityCreateSaveButton"
+          id="save-entity"
+          type="submit"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
