@@ -55,7 +55,7 @@ public class Authority implements Serializable, Persistable<String> {
 
     @Override
     public String getId() {
-        return name;
+        return getName();
     }
 
     @Override

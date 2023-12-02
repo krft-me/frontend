@@ -1,7 +1,6 @@
 package me.krft.frontend.repository.rowmapper;
 
 import io.r2dbc.spi.Row;
-import java.time.Instant;
 import java.util.function.BiFunction;
 import me.krft.frontend.domain.User;
 import org.springframework.stereotype.Service;

@@ -136,7 +136,7 @@ public class SecurityConfiguration {
             .pathMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN);
 
         http.oauth2Login(oauth2 -> oauth2.authorizationRequestResolver(authorizationRequestResolver(this.clientRegistrationRepository)))
-            
+
             .oauth2ResourceServer()
                 .jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());
@@ -179,9 +179,9 @@ public class SecurityConfiguration {
     public ReactiveOAuth2UserService<OidcUserRequest, OidcUser> oidcUserService() {
         final OidcReactiveOAuth2UserService delegate = new OidcReactiveOAuth2UserService();
 
-        return userRequest -> {
+        return userRequest ->
             // Delegate to the default implementation for loading a user
-            return delegate
+            delegate
                 .loadUser(userRequest)
                 .map(user -> {
                     Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
@@ -199,7 +199,6 @@ public class SecurityConfiguration {
 
                     return new DefaultOidcUser(mappedAuthorities, user.getIdToken(), user.getUserInfo());
                 });
-        };
     }
 
     @Bean

@@ -1,7 +1,6 @@
 package me.krft.frontend.web.rest;
 
 import java.security.Principal;
-import me.krft.frontend.security.SecurityUtils;
 import me.krft.frontend.service.UserService;
 import me.krft.frontend.service.dto.AdminUserDTO;
 import org.slf4j.Logger;

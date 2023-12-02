@@ -1,7 +1,9 @@
 package me.krft.frontend.service;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import me.krft.frontend.config.Constants;
 import me.krft.frontend.domain.Authority;
@@ -22,7 +24,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 /**
  * Service class for managing users.

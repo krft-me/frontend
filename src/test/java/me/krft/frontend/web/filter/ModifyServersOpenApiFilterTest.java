@@ -93,12 +93,8 @@ class ModifyServersOpenApiFilterTest {
             byte[] bytes = "{}".getBytes();
             DataBuffer body = exchange.getResponse().bufferFactory().wrap(bytes);
             interceptor.writeWith(Flux.just(body)).subscribe();
-            assertThat(
-                interceptor
-                    .getRewritedBody()
-                    .contains("\"servers\":[{\"url\":\"/services/service-test/instance-test\",\"description\":\"added by global filter\"}]")
-            )
-                .isTrue();
+            assertThat(interceptor.getRewritedBody())
+                .contains("\"servers\":[{\"url\":\"/services/service-test/instance-test\",\"description\":\"added by global filter\"}]");
         }
 
         @Test
@@ -113,12 +109,8 @@ class ModifyServersOpenApiFilterTest {
             byte[] bytes = zipContent();
             DataBuffer body = exchange.getResponse().bufferFactory().wrap(bytes);
             interceptor.writeWith(Flux.just(body)).subscribe();
-            assertThat(
-                interceptor
-                    .getRewritedBody()
-                    .contains("\"servers\":[{\"url\":\"/services/service-test/instance-test\",\"description\":\"added by global filter\"}]")
-            )
-                .isTrue();
+            assertThat(interceptor.getRewritedBody())
+                .contains("\"servers\":[{\"url\":\"/services/service-test/instance-test\",\"description\":\"added by global filter\"}]");
         }
 
         @Test

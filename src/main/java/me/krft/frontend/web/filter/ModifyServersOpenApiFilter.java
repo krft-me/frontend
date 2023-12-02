@@ -16,6 +16,7 @@ import java.util.zip.GZIPOutputStream;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -34,13 +35,15 @@ import reactor.core.publisher.Mono;
 @Component
 public class ModifyServersOpenApiFilter implements GlobalFilter, Ordered {
 
-    private static final String OPEN_API_PATH = "/v3/api-docs";
+    @Value("${jhipster.api-docs.path}")
+    private static String openApiPath;
+
     private static final Logger log = LoggerFactory.getLogger(ModifyServersOpenApiFilter.class);
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String path = exchange.getRequest().getURI().getPath();
-        if (path.startsWith("/services") && path.contains(OPEN_API_PATH)) {
+        if (path.startsWith("/services") && path.contains(openApiPath)) {
             ServerHttpResponse originalResponse = exchange.getResponse();
             DataBufferFactory bufferFactory = originalResponse.bufferFactory();
             ServerHttpResponseDecorator decoratedResponse = createModifyServersOpenApiInterceptor(path, originalResponse, bufferFactory);
@@ -65,7 +68,7 @@ public class ModifyServersOpenApiFilter implements GlobalFilter, Ordered {
         return new ModifyServersOpenApiInterceptor(path, originalResponse, bufferFactory);
     }
 
-    public class ModifyServersOpenApiInterceptor extends ServerHttpResponseDecorator {
+    public static class ModifyServersOpenApiInterceptor extends ServerHttpResponseDecorator {
 
         private final String path;
         private final ServerHttpResponse originalResponse;
@@ -89,7 +92,7 @@ public class ModifyServersOpenApiFilter implements GlobalFilter, Ordered {
             if (body instanceof Flux) {
                 Flux<? extends DataBuffer> fluxBody = (Flux<? extends DataBuffer>) body;
 
-                return super.writeWith(fluxBody.buffer().map(dataBuffers -> rewriteBodyWithServers(dataBuffers)));
+                return super.writeWith(fluxBody.buffer().map(this::rewriteBodyWithServers));
             }
             // when body is not a flux
             return super.writeWith(body);
@@ -110,7 +113,7 @@ public class ModifyServersOpenApiFilter implements GlobalFilter, Ordered {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode jsonBody = mapper.readTree(strBody);
                 ObjectNode serversToJson = mapper.createObjectNode();
-                serversToJson.set("url", mapper.valueToTree(path.replaceFirst(OPEN_API_PATH + "(/.*)?$", "")));
+                serversToJson.set("url", mapper.valueToTree(path.replaceFirst(openApiPath + "(/.*)?$", "")));
                 serversToJson.set("description", mapper.valueToTree("added by global filter"));
 
                 // add custom server
